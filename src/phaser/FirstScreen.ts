@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { Button } from "./game-objects/buttons/Button";
 
 class FirstScreen extends Phaser.Scene {
     constructor() {
@@ -29,34 +30,9 @@ class FirstScreen extends Phaser.Scene {
             wordWrap: {width: 550}
         }).setOrigin(0.5, 0.5)
 
-        const playButton = this.add.graphics()
-        playButton.fillStyle(0xFCA400)
-        playButton.fillRoundedRect(-150, -75, 300, 150, 60)
-        playButton.lineStyle(10, 0x000000)
-        playButton.strokeRoundedRect(-150, -75, 300, 150, 60)
-        playButton.setPosition(500, 240)
-
-        const playButtonArea = this.add.rectangle(500, 240, 300, 150, 0x000000, 0).setOrigin(0.5, 0.5)
-        playButtonArea.setInteractive({ useHandCursor: true })
-
-        const playButtonText = this.add.text(500, 240, "Play!", {
-            fontSize: '70px',
-            color: '#000',
-            fontFamily: 'Arial',
-            align: 'center',
-        }).setOrigin(0.5, 0.5)
-
-        playButtonArea.on('pointerup', () => this.scene.start('BattleScreen'))
-        playButtonArea.on('pointerover', () => {
-            playButton.setScale(1.1)
-            playButtonText.setScale(1.25)
-            playButtonArea.setScale(1.05)
-        })
-        playButtonArea.on('pointerout', () => {
-            playButton.setScale(1)
-            playButtonText.setScale(1)
-            playButtonArea.setScale(1)
-        })
+        const playButton = new Button(this, 500, 240, 300, 150, "Play!", 0xFCA400, 0x000000, '70px',
+            () => this.scene.start('BattleScreen') 
+          )
     }
 
     update() {

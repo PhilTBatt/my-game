@@ -1,5 +1,6 @@
 import Phaser from "phaser";
-import DefaultButtonPanel from "./game-objects/button-panels/DefaultButtonPanel";
+import DefaultButtonPanel from "../button-panels/DefaultButtonPanel";
+import Player from "../characters/Player";
 
 class BattleScreen extends Phaser.Scene {
     buttonPanel: DefaultButtonPanel | undefined = undefined

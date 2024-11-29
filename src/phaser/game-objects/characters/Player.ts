@@ -3,23 +3,21 @@ import Character from "./DefaultCharacter"
 export default class Player extends Character {
     maxStamina: number
     currentStamina: number
+    sprite: Phaser.GameObjects.Graphics
 
-    constructor(name: string, maxHealth: number, maxStamina: number) {
-        super(name, maxHealth)
+    constructor(scene: Phaser.Scene, name: string, maxHealth: number, maxStamina: number) {
+        super(scene, name, maxHealth)
         this.maxStamina = maxStamina
         this.currentStamina = maxStamina
-    }
 
-    takeDamage(damage: number) {
-        this.blockAmount = Math.max(this.blockAmount - damage, 0)
-        const reducedDamage = Math.max(damage - this.blockAmount, 0)
-        this.currentHealth = Math.max(this.currentHealth - reducedDamage, 0)
+        this.sprite = scene.add.graphics()
+        this.sprite.fillStyle(0x0000ff, 1)
+        this.sprite.fillCircle(0, 0, 50)
+        this.sprite.lineStyle(10, 0x000000)
+        this.sprite.strokeCircle(0, 0, 50)
+        scene.add.existing(this.sprite)
     }
-
-    heal(amount: number) {
-        this.currentHealth = Math.min(this.maxHealth, this.currentHealth + amount)
-    }
-
+    
     useStamina(amount: number) {
         this.currentStamina = Math.max(this.currentStamina - amount, 0)
     }

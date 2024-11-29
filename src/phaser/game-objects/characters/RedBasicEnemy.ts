@@ -3,8 +3,8 @@ import Character from "./DefaultCharacter";
 export default class Enemy extends Character {
     intent: {action: string, value: number}
 
-    constructor(name: string, maxHealth: number) {
-        super(name, maxHealth)
+    constructor(scene: Phaser.Scene, name: string, maxHealth: number) {
+        super(scene, name, maxHealth)
         this.intent = {action: "Attack", value: 5}
     }
 

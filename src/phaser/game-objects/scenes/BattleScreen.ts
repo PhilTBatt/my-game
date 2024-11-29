@@ -4,6 +4,7 @@ import Player from "../characters/Player";
 
 class BattleScreen extends Phaser.Scene {
     buttonPanel: DefaultButtonPanel | undefined = undefined
+    player: Player | undefined = undefined
     
     constructor() {
         super('BattleScreen')
@@ -19,6 +20,9 @@ class BattleScreen extends Phaser.Scene {
 
         this.buttonPanel = new DefaultButtonPanel(this)
         this.add.existing(this.buttonPanel)
+
+        this.player = new Player(this, "Player", 100, 100)
+        this.add.existing(this.player)
     }
 
     update() {

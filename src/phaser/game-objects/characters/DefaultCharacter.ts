@@ -31,5 +31,6 @@ export default class Character extends Phaser.GameObjects.GameObject {
 
     heal(amount: number) {
         this.currentHealth = Math.min(this.maxHealth, this.currentHealth + amount)
+        this.healthBar.updateHealth(this.currentHealth)
     }
 }

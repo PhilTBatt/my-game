@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { Button } from "./game-objects/buttons/Button";
+import Button from "./game-objects/buttons/Button";
 
 class FirstScreen extends Phaser.Scene {
     constructor() {
@@ -30,9 +30,7 @@ class FirstScreen extends Phaser.Scene {
             wordWrap: {width: 550}
         }).setOrigin(0.5, 0.5)
 
-        const playButton = new Button(this, 500, 240, 300, 150, "Play!", 0xFCA400, 0x000000, '70px',
-            () => this.scene.start('BattleScreen') 
-          )
+        const playButton = new Button(this, 500, 240, 300, 150, "Play!", 0xFCA400, 0x000000, '70px', () => this.scene.start('BattleScreen'))
     }
 
     update() {

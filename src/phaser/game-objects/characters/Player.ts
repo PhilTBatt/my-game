@@ -11,13 +11,13 @@ export default class Player extends Character {
         this.currentStamina = maxStamina
 
         this.sprite = scene.add.graphics()
-        this.sprite.fillStyle(0x0000ff, 1)
-        this.sprite.fillCircle(0, 0, 50)
-        this.sprite.lineStyle(10, 0x000000)
-        this.sprite.strokeCircle(0, 0, 50)
+        this.sprite.fillStyle(0x6F00FF, 1)
+        this.sprite.fillCircle(275, 150, 50)
+        this.sprite.lineStyle(5, 0x000000)
+        this.sprite.strokeCircle(275, 150, 50)
         scene.add.existing(this.sprite)
     }
-    
+
     useStamina(amount: number) {
         this.currentStamina = Math.max(this.currentStamina - amount, 0)
     }

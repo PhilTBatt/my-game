@@ -11,11 +11,11 @@ export default class HealthBar extends Phaser.GameObjects.Container {
 
         this.healthBar = scene.add.graphics()
         this.healthBar.fillStyle(0x37FF00)
-        this.healthBar.fillRoundedRect(175, 125, 200, 25, 20)
+        this.healthBar.fillRoundedRect(175, 115, 200, 25, 20)
         this.healthBar.lineStyle(5, 0x000000)
-        this.healthBar.strokeRoundedRect(175, 125, 200, 25, 20)
+        this.healthBar.strokeRoundedRect(175, 115, 200, 25, 20)
 
-        this.healthText = scene.add.text(0, 0, `${this.currentHealth} / ${this.maxHealth}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+        this.healthText = scene.add.text(275, 128, `${this.currentHealth} / ${this.maxHealth}`, {fontSize: '25px', color: '#000', fontFamily: 'Arial', align: 'center'})
         this.healthText.setOrigin(0.5)
 
         this.add(this.healthBar)

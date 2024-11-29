@@ -1,9 +1,6 @@
 import Phaser from "phaser";
 
-class FirstScreen extends Phaser.Scene {
-    constructor() {
-        super('IntroScreen')
-    }
+class EndingScreen extends Phaser.Scene {
 
     preload() {
     }
@@ -11,9 +8,9 @@ class FirstScreen extends Phaser.Scene {
     create() {
         const background = this.add.graphics()
         background.fillStyle(0x00ffff)
-        background.fillRoundedRect(0, 0, 1000, 600, 50)
+        background.fillRect(0, 0, 1000, 600)
         background.lineStyle(20, 0x000000)
-        background.strokeRoundedRect(0, 0, 1000, 600, 50)
+        background.strokeRoundedRect(0, 0, 1000, 600)
 
         const introMessageBox = this.add.graphics()
         introMessageBox.fillStyle(0xBD7B00)
@@ -21,7 +18,7 @@ class FirstScreen extends Phaser.Scene {
         introMessageBox.lineStyle(10, 0x000000)
         introMessageBox.strokeRoundedRect(200, 100, 600, 400)
 
-        this.add.text(500, 425, "Welcome to my game! It’s a simple turn based game made using Vite, React, Typescript and Phaser.", {
+        this.add.text(500, 425, "You win/lose! Thanks for playing.", {
             fontSize: '30px',
             color: '#000',
             fontFamily: 'Arial',
@@ -39,7 +36,7 @@ class FirstScreen extends Phaser.Scene {
         const playButtonArea = this.add.rectangle(500, 240, 300, 150, 0x000000, 0).setOrigin(0.5, 0.5)
         playButtonArea.setInteractive({ useHandCursor: true })
 
-        const playButtonText = this.add.text(500, 240, "Play!", {
+        const playButtonText = this.add.text(500, 240, "Restart!", {
             fontSize: '70px',
             color: '#000',
             fontFamily: 'Arial',
@@ -63,4 +60,4 @@ class FirstScreen extends Phaser.Scene {
     }
 }
 
-export default FirstScreen
+export default EndingScreen

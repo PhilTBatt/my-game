@@ -3,10 +3,16 @@ import DefaultButtonPanel from "../button-panels/DefaultButtonPanel";
 import Player from "../characters/Player";
 import Enemy from "../characters/DefaultEnemy";
 import AttackButtonPanel from "../button-panels/AttackPanel";
+import DefendButtonPanel from "../button-panels/DefendPanel";
+import ItemButtonPanel from "../button-panels/ItemPanel";
+import StatsButtonPanel from "../button-panels/StatsPanel";
 
 class BattleScreen extends Phaser.Scene {
     buttonPanel: DefaultButtonPanel | undefined = undefined
     attackButtonPanel: AttackButtonPanel | undefined = undefined
+    defendButtonPanel: DefendButtonPanel | undefined = undefined
+    itemButtonPanel: ItemButtonPanel | undefined = undefined
+    statsButtonPanel: StatsButtonPanel | undefined = undefined
     player: Player | undefined = undefined
     enemy: Enemy | undefined = undefined
     
@@ -27,10 +33,13 @@ class BattleScreen extends Phaser.Scene {
 
         this.enemy = new Enemy(this, "Enemy", 50)
         this.add.existing(this.enemy)
-        
+
         this.buttonPanel = new DefaultButtonPanel(this)
 
         this.attackButtonPanel = new AttackButtonPanel(this)
+        this.defendButtonPanel = new DefendButtonPanel(this)
+        this.itemButtonPanel = new ItemButtonPanel(this)
+        this.statsButtonPanel = new StatsButtonPanel(this)
     }
 
     update() {

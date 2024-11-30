@@ -18,13 +18,28 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
         })
         this.add(this.attackButton)
 
-        this.defendButton = new Button(scene, 533.33, 20, 400, 120, 'Defend', 0xE6E6E6, 0x00FF00, '50px', () => this.setVisible(false))
+        this.defendButton = new Button(scene, 533.33, 20, 400, 120, 'Defend', 0xE6E6E6, 0x00FF00, '50px', () => {
+            this.setVisible(false)
+            if(scene.defendButtonPanel) {
+                scene.defendButtonPanel.setVisible(true)
+            }
+        })
         this.add(this.defendButton)
 
-        this.itemsButton = new Button(scene, 66.67, 160, 400, 120, 'Items', 0xE6E6E6, 0x0000FF, '50px', () => this.setVisible(false))
+        this.itemsButton = new Button(scene, 66.67, 160, 400, 120, 'Items', 0xE6E6E6, 0x0000FF, '50px', () => {
+            this.setVisible(false)
+            if(scene.itemButtonPanel) {
+                scene.itemButtonPanel.setVisible(true)
+            }
+        })
         this.add(this.itemsButton)
 
-        this.statsButton = new Button(scene, 533.33, 160, 400, 120, 'Stats', 0xE6E6E6, 0xFFFF00, '50px', () => this.setVisible(false))
+        this.statsButton = new Button(scene, 533.33, 160, 400, 120, 'Stats', 0xE6E6E6, 0xFFFF00, '50px', () => {
+            this.setVisible(false)
+            if(scene.statsButtonPanel) {
+                scene.statsButtonPanel.setVisible(true)
+            }
+        })
         this.add(this.statsButton)
 
         scene.add.existing(this)

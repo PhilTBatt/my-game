@@ -11,11 +11,11 @@ export default class StaminaBar extends Phaser.GameObjects.Container {
 
         this.staminaBar = scene.add.graphics()
         this.staminaBar.fillStyle(0xFFD11B)
-        this.staminaBar.fillRoundedRect(195, 155, 165, 18, 18)
-        this.staminaBar.lineStyle(5, 0x000000)
-        this.staminaBar.strokeRoundedRect(195, 155, 165, 18, 15)
+        this.staminaBar.fillRoundedRect(195, 155, 165, 20, 20)
+        this.staminaBar.lineStyle(4, 0x000000)
+        this.staminaBar.strokeRoundedRect(195, 155, 165, 20, 20)
 
-        this.staminaText = scene.add.text(275, 165, `${this.currentstamina} / ${this.maxStamina}`, {fontSize: '15px', color: '#000', fontFamily: 'Arial', align: 'center'})
+        this.staminaText = scene.add.text(275, 165, `${this.currentstamina} / ${this.maxStamina}`, {fontSize: '17px', color: '#000', fontFamily: 'Arial', align: 'center'})
         this.staminaText.setOrigin(0.5)
 
         this.add(this.staminaBar)
@@ -23,7 +23,7 @@ export default class StaminaBar extends Phaser.GameObjects.Container {
         scene.add.existing(this)
     }
 
-    updatestamina(newstamina: number) {
+    updateStamina(newstamina: number) {
         this.currentstamina = newstamina
         this.staminaText.setText(`${this.currentstamina} / ${this.maxStamina}`)
 

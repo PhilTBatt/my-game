@@ -1,8 +1,10 @@
+import EnemyIntentBar from "../bars/EnemyIntentBar";
 import Character from "./DefaultCharacter";
 
 export default class Enemy extends Character {
     intent: {action: string, value: number}
     sprite: Phaser.GameObjects.Graphics
+    enemyIntentBar: EnemyIntentBar
 
     constructor(scene: Phaser.Scene, name: string, maxHealth: number) {
         super(scene, name, maxHealth)
@@ -16,6 +18,9 @@ export default class Enemy extends Character {
         scene.add.existing(this.sprite)
 
         this.healthBar.setPosition(450, -75)
+
+        this.enemyIntentBar = new EnemyIntentBar(scene, 450, -75, this.intent)
+        scene.add.existing(this.enemyIntentBar)
     }
 
     randomizeIntent() {

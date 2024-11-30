@@ -35,7 +35,7 @@ class BattleScreen extends Phaser.Scene {
             // const attackPanel = new AttackPanel(this)
             this.buttonPanel.visible = false
             // this.add.existing(attackPanel)
-            
+            return
         }
     }
 }

@@ -12,15 +12,17 @@ export default class Enemy extends Character {
 
         this.sprite = scene.add.graphics()
         this.sprite.fillStyle(0xB30003, 1)
-        this.sprite.fillCircle(725, 185, 50)
+        this.sprite.fillCircle(733.33, 200, 60)
         this.sprite.lineStyle(5, 0x000000)
-        this.sprite.strokeCircle(725, 185, 50)
+        this.sprite.strokeCircle(733.33, 200, 60)
         scene.add.existing(this.sprite)
 
-        this.healthBar.setPosition(450, -75)
+        this.healthBar.setPosition(466.66, 0)
 
-        this.enemyIntentBar = new EnemyIntentBar(scene, 450, -75, this.intent)
+        this.enemyIntentBar = new EnemyIntentBar(scene, this.intent)
         scene.add.existing(this.enemyIntentBar)
+
+        scene.add.existing(this)
     }
 
     randomizeIntent() {

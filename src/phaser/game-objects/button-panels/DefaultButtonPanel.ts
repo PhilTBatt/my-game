@@ -8,9 +8,9 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
     statsButton: Button
     
     constructor(scene: BattleScreen) {
-        super(scene, 200, 365)
+        super(scene, 0, 0)
         
-        this.attackButton = new Button(scene, 66.67, 20, 400, 120, 'Attack', 0xE6E6E6, 0xF80000, '50px',  () => {
+        this.attackButton = new Button(scene, 266.67, 400, 400, 100, 'Attack', 0xE6E6E6, 0xF80000, '60px',  () => {
             this.setVisible(false)
             if(scene.attackButtonPanel) {
                 scene.attackButtonPanel.setVisible(true)
@@ -18,7 +18,7 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
         })
         this.add(this.attackButton)
 
-        this.defendButton = new Button(scene, 533.33, 20, 400, 120, 'Defend', 0xE6E6E6, 0x00FF00, '50px', () => {
+        this.defendButton = new Button(scene, 733.33, 400, 400, 100, 'Defend', 0xE6E6E6, 0x00FF00, '60px', () => {
             this.setVisible(false)
             if(scene.defendButtonPanel) {
                 scene.defendButtonPanel.setVisible(true)
@@ -26,7 +26,7 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
         })
         this.add(this.defendButton)
 
-        this.itemsButton = new Button(scene, 66.67, 160, 400, 120, 'Items', 0xE6E6E6, 0x0000FF, '50px', () => {
+        this.itemsButton = new Button(scene, 266.67, 525, 400, 100, 'Items', 0xE6E6E6, 0x0000FF, '60px', () => {
             this.setVisible(false)
             if(scene.itemButtonPanel) {
                 scene.itemButtonPanel.setVisible(true)
@@ -34,7 +34,7 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
         })
         this.add(this.itemsButton)
 
-        this.statsButton = new Button(scene, 533.33, 160, 400, 120, 'Stats', 0xE6E6E6, 0xFFFF00, '50px', () => {
+        this.statsButton = new Button(scene, 733.33, 525, 400, 100, 'Stats', 0xE6E6E6, 0xFFFF00, '60px', () => {
             this.setVisible(false)
             if(scene.statsButtonPanel) {
                 scene.statsButtonPanel.setVisible(true)

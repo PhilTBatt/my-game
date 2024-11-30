@@ -14,13 +14,15 @@ export default class Player extends Character {
 
         this.sprite = scene.add.graphics()
         this.sprite.fillStyle(0x6F00FF, 1)
-        this.sprite.fillCircle(275, 185, 50)
+        this.sprite.fillCircle(266.67, 200, 60)
         this.sprite.lineStyle(5, 0x000000)
-        this.sprite.strokeCircle(275, 185, 50)
+        this.sprite.strokeCircle(266.67, 200, 60)
         scene.add.existing(this.sprite)
 
         this.staminBar = new StaminaBar(scene, 0, -75, maxStamina, this.currentStamina)
         scene.add.existing(this.staminBar)
+
+        scene.add.existing(this)
     }
 
     changeStamina(amount: number) {

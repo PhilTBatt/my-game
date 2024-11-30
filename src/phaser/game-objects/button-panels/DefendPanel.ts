@@ -5,9 +5,9 @@ export default class DefendButtonPanel extends Phaser.GameObjects.Container {
     backButton: BackButton
     
     constructor(scene: BattleScreen) {
-        super(scene, 200, 365)
+        super(scene, 0, 0)
         
-        this.backButton = new BackButton(scene, 533.33, 20, 0x00FF00,  () => {
+        this.backButton = new BackButton(scene, 733.33, 400, 0x00FF00,  () => {
             this.setVisible(false)
             if(scene.buttonPanel) {
                 scene.buttonPanel.setVisible(true)

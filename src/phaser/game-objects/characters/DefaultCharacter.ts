@@ -14,7 +14,7 @@ export default class Character extends Phaser.GameObjects.GameObject {
         this.currentHealth = maxHealth;
         this.blockAmount = 0
 
-        this.healthBar = new HealthBar(scene, 0, -75, maxHealth, this.currentHealth)
+        this.healthBar = new HealthBar(scene, maxHealth, this.currentHealth)
         scene.add.existing(this.healthBar)
     }
 

@@ -7,7 +7,7 @@ export default class StatsButtonPanel extends Phaser.GameObjects.Container {
     constructor(scene: BattleScreen) {
         super(scene, 0, 0)
         
-        this.backButton = new BackButton(scene, 733.33, 525, 0xFFFF00,  () => {
+        this.backButton = new BackButton(scene, 743, 527, 0xFFFF00,  () => {
             this.setVisible(false)
             if(scene.buttonPanel) {
                 scene.buttonPanel.setVisible(true)

@@ -11,7 +11,7 @@ export default class DefendButtonPanel extends Phaser.GameObjects.Container {
     constructor(scene: BattleScreen) {
         super(scene, 0, 0)
         
-        this.backButton = new BackButton(scene, 733.33, 400, 0x003EF8,  () => {
+        this.backButton = new BackButton(scene, 743, 398, 0x003EF8,  () => {
             this.setVisible(false)
             if(scene.buttonPanel) {
                 scene.buttonPanel.setVisible(true)
@@ -23,15 +23,15 @@ export default class DefendButtonPanel extends Phaser.GameObjects.Container {
         if (scene.player?.attacks) {
             scene.player.defends.forEach((defend, index) => {
                 if (index === 0 && defend) {
-                    this.defend1 = new DefendButton(scene, 266.67, 400, `${defend.name}: ${defend.value}`)
+                    this.defend1 = new DefendButton(scene, 257, 398, `${defend.name}: ${defend.value}`)
                     this.add(this.defend1)
                 }
                 if (index === 1 && defend) {
-                    this.defend2 = new DefendButton(scene, 266.67, 525, `${defend.name}: ${defend.value}`)
+                    this.defend2 = new DefendButton(scene, 257, 527, `${defend.name}: ${defend.value}`)
                     this.add(this.defend2)
                 }
                 if (index === 2 && defend) {
-                    this.defend3 = new DefendButton(scene, 733.33, 525, `${defend.name}: ${defend.value}`)
+                    this.defend3 = new DefendButton(scene, 743, 527, `${defend.name}: ${defend.value}`)
                     this.add(this.defend3)
                 }
             })

@@ -17,7 +17,7 @@ class BattleScreen extends Phaser.Scene {
     player: Player | undefined = undefined
     enemy: Enemy | undefined = undefined
     turnCount: number = 1
-    turnCountText: text
+    turnCountText: Phaser.GameObjects.Text | undefined = undefined
     
     constructor() {
         super('BattleScreen')
@@ -41,11 +41,11 @@ class BattleScreen extends Phaser.Scene {
         this.itemButtonPanel = new ItemButtonPanel(this)
         this.statsButtonPanel = new StatsButtonPanel(this)
 
-        const endTurnButton = new Button(this, 925, 290, 110, 45, "End Turn", 0xFCA400, 0x000000, '20px', () => this.time.delayedCall(300, () => this.endTurn()))
+        const endTurnButton = new Button(this, 935, 295, 110, 45, "End Turn", 0xFCA400, 0x000000, 5, '20px', () => this.time.delayedCall(300, () => this.endTurn()))
 
-        const resetButton = new Button(this, 45, 30, 80, 45, "Reset", 0xF80000, 0x000000, '15px', () => this.scene.start('IntroScreen'))
+        const resetButton = new Button(this, 49, 30, 80, 45, "Reset", 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
 
-        this.turnCountText = this.add.text(500, 10, 'Turn: 1', {fontSize: '20px', color: '#000', fontFamily: 'Arial', align: 'center'})
+        this.turnCountText = this.add.text(500, 15, 'Turn: 1', {fontSize: '20px', color: '#000', fontFamily: 'Arial', align: 'center'})
         this.turnCountText.setOrigin(0.5)
     }
 
@@ -57,7 +57,7 @@ class BattleScreen extends Phaser.Scene {
         this.player?.changeStamina(-this.player?.currentStamina + this.player?.maxStamina)
         this.time.delayedCall(500, () => {
             this.turnCount++
-            this.turnCountText.setText(`Turn: ${this.turnCount}`)
+            this.turnCountText!.setText(`Turn: ${this.turnCount}`)
         })
     }
 

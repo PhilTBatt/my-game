@@ -40,6 +40,8 @@ class BattleScreen extends Phaser.Scene {
         this.statsButtonPanel = new StatsButtonPanel(this)
 
         const endTurnButton = new Button(this, 925, 290, 110, 45, "End Turn", 0xFCA400, 0x000000, '20px', () => this.endTurn())
+
+        const resetButton = new Button(this, 45, 30, 80, 45, "Reset", 0xF80000, 0x000000, '15px', () => this.scene.start('IntroScreen'))
     }
 
     update() {

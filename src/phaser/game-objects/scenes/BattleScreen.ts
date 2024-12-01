@@ -6,6 +6,7 @@ import AttackButtonPanel from "../button-panels/AttackPanel";
 import DefendButtonPanel from "../button-panels/DefendPanel";
 import ItemButtonPanel from "../button-panels/ItemPanel";
 import StatsButtonPanel from "../button-panels/StatsPanel";
+import Button from "../buttons/Button";
 
 class BattleScreen extends Phaser.Scene {
     buttonPanel: DefaultButtonPanel | undefined = undefined
@@ -19,7 +20,7 @@ class BattleScreen extends Phaser.Scene {
     constructor() {
         super('BattleScreen')
     }
-
+    
     preload() {
     }
 
@@ -37,9 +38,16 @@ class BattleScreen extends Phaser.Scene {
         this.defendButtonPanel = new DefendButtonPanel(this)
         this.itemButtonPanel = new ItemButtonPanel(this)
         this.statsButtonPanel = new StatsButtonPanel(this)
+
+        const endTurnButton = new Button(this, 925, 290, 110, 45, "End Turn", 0xFCA400, 0x000000, '20px', () => this.endTurn())
     }
 
     update() {
+    }
+
+    endTurn() {
+        this.enemy?.useTurn()
+        this.player?.changeStamina(-this.player?.currentStamina + this.player?.maxStamina)
     }
 
 }

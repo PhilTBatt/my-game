@@ -35,5 +35,6 @@ export default class Player extends Character {
 
     changeStamina(amount: number) {
         this.currentStamina = Phaser.Math.Clamp(this.currentStamina + amount, 0, this.maxStamina)
+        this.staminBar.updateStamina(this.currentStamina)
     }
 }

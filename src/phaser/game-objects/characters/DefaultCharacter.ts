@@ -27,14 +27,16 @@ export default class Character extends Phaser.GameObjects.Container {
         const reducedDamage = Math.max(damage - this.blockAmount, 0)
         this.currentHealth = Math.max(this.currentHealth - reducedDamage, 0)
         this.healthBar.updateHealth(this.currentHealth)
+        this.blockBar.updateBlock(this.blockAmount)
     }
 
     block(block: number) {
         this.blockAmount += block
+        this.blockBar.updateBlock(this.blockAmount)
     }
 
     heal(amount: number) {
-        this.currentHealth = Math.min(this.maxHealth, this.currentHealth + amount)
+        this.currentHealth = Phaser.Math.Clamp(this.currentHealth + amount, 0, this.maxHealth)
         this.healthBar.updateHealth(this.currentHealth)
     }
 }

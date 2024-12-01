@@ -22,7 +22,7 @@ export default class BlockBar extends Phaser.GameObjects.Container {
         scene.add.existing(this)
     }
 
-    updateblock(newblock: number) {
+    updateBlock(newblock: number) {
         this.currentblock = newblock
 
         const blockPercentage = this.currentblock / this.battleScene.player!.maxHealth

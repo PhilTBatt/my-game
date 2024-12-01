@@ -7,9 +7,12 @@ export default class Enemy extends Character {
     intent: EnemyIntent
     sprite: Phaser.GameObjects.Graphics
     enemyIntentBar: EnemyIntentBar
+    scene: BattleScreen
 
     constructor(scene: BattleScreen, maxHealth: number) {
         super(scene, maxHealth)
+        this.scene =  scene
+        
         this.intent = {action: "Attack", value: 5}
 
         this.sprite = scene.add.graphics()
@@ -31,14 +34,16 @@ export default class Enemy extends Character {
     randomizeIntent() {
         const actions = [{ action: "Attack", value: 5}, {action: "Block", value: 3}]
         this.intent = actions[Math.floor(Math.random() * actions.length)]
+        this.enemyIntentBar.updateIntent(this.intent)
     }
 
     useTurn() {
+        console.log('hi')
         if (this.intent.action === "Block") {
             this.block(this.intent.value)
         } else if (this.intent.action === "Attack") {
-            return this.intent.value
+            this.scene.player!.takeDamage(this.intent.value)
         }
-        return 0
+        this.randomizeIntent()
     }
 }

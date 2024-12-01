@@ -1,7 +1,7 @@
 import Button from "./Button";
 
 export default class DefendButton extends Button {
-    constructor(scene: Phaser.Scene) {
-        super(scene, 66.67, 20, 400, 120, 'Defend', 0x00E162, 0xF80000, '50px', () => {})
+    constructor(scene: Phaser.Scene, x: number, y: number, defendName: string) {
+        super(scene, x, y, 400, 105, defendName, 0xE6E6E6, 0x003EF8, '60px', () => {})
     }
 }

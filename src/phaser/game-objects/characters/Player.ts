@@ -22,7 +22,7 @@ export default class Player extends Character {
         this.sprite.strokeCircle(266.67, 200, 60)
         scene.add.existing(this.sprite)
 
-        this.staminBar = new StaminaBar(scene, 0, -75, maxStamina, this.currentStamina)
+        this.staminBar = new StaminaBar(scene, maxStamina, this.currentStamina)
         scene.add.existing(this.staminBar)
 
         this.attacks = [{name: 'Strike', action: 'Attack', value: 8, stamina: 3}]

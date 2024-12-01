@@ -1,5 +1,6 @@
 import { EnemyIntent } from "../../types";
 import EnemyIntentBar from "../bars/EnemyIntentBar";
+import BattleScreen from "../scenes/BattleScreen";
 import Character from "./DefaultCharacter";
 
 export default class Enemy extends Character {
@@ -7,8 +8,8 @@ export default class Enemy extends Character {
     sprite: Phaser.GameObjects.Graphics
     enemyIntentBar: EnemyIntentBar
 
-    constructor(scene: Phaser.Scene, name: string, maxHealth: number) {
-        super(scene, name, maxHealth)
+    constructor(scene: BattleScreen, maxHealth: number) {
+        super(scene, maxHealth)
         this.intent = {action: "Attack", value: 5}
 
         this.sprite = scene.add.graphics()
@@ -19,6 +20,7 @@ export default class Enemy extends Character {
         scene.add.existing(this.sprite)
 
         this.healthBar.setPosition(466.66, 0)
+        this.blockBar.setPosition(466.66, 0)
 
         this.enemyIntentBar = new EnemyIntentBar(scene, this.intent)
         scene.add.existing(this.enemyIntentBar)

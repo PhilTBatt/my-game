@@ -28,8 +28,8 @@ class BattleScreen extends Phaser.Scene {
         this.add.rectangle(500, 375, 1000, 300, 0x40CF55)
         this.add.rectangle(500, 462.5, 1000, 275, 0x929292)
 
-        this.player = new Player(this, "Player", 100, 6)
-        this.enemy = new Enemy(this, "Enemy", 50)
+        this.player = new Player(this, 100, 6)
+        this.enemy = new Enemy(this, 50)
 
         this.buttonPanel = new DefaultButtonPanel(this)
 

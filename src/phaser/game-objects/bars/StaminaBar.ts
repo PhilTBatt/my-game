@@ -29,9 +29,9 @@ export default class StaminaBar extends Phaser.GameObjects.Container {
 
         const staminaPercentage = this.currentstamina / this.maxStamina;
         this.staminaBar.clear()
-        this.staminaBar.fillStyle(0x40CF55)
-        this.staminaBar.fillRoundedRect(-100, -25, 200 * staminaPercentage, 100, 20)
-        this.staminaBar.lineStyle(10, 0x000000)
-        this.staminaBar.strokeRoundedRect(-100, -25, 200, 100, 20)
+        this.staminaBar.fillStyle(0xFFD11B)
+        this.staminaBar.fillRoundedRect(179.17, 95, 175 * staminaPercentage, 25, 15)
+        this.staminaBar.lineStyle(4, 0x000000)
+        this.staminaBar.strokeRoundedRect(179.17, 95, 175, 25, 15)
     }
 }

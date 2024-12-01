@@ -27,9 +27,9 @@ export default class EnemyIntentBar extends Phaser.GameObjects.Container {
         this.staminaText.setText(`${this.intent.action}: ${this.intent.value}`)
 
         this.enemyIntentBar.clear()
-        this.enemyIntentBar.fillStyle(0x40CF55)
-        this.enemyIntentBar.fillRoundedRect(450, -75, 165, 18, 18)
-        this.enemyIntentBar.lineStyle(5, 0x000000)
-        this.enemyIntentBar.strokeRoundedRect(450, -75, 165, 18, 15)
+        this.enemyIntentBar.fillStyle(0xC300EA)
+        this.enemyIntentBar.fillRoundedRect(645.83, 95, 175, 25, 15)
+        this.enemyIntentBar.lineStyle(4, 0x000000)
+        this.enemyIntentBar.strokeRoundedRect(645.83, 95, 175, 25, 20)
     }
 }

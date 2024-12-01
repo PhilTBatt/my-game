@@ -1,3 +1,4 @@
+import { Action } from "../../types"
 import StaminaBar from "../bars/StaminaBar"
 import Character from "./DefaultCharacter"
 
@@ -6,6 +7,8 @@ export default class Player extends Character {
     currentStamina: number
     sprite: Phaser.GameObjects.Graphics
     staminBar: StaminaBar
+    attacks: [Action, Action?, Action?]
+    defends: [Action, Action?, Action?]
 
     constructor(scene: Phaser.Scene, name: string, maxHealth: number, maxStamina: number) {
         super(scene, name, maxHealth)
@@ -21,6 +24,10 @@ export default class Player extends Character {
 
         this.staminBar = new StaminaBar(scene, 0, -75, maxStamina, this.currentStamina)
         scene.add.existing(this.staminBar)
+
+        this.attacks = [{name: 'Strike', action: 'Attack', value: 8, stamina: 3}]
+
+        this.defends = [{name: 'Block', action: 'Block', value: 5, stamina: 2}]
 
         scene.add.existing(this)
     }

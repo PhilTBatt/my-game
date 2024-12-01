@@ -1,8 +1,9 @@
+import { EnemyIntent } from "../../types";
 import EnemyIntentBar from "../bars/EnemyIntentBar";
 import Character from "./DefaultCharacter";
 
 export default class Enemy extends Character {
-    intent: {action: string, value: number}
+    intent: EnemyIntent
     sprite: Phaser.GameObjects.Graphics
     enemyIntentBar: EnemyIntentBar
 

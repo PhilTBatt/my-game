@@ -4,7 +4,8 @@ import FirstBattle from "../../scenes/FirstBattle";
 import Character from "./DefaultCharacter";
 
 export default class Enemy extends Character {
-    intent: EnemyIntent
+    intent: EnemyIntent = {action: "Attack", value: 5}
+    intents: EnemyIntent[] = [{action: "Attack", value: 5}, {action: "Block", value: 4}]
     sprite: Phaser.GameObjects.Graphics
     enemyIntentBar: EnemyIntentBar
     scene: FirstBattle
@@ -12,8 +13,6 @@ export default class Enemy extends Character {
     constructor(scene: FirstBattle, maxHealth: number) {
         super(scene, maxHealth)
         this.scene =  scene
-        
-        this.intent = {action: "Attack", value: 5}
 
         this.sprite = scene.add.graphics()
         this.sprite.fillStyle(0xB30003, 1)
@@ -32,8 +31,7 @@ export default class Enemy extends Character {
     }
 
     randomizeIntent() {
-        const actions = [{ action: "Attack", value: 5}, {action: "Block", value: 4}]
-        this.intent = actions[Math.floor(Math.random() * actions.length)]
+        this.intent = this.intents[Math.floor(Math.random() * this.intents.length)]
         this.enemyIntentBar.updateIntent(this.intent)
     }
 

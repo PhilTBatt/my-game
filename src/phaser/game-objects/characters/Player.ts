@@ -11,10 +11,11 @@ export default class Player extends Character {
     attacks: [Action, Action?, Action?]
     defends: [Action, Action?, Action?]
 
-    constructor(scene: FirstBattle, maxHealth: number, maxStamina: number) {
+    constructor(scene: FirstBattle, maxHealth: number, maxStamina: number, currentHealth: number = maxHealth, attacks: [Action, Action?, Action?] = [{name: 'Strike', action: 'Attack', value: 8, stamina: 3}], defends: [Action, Action?, Action?] = [{name: 'Block', action: 'Block', value: 5, stamina: 2}]) {
         super(scene, maxHealth)
         this.maxStamina = maxStamina
         this.currentStamina = maxStamina
+        this.currentHealth = currentHealth
 
         this.sprite = scene.add.graphics()
         this.sprite.fillStyle(0x6F00FF, 1)
@@ -26,9 +27,9 @@ export default class Player extends Character {
         this.staminaBar = new StaminaBar(scene, maxStamina, this.currentStamina)
         scene.add.existing(this.staminaBar)
 
-        this.attacks = [{name: 'Strike', action: 'Attack', value: 8, stamina: 3}]
+        this.attacks = attacks
 
-        this.defends = [{name: 'Block', action: 'Block', value: 5, stamina: 2}]
+        this.defends = defends
 
         scene.add.existing(this)
     }

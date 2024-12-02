@@ -1,18 +1,24 @@
+import PurpleCircle from "../game-objects/characters/PurpleCircle"
 import FirstBattle from "./FirstBattle"
 
 class WorldOneBattle extends FirstBattle {
-    
     constructor() {
-        super('WorlOneBattle')
+        super('WorldOneBattle')
     }
     
     preload() {
+        super.preload()
     }
 
     create() {
+        super.create()
+        this.loadGameState()
+
+        this.enemy = new PurpleCircle(this)
     }
 
     update() {
+        super.update()
     }
 }
 

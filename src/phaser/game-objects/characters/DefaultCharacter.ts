@@ -5,15 +5,14 @@ import FirstBattle from "../../scenes/FirstBattle"
 export default class Character extends Phaser.GameObjects.Container {
     maxHealth: number
     currentHealth: number
-    blockAmount: number
+    blockAmount: number = 0
     healthBar: HealthBar
     blockBar: BlockBar
 
     constructor(scene: FirstBattle, maxHealth: number) {
         super(scene, 0, 0)
         this.maxHealth = maxHealth
-        this.currentHealth = maxHealth;
-        this.blockAmount = 0
+        this.currentHealth = maxHealth
 
         this.healthBar = new HealthBar(scene, maxHealth, this.currentHealth)
         scene.add.existing(this.healthBar)

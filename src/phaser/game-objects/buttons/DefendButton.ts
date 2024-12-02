@@ -3,7 +3,7 @@ import { Action } from "../../types";
 import Button from "./Button";
 
 export default class DefendButton extends Button {
-    blockIcon: Phaser.GameObjects.Image
+    blockIcon: Phaser.GameObjects.Image 
     staminaIcon: Phaser.GameObjects.Image
 
     constructor(scene: FirstBattle, x: number, y: number, defend: Action) {

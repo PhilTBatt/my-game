@@ -12,6 +12,7 @@ import AttackAnimation from "../game-objects/animations/AttackAnimation";
 import BlockAnimation from "../game-objects/animations/BlockAnimation";
 
 class FirstBattle extends Phaser.Scene {
+    key: string | undefined = undefined
     buttonPanel: DefaultButtonPanel | undefined = undefined
     attackButtonPanel: AttackButtonPanel | undefined = undefined
     defendButtonPanel: DefendButtonPanel | undefined = undefined
@@ -27,8 +28,9 @@ class FirstBattle extends Phaser.Scene {
     attackAnimation: AttackAnimation | undefined = undefined
     blockAnimation: BlockAnimation | undefined = undefined
     
-    constructor() {
-        super('BattleScreen')
+    constructor(key: string = 'FirstBattle') {
+        super(key)
+        this.key = key
     }
     
     preload() {
@@ -45,7 +47,9 @@ class FirstBattle extends Phaser.Scene {
         this.add.rectangle(500, 462.5, 1000, 275, 0x929292)
 
         this.player = new Player(this, 100, 6)
-        this.enemy = new Enemy(this, 40)
+        if (this.key === 'FirstBattle') {
+            this.enemy = new Enemy(this, 40)
+        }
 
         this.buttonPanel = new DefaultButtonPanel(this)
 
@@ -100,13 +104,17 @@ class FirstBattle extends Phaser.Scene {
     }
 
     saveGameState() {
-        const gameState = {
-            playerSprite: this.player?.sprite,
-            playerCurrentHealth: this.player?.currentHealth,
-            playerMaxHealth: this.player?.maxHealth,
-            playerMaxStamina: this.player?.maxStamina,
-            playerAttacks: this.player?.attacks,
-            playerDefends: this.player?.defends
+        const gameState = this.player
+
+        localStorage.setItem('gameState', JSON.stringify(gameState))
+    }
+
+    loadGameState() {
+        const savedState = localStorage.getItem('gameState')
+        if (savedState) {
+            const gameState = JSON.parse(savedState)
+
+            this.player = gameState
         }
     }
 

@@ -2,7 +2,7 @@ import BackButton from "../buttons/BackButton";
 import FirstBattle from "../../scenes/FirstBattle";
 
 export default class StatsButtonPanel extends Phaser.GameObjects.Container {
-    backButton: BackButton
+    backButton: BackButton 
     
     constructor(scene: FirstBattle) {
         super(scene, 0, 0)

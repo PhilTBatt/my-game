@@ -1,4 +1,4 @@
-import BattleScreen from "../../scenes/BattleScreen";
+import FirstBattle from "../../scenes/FirstBattle";
 import { Action } from "../../types";
 import Button from "./Button";
 
@@ -6,7 +6,7 @@ export default class AttackButton extends Button {
     damageIcon: Phaser.GameObjects.Image
     staminaIcon: Phaser.GameObjects.Image
 
-    constructor(scene: BattleScreen, x: number, y: number, attack: Action) {
+    constructor(scene: FirstBattle, x: number, y: number, attack: Action) {
         super(scene, x, y, 440, 103, ``, 0xE6E6E6, 0xF80000, 10, '50px', () => {
             if (scene.player && scene.player.currentStamina >= attack.stamina) {
                 scene.attackAnimation?.startAttackAnimation()

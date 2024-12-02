@@ -1,9 +1,9 @@
-import BattleScreen from "../../scenes/BattleScreen"
+import FirstBattle from "../../scenes/FirstBattle"
 
 export default class BlockAnimation extends Phaser.GameObjects.Container {
     blockIcon: Phaser.GameObjects.Image
 
-    constructor(scene: BattleScreen) {
+    constructor(scene: FirstBattle) {
         super(scene, 0, 0)
 
         this.blockIcon = scene.add.image(400, 275, 'block-icon').setScale(0.2)

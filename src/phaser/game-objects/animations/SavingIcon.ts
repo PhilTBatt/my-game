@@ -1,10 +1,10 @@
-import BattleScreen from "../../scenes/BattleScreen"
+import FirstBattle from "../../scenes/FirstBattle"
 
 export default class SavingIcon extends Phaser.GameObjects.Container {
     saveIcon: Phaser.GameObjects.Image
     loadingIcon: Phaser.GameObjects.Image
 
-    constructor(scene: BattleScreen) {
+    constructor(scene: FirstBattle) {
         super(scene, 0, 0)
 
         this.saveIcon = scene.add.image(25, 340, 'save-icon').setScale(0.05).setOrigin(0.5)
@@ -24,5 +24,10 @@ export default class SavingIcon extends Phaser.GameObjects.Container {
 
         this.scene.tweens.add({targets: this.loadingIcon, rotation: Phaser.Math.DegToRad(360), duration: 5000, repeat: -1, ease: 'Linear'})
         this.scene.tweens.add({targets: this.loadingIcon, alpha: 1, duration: 1000, ease: 'Linear'})
+
+        this.scene.time.delayedCall(5000, () => {
+            this.saveIcon.setAlpha(0)
+            this.loadingIcon.setAlpha(0)
+        })
     }
 }

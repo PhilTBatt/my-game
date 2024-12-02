@@ -1,4 +1,4 @@
-import BattleScreen from "../../scenes/BattleScreen";
+import FirstBattle from "../../scenes/FirstBattle";
 import { Action } from "../../types";
 import Button from "./Button";
 
@@ -6,13 +6,15 @@ export default class DefendButton extends Button {
     blockIcon: Phaser.GameObjects.Image
     staminaIcon: Phaser.GameObjects.Image
 
-    constructor(scene: BattleScreen, x: number, y: number, defend: Action) {
+    constructor(scene: FirstBattle, x: number, y: number, defend: Action) {
         super(scene, x, y, 440, 103, ``, 0xE6E6E6, 0x003EF8, 10, '70px', () => {
             if (scene.player && scene.player.currentStamina >= defend.stamina) {
                 scene.blockAnimation?.startBlockAnimation()
-                scene.time.delayedCall(200, () => {
-                    scene.player?.block(defend.value)
+                scene.time.delayedCall(400, () => {
                     scene.player?.changeStamina(-defend.stamina)
+                    scene.time.delayedCall(400, () => {
+                        scene.player?.block(defend.value)
+                    })
                 })
             }
         })

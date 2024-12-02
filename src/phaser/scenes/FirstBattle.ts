@@ -11,7 +11,7 @@ import SavingIcon from "../game-objects/animations/SavingIcon";
 import AttackAnimation from "../game-objects/animations/AttackAnimation";
 import BlockAnimation from "../game-objects/animations/BlockAnimation";
 
-class BattleScreen extends Phaser.Scene {
+class FirstBattle extends Phaser.Scene {
     buttonPanel: DefaultButtonPanel | undefined = undefined
     attackButtonPanel: AttackButtonPanel | undefined = undefined
     defendButtonPanel: DefendButtonPanel | undefined = undefined
@@ -45,7 +45,7 @@ class BattleScreen extends Phaser.Scene {
         this.add.rectangle(500, 462.5, 1000, 275, 0x929292)
 
         this.player = new Player(this, 100, 6)
-        this.enemy = new Enemy(this, 16)
+        this.enemy = new Enemy(this, 40)
 
         this.buttonPanel = new DefaultButtonPanel(this)
 
@@ -127,4 +127,4 @@ class BattleScreen extends Phaser.Scene {
     }
 }
 
-export default BattleScreen
+export default FirstBattle

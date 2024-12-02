@@ -1,12 +1,12 @@
-import BattleScreen from "../../scenes/BattleScreen"
+import FirstBattle from "../../scenes/FirstBattle"
 
 export default class BlockBar extends Phaser.GameObjects.Container {
     currentblock: number
     blockBar: Phaser.GameObjects.Graphics
-    battleScene: BattleScreen
+    battleScene: FirstBattle
     blockText: Phaser.GameObjects.Text
 
-    constructor(scene: BattleScreen) {
+    constructor(scene: FirstBattle) {
         super(scene, 0, 0)
         this.battleScene = scene
 

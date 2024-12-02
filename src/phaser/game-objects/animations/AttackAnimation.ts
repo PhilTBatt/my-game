@@ -1,9 +1,9 @@
-import BattleScreen from "../../scenes/BattleScreen"
+import FirstBattle from "../../scenes/FirstBattle"
 
 export default class AttackAnimation extends Phaser.GameObjects.Container {
     damageIcon: Phaser.GameObjects.Image
 
-    constructor(scene: BattleScreen) {
+    constructor(scene: FirstBattle) {
         super(scene, 0, 0)
 
         this.damageIcon = scene.add.image(375, 200, 'damage-icon').setScale(0.3)

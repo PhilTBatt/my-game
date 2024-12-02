@@ -1,15 +1,15 @@
 import { EnemyIntent } from "../../types";
 import EnemyIntentBar from "../bars/EnemyIntentBar";
-import BattleScreen from "../../scenes/BattleScreen";
+import FirstBattle from "../../scenes/FirstBattle";
 import Character from "./DefaultCharacter";
 
 export default class Enemy extends Character {
     intent: EnemyIntent
     sprite: Phaser.GameObjects.Graphics
     enemyIntentBar: EnemyIntentBar
-    scene: BattleScreen
+    scene: FirstBattle
 
-    constructor(scene: BattleScreen, maxHealth: number) {
+    constructor(scene: FirstBattle, maxHealth: number) {
         super(scene, maxHealth)
         this.scene =  scene
         

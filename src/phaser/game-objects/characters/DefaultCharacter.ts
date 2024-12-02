@@ -1,6 +1,6 @@
 import BlockBar from "../bars/BlockBar"
 import HealthBar from "../bars/HealthBar"
-import BattleScreen from "../../scenes/BattleScreen"
+import FirstBattle from "../../scenes/FirstBattle"
 
 export default class Character extends Phaser.GameObjects.Container {
     maxHealth: number
@@ -9,7 +9,7 @@ export default class Character extends Phaser.GameObjects.Container {
     healthBar: HealthBar
     blockBar: BlockBar
 
-    constructor(scene: BattleScreen, maxHealth: number) {
+    constructor(scene: FirstBattle, maxHealth: number) {
         super(scene, 0, 0)
         this.maxHealth = maxHealth
         this.currentHealth = maxHealth;

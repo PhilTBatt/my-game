@@ -1,4 +1,4 @@
-import BattleScreen from "./scenes/BattleScreen"
+import BattleScreen from "./scenes/FirstBattle"
 import FirstScreen from "./scenes/FirstScreen"
 
 const config: Phaser.Types.Core.GameConfig = {

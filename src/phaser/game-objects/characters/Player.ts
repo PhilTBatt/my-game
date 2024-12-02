@@ -1,6 +1,6 @@
 import { Action } from "../../types"
 import StaminaBar from "../bars/StaminaBar"
-import BattleScreen from "../../scenes/BattleScreen"
+import FirstBattle from "../../scenes/FirstBattle"
 import Character from "./DefaultCharacter"
 
 export default class Player extends Character {
@@ -11,7 +11,7 @@ export default class Player extends Character {
     attacks: [Action, Action?, Action?]
     defends: [Action, Action?, Action?]
 
-    constructor(scene: BattleScreen, maxHealth: number, maxStamina: number) {
+    constructor(scene: FirstBattle, maxHealth: number, maxStamina: number) {
         super(scene, maxHealth)
         this.maxStamina = maxStamina
         this.currentStamina = maxStamina

@@ -1,6 +1,6 @@
 import BackButton from "../buttons/BackButton";
 import DefendButton from "../buttons/DefendButton";
-import BattleScreen from "../../scenes/BattleScreen";
+import FirstBattle from "../../scenes/FirstBattle";
 
 export default class DefendButtonPanel extends Phaser.GameObjects.Container {
     backButton: BackButton
@@ -8,7 +8,7 @@ export default class DefendButtonPanel extends Phaser.GameObjects.Container {
     defend2: DefendButton | undefined = undefined
     defend3: DefendButton | undefined = undefined
     
-    constructor(scene: BattleScreen) {
+    constructor(scene: FirstBattle) {
         super(scene, 0, 0)
         
         this.backButton = new BackButton(scene, 743, 398, 0x003EF8,  () => {

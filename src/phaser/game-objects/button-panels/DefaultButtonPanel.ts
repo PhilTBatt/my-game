@@ -1,5 +1,5 @@
 import Button from "../buttons/Button";
-import BattleScreen from "../../scenes/BattleScreen";
+import FirstBattle from "../../scenes/FirstBattle";
 
 export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
     attackButton: Button
@@ -7,7 +7,7 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
     itemsButton: Button
     statsButton: Button
     
-    constructor(scene: BattleScreen) {
+    constructor(scene: FirstBattle) {
         super(scene, 0, 0)
         
         this.attackButton = new Button(scene, 257, 398, 440, 103, 'Attack', 0xE6E6E6, 0xF80000, 10, '80px',  () => {

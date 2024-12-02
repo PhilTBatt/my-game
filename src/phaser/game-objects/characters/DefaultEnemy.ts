@@ -32,7 +32,7 @@ export default class Enemy extends Character {
     }
 
     randomizeIntent() {
-        const actions = [{ action: "Attack", value: 5}, {action: "Block", value: 3}]
+        const actions = [{ action: "Attack", value: 5}, {action: "Block", value: 4}]
         this.intent = actions[Math.floor(Math.random() * actions.length)]
         this.enemyIntentBar.updateIntent(this.intent)
     }

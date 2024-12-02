@@ -1,4 +1,6 @@
 export default class Button extends Phaser.GameObjects.Container {
+  cooldownActive: boolean = false
+
   constructor(scene: Phaser.Scene, x: number, y: number, width: number, height: number, text: string, colour: number, borderColour: number, borderWidth: number, fontSize: string, onClick: () => void) {
     super(scene, x, y)
     
@@ -16,7 +18,16 @@ export default class Button extends Phaser.GameObjects.Container {
     this.setSize(width, height)
     this.setInteractive({ useHandCursor: true })
     
-    this.on('pointerup', onClick)
+    this.on('pointerup', () => {
+      if (this.cooldownActive) return
+      this.cooldownActive = true
+      onClick()
+
+  
+      scene.time.delayedCall(500, () => {
+        this.cooldownActive = false
+      })
+    })
       
     this.on('pointerover', () => {
       background.setScale(1.1)

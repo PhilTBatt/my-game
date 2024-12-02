@@ -26,6 +26,7 @@ class BattleScreen extends Phaser.Scene {
     preload() {
         this.load.image('damage-icon', '../../public/assets/icons/damage-icon.png')
         this.load.image('stamina-icon', '../../public/assets/icons/damage-icon.png')
+        this.load.image('block-icon', '../../public/assets/icons/block-icon.png')
     }
 
     create() {

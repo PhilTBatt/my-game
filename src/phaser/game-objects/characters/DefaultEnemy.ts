@@ -38,7 +38,9 @@ export default class Enemy extends Character {
     }
 
     useTurn() {
-        console.log('hi')
+        this.blockAmount = 0
+        this.blockBar.updateBlock(this.blockAmount)
+
         if (this.intent.action === "Block") {
             this.block(this.intent.value)
         } else if (this.intent.action === "Attack") {

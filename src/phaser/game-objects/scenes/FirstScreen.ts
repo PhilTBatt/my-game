@@ -1,6 +1,5 @@
 import Phaser from "phaser";
 import Button from "../buttons/Button";
-
 class FirstScreen extends Phaser.Scene {
     constructor() {
         super('IntroScreen')

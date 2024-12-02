@@ -9,9 +9,7 @@ export default class ItemButtonPanel extends Phaser.GameObjects.Container {
         
         this.backButton = new BackButton(scene, 257, 527, 0x00FF00,  () => {
             this.setVisible(false)
-            if(scene.buttonPanel) {
-                scene.buttonPanel.setVisible(true)
-            }
+            scene.buttonPanel?.setVisible(true)
         })
 
         this.add(this.backButton)

@@ -7,7 +7,7 @@ export default class Player extends Character {
     maxStamina: number
     currentStamina: number
     sprite: Phaser.GameObjects.Graphics
-    staminBar: StaminaBar
+    staminaBar: StaminaBar
     attacks: [Action, Action?, Action?]
     defends: [Action, Action?, Action?]
 
@@ -23,8 +23,8 @@ export default class Player extends Character {
         this.sprite.strokeCircle(266.67, 200, 60)
         scene.add.existing(this.sprite)
 
-        this.staminBar = new StaminaBar(scene, maxStamina, this.currentStamina)
-        scene.add.existing(this.staminBar)
+        this.staminaBar = new StaminaBar(scene, maxStamina, this.currentStamina)
+        scene.add.existing(this.staminaBar)
 
         this.attacks = [{name: 'Strike', action: 'Attack', value: 8, stamina: 3}]
 
@@ -34,7 +34,8 @@ export default class Player extends Character {
     }
 
     changeStamina(amount: number) {
+        console.log('Player block called')
         this.currentStamina = Phaser.Math.Clamp(this.currentStamina + amount, 0, this.maxStamina)
-        this.staminBar.updateStamina(this.currentStamina)
+        this.staminaBar.updateStamina(this.currentStamina)
     }
 }

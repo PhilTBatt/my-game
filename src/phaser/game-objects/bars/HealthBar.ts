@@ -27,16 +27,18 @@ export default class HealthBar extends Phaser.GameObjects.Container {
         this.currentHealth = newHealth
         this.healthText.setText(`${this.currentHealth} / ${this.maxHealth}`)
 
-        const healthPercentage = this.currentHealth / this.maxHealth;
+        const healthPercentage = this.currentHealth / this.maxHealth
         this.healthBar.clear()
         this.healthBar.fillStyle(0x37FF00)
-        this.healthBar.lineStyle(5, 0x000000)
-        this.healthBar.strokeRoundedRect(141.67, 45, 250, 35, 20)
-        
+
         if (healthPercentage * 250 < 20) {
             this.healthBar.fillRoundedRect(141.67, 45, 250 * healthPercentage, 35, 0)
         } else {
             this.healthBar.fillRoundedRect(141.67, 45, 250 * healthPercentage, 35, 20)
         }
+        
+        this.healthBar.lineStyle(5, 0x000000)
+        this.healthBar.strokeRoundedRect(141.67, 45, 250, 35, 20)
+        
     }
 }

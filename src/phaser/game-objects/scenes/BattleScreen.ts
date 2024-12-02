@@ -54,13 +54,13 @@ class BattleScreen extends Phaser.Scene {
 
     endTurn() {
         this.enemy?.useTurn()
-        this.player?.changeStamina(-this.player?.currentStamina + this.player?.maxStamina)
         this.time.delayedCall(500, () => {
+            this.player!.block(-this.player!.blockAmount)
+            this.player?.changeStamina(-this.player?.currentStamina + this.player?.maxStamina)
             this.turnCount++
             this.turnCountText!.setText(`Turn: ${this.turnCount}`)
         })
     }
-
 }
 
 export default BattleScreen

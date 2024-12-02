@@ -1,5 +1,5 @@
 import BackButton from "../buttons/BackButton";
-import BattleScreen from "../scenes/BattleScreen";
+import BattleScreen from "../../scenes/BattleScreen";
 
 export default class ItemButtonPanel extends Phaser.GameObjects.Container {
     backButton: BackButton

@@ -1,4 +1,4 @@
-import BattleScreen from "../scenes/BattleScreen"
+import BattleScreen from "../../scenes/BattleScreen"
 
 export default class BlockBar extends Phaser.GameObjects.Container {
     currentblock: number

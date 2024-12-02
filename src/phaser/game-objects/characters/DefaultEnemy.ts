@@ -1,6 +1,6 @@
 import { EnemyIntent } from "../../types";
 import EnemyIntentBar from "../bars/EnemyIntentBar";
-import BattleScreen from "../scenes/BattleScreen";
+import BattleScreen from "../../scenes/BattleScreen";
 import Character from "./DefaultCharacter";
 
 export default class Enemy extends Character {

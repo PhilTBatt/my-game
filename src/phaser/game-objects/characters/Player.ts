@@ -1,6 +1,6 @@
 import { Action } from "../../types"
 import StaminaBar from "../bars/StaminaBar"
-import BattleScreen from "../scenes/BattleScreen"
+import BattleScreen from "../../scenes/BattleScreen"
 import Character from "./DefaultCharacter"
 
 export default class Player extends Character {

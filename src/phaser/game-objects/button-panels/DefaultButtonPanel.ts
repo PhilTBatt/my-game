@@ -1,5 +1,5 @@
 import Button from "../buttons/Button";
-import BattleScreen from "../scenes/BattleScreen";
+import BattleScreen from "../../scenes/BattleScreen";
 
 export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
     attackButton: Button

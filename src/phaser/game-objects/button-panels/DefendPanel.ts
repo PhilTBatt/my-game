@@ -1,6 +1,6 @@
 import BackButton from "../buttons/BackButton";
 import DefendButton from "../buttons/DefendButton";
-import BattleScreen from "../scenes/BattleScreen";
+import BattleScreen from "../../scenes/BattleScreen";
 
 export default class DefendButtonPanel extends Phaser.GameObjects.Container {
     backButton: BackButton

@@ -1,12 +1,12 @@
 import Phaser from "phaser";
-import DefaultButtonPanel from "../button-panels/DefaultButtonPanel";
-import Player from "../characters/Player";
-import Enemy from "../characters/DefaultEnemy";
-import AttackButtonPanel from "../button-panels/AttackPanel";
-import DefendButtonPanel from "../button-panels/DefendPanel";
-import ItemButtonPanel from "../button-panels/ItemPanel";
-import StatsButtonPanel from "../button-panels/StatsPanel";
-import Button from "../buttons/Button";
+import DefaultButtonPanel from "../game-objects/button-panels/DefaultButtonPanel";
+import Player from "../game-objects/characters/Player";
+import Enemy from "../game-objects/characters/DefaultEnemy";
+import AttackButtonPanel from "../game-objects/button-panels/AttackPanel";
+import DefendButtonPanel from "../game-objects/button-panels/DefendPanel";
+import ItemButtonPanel from "../game-objects/button-panels/ItemPanel";
+import StatsButtonPanel from "../game-objects/button-panels/StatsPanel";
+import Button from "../game-objects/buttons/Button";
 
 class BattleScreen extends Phaser.Scene {
     buttonPanel: DefaultButtonPanel | undefined = undefined
@@ -24,6 +24,8 @@ class BattleScreen extends Phaser.Scene {
     }
     
     preload() {
+        this.load.image('damage-icon', '../../public/assets/icons/damage-icon.png')
+        this.load.image('stamina-icon', '../../public/assets/icons/damage-icon.png')
     }
 
     create() {

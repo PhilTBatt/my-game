@@ -1,6 +1,6 @@
 import BlockBar from "../bars/BlockBar"
 import HealthBar from "../bars/HealthBar"
-import BattleScreen from "../scenes/BattleScreen"
+import BattleScreen from "../../scenes/BattleScreen"
 
 export default class Character extends Phaser.GameObjects.Container {
     maxHealth: number

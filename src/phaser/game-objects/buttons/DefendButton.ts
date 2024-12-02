@@ -1,4 +1,4 @@
-import BattleScreen from "../scenes/BattleScreen";
+import BattleScreen from "../../scenes/BattleScreen";
 import { Action } from "../../types";
 import Button from "./Button";
 

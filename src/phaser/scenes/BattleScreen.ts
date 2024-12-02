@@ -7,6 +7,7 @@ import DefendButtonPanel from "../game-objects/button-panels/DefendPanel";
 import ItemButtonPanel from "../game-objects/button-panels/ItemPanel";
 import StatsButtonPanel from "../game-objects/button-panels/StatsPanel";
 import Button from "../game-objects/buttons/Button";
+import SavingIcon from "../game-objects/animations/SavingIcon";
 
 class BattleScreen extends Phaser.Scene {
     buttonPanel: DefaultButtonPanel | undefined = undefined
@@ -16,8 +17,11 @@ class BattleScreen extends Phaser.Scene {
     statsButtonPanel: StatsButtonPanel | undefined = undefined
     player: Player | undefined = undefined
     enemy: Enemy | undefined = undefined
+    endTurnButton: Button | undefined = undefined
+    resetButton: Button | undefined = undefined
     turnCount: number = 1
     turnCountText: Phaser.GameObjects.Text | undefined = undefined
+    savingIcon: SavingIcon | undefined = undefined
     
     constructor() {
         super('BattleScreen')
@@ -27,6 +31,8 @@ class BattleScreen extends Phaser.Scene {
         this.load.image('damage-icon', '../../public/assets/icons/damage-icon.png')
         this.load.image('stamina-icon', '../../public/assets/icons/damage-icon.png')
         this.load.image('block-icon', '../../public/assets/icons/block-icon.png')
+        this.load.image('save-icon', '../../public/assets/icons/save-icon.png')
+        this.load.image('loading-icon', '../../public/assets/icons/loading-icon.png')
     }
 
     create() {
@@ -35,7 +41,7 @@ class BattleScreen extends Phaser.Scene {
         this.add.rectangle(500, 462.5, 1000, 275, 0x929292)
 
         this.player = new Player(this, 100, 6)
-        this.enemy = new Enemy(this, 50)
+        this.enemy = new Enemy(this, 5)
 
         this.buttonPanel = new DefaultButtonPanel(this)
 
@@ -44,25 +50,70 @@ class BattleScreen extends Phaser.Scene {
         this.itemButtonPanel = new ItemButtonPanel(this)
         this.statsButtonPanel = new StatsButtonPanel(this)
 
-        const endTurnButton = new Button(this, 935, 295, 110, 45, "End Turn", 0xFCA400, 0x000000, 5, '20px', () => this.time.delayedCall(300, () => this.endTurn()))
+        this.endTurnButton = new Button(this, 935, 295, 110, 45, "End Turn", 0xFCA400, 0x000000, 5, '20px', () => this.time.delayedCall(300, () => this.endTurn()))
 
-        const resetButton = new Button(this, 49, 30, 80, 45, "Reset", 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
+        this.resetButton = new Button(this, 49, 30, 80, 45, "Reset", 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
 
         this.turnCountText = this.add.text(500, 15, 'Turn: 1', {fontSize: '20px', color: '#000', fontFamily: 'Arial', align: 'center'})
         this.turnCountText.setOrigin(0.5)
+
+        this.savingIcon = new SavingIcon(this)
     }
 
     update() {
+        if (this.enemy && this.enemy.currentHealth <= 0) {
+            const overlay = this.add.rectangle(500, 300, 1000, 600, 0x929292, 0.015).setDepth(99)
+            this.savingIcon?.loadingIcon.setDepth(100)
+            this.savingIcon?.saveIcon.setDepth(100)
+            
+            this.time.delayedCall(1000, () => this.savingIcon?.startSaveAnimation())
+            this.savingIcon?.startSaveAnimation()
+            this.disableButtonPanel()
+            this.saveGameState()
+            this.time.delayedCall(5000, () => {}) // this.scene.start('FirstScreen')
+        }
     }
 
     endTurn() {
         this.enemy?.useTurn()
+        this.resetButtonPanel()
+        this.endTurnButton?.disableInteractive()
+        this.resetButton?.disableInteractive()
         this.time.delayedCall(500, () => {
             this.player!.block(-this.player!.blockAmount)
             this.player?.changeStamina(-this.player?.currentStamina + this.player?.maxStamina)
             this.turnCount++
             this.turnCountText!.setText(`Turn: ${this.turnCount}`)
-        })
+            this.endTurnButton?.setInteractive()
+            this.resetButton?.setInteractive()
+        }) 
+    }
+
+    saveGameState() {
+        const gameState = {
+            playerSprite: this.player?.sprite,
+            playerCurrentHealth: this.player?.currentHealth,
+            playerMaxHealth: this.player?.maxHealth,
+            playerMaxStamina: this.player?.maxStamina,
+            playerAttacks: this.player?.attacks,
+            playerDefends: this.player?.defends
+        }
+    }
+
+    disableButtonPanel() {
+        this.buttonPanel?.disableInteractive()
+        this.attackButtonPanel?.disableInteractive()
+        this.defendButtonPanel?.disableInteractive()
+        this.itemButtonPanel?.disableInteractive()
+        this.statsButtonPanel?.disableInteractive()
+    }
+
+    resetButtonPanel() {
+        this.buttonPanel?.setVisible(true)
+        this.attackButtonPanel?.setVisible(false)
+        this.defendButtonPanel?.setVisible(false)
+        this.itemButtonPanel?.setVisible(false)
+        this.statsButtonPanel?.setVisible(false)
     }
 }
 

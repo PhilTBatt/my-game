@@ -4,9 +4,9 @@ import BattleScreen from "../../scenes/BattleScreen"
 import Character from "./DefaultCharacter"
 
 export default class Player extends Character {
+    sprite: Phaser.GameObjects.Graphics
     maxStamina: number
     currentStamina: number
-    sprite: Phaser.GameObjects.Graphics
     staminaBar: StaminaBar
     attacks: [Action, Action?, Action?]
     defends: [Action, Action?, Action?]
@@ -34,7 +34,6 @@ export default class Player extends Character {
     }
 
     changeStamina(amount: number) {
-        console.log('Player block called')
         this.currentStamina = Phaser.Math.Clamp(this.currentStamina + amount, 0, this.maxStamina)
         this.staminaBar.updateStamina(this.currentStamina)
     }

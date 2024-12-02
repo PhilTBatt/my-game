@@ -22,9 +22,8 @@ export default class Button extends Phaser.GameObjects.Container {
       if (this.cooldownActive) return
       this.cooldownActive = true
       onClick()
-
   
-      scene.time.delayedCall(500, () => {
+      scene.time.delayedCall(1000, () => {
         this.cooldownActive = false
       })
     })

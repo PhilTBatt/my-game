@@ -9,9 +9,10 @@ export default class AttackButton extends Button {
     constructor(scene: BattleScreen, x: number, y: number, attack: Action) {
         super(scene, x, y, 440, 103, ``, 0xE6E6E6, 0xF80000, 10, '50px', () => {
             if (scene.player && scene.player.currentStamina >= attack.stamina) {
-                scene.time.delayedCall(300, () => {
+                scene.attackAnimation?.startAttackAnimation()
+                scene.time.delayedCall(400, () => {
                     scene.player?.changeStamina(-attack.stamina)
-                    scene.time.delayedCall(300, () => {
+                    scene.time.delayedCall(400, () => {
                         scene.enemy?.takeDamage(attack.value)
                     })
                 })

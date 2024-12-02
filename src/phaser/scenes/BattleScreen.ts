@@ -8,6 +8,8 @@ import ItemButtonPanel from "../game-objects/button-panels/ItemPanel";
 import StatsButtonPanel from "../game-objects/button-panels/StatsPanel";
 import Button from "../game-objects/buttons/Button";
 import SavingIcon from "../game-objects/animations/SavingIcon";
+import AttackAnimation from "../game-objects/animations/AttackAnimation";
+import BlockAnimation from "../game-objects/animations/BlockAnimation";
 
 class BattleScreen extends Phaser.Scene {
     buttonPanel: DefaultButtonPanel | undefined = undefined
@@ -22,6 +24,8 @@ class BattleScreen extends Phaser.Scene {
     turnCount: number = 1
     turnCountText: Phaser.GameObjects.Text | undefined = undefined
     savingIcon: SavingIcon | undefined = undefined
+    attackAnimation: AttackAnimation | undefined = undefined
+    blockAnimation: BlockAnimation | undefined = undefined
     
     constructor() {
         super('BattleScreen')
@@ -41,7 +45,7 @@ class BattleScreen extends Phaser.Scene {
         this.add.rectangle(500, 462.5, 1000, 275, 0x929292)
 
         this.player = new Player(this, 100, 6)
-        this.enemy = new Enemy(this, 5)
+        this.enemy = new Enemy(this, 16)
 
         this.buttonPanel = new DefaultButtonPanel(this)
 
@@ -58,6 +62,9 @@ class BattleScreen extends Phaser.Scene {
         this.turnCountText.setOrigin(0.5)
 
         this.savingIcon = new SavingIcon(this)
+
+        this.attackAnimation = new AttackAnimation(this)
+        this.blockAnimation = new BlockAnimation(this)
     }
 
     update() {
@@ -66,10 +73,13 @@ class BattleScreen extends Phaser.Scene {
             this.savingIcon?.loadingIcon.setDepth(100)
             this.savingIcon?.saveIcon.setDepth(100)
             
+            this.disableButtonPanel()
+            this.endTurnButton?.disableInteractive()
+            this.resetButton?.disableInteractive()
+            this.saveGameState()
+
             this.time.delayedCall(1000, () => this.savingIcon?.startSaveAnimation())
             this.savingIcon?.startSaveAnimation()
-            this.disableButtonPanel()
-            this.saveGameState()
             this.time.delayedCall(5000, () => {}) // this.scene.start('FirstScreen')
         }
     }

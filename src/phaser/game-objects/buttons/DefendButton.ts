@@ -9,6 +9,7 @@ export default class DefendButton extends Button {
     constructor(scene: BattleScreen, x: number, y: number, defend: Action) {
         super(scene, x, y, 440, 103, ``, 0xE6E6E6, 0x003EF8, 10, '70px', () => {
             if (scene.player && scene.player.currentStamina >= defend.stamina) {
+                scene.blockAnimation?.startBlockAnimation()
                 scene.time.delayedCall(200, () => {
                     scene.player?.block(defend.value)
                     scene.player?.changeStamina(-defend.stamina)

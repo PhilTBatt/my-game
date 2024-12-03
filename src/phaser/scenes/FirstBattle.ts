@@ -13,6 +13,8 @@ import BlockAnimation from "../game-objects/animations/BlockAnimation";
 import RewardBox from "../game-objects/Misc/RewardBox";
 import NextDestinationBox from "../game-objects/Misc/NextDestinationBox";
 import SkillAnimation from "../game-objects/animations/SkillAnimation";
+import TurnCount from "../game-objects/Misc/TurnCountBox";
+import CoinCount from "../game-objects/Misc/CoinCount";
 
 class FirstBattle extends Phaser.Scene {
     key: string | undefined = undefined
@@ -26,7 +28,7 @@ class FirstBattle extends Phaser.Scene {
     endTurnButton: Button | undefined = undefined
     resetButton: Button | undefined = undefined
     turnCount: number = 1
-    turnCountText: Phaser.GameObjects.Text | undefined = undefined
+    turnCountBox: TurnCount  | undefined = undefined
     savingIcon: SavingIcon | undefined = undefined
     attackAnimation: AttackAnimation | undefined = undefined
     blockAnimation: BlockAnimation | undefined = undefined
@@ -34,8 +36,10 @@ class FirstBattle extends Phaser.Scene {
     enemyAttackAnimation: AttackAnimation | undefined = undefined
     enemyBlockAnimation: BlockAnimation | undefined = undefined
     enemyElementAnimation: SkillAnimation | undefined = undefined
+    coinIcon: CoinCount | undefined = undefined
     rewardBox: RewardBox  | undefined = undefined
     nextDestinationBox: NextDestinationBox  | undefined = undefined
+    hasBattleEnded: boolean = false
     
     constructor(key: string = 'FirstBattle') {
         super(key)
@@ -51,6 +55,7 @@ class FirstBattle extends Phaser.Scene {
         this.load.image('frost-icon', '../../public/assets/icons/frost-icon.png')
         this.load.image('save-icon', '../../public/assets/icons/save-icon.png')
         this.load.image('loading-icon', '../../public/assets/icons/loading-icon.png')
+        this.load.image('coin-icon', '../../public/assets/icons/coin-icon.png')
     }
 
     create() {
@@ -74,10 +79,11 @@ class FirstBattle extends Phaser.Scene {
         
         this.resetButton = new Button(this, 42, 21, 70, 30, "Reset", 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
         
-        this.turnCountText = this.add.text(500, 20, 'Turn: 1', {fontSize: '25px', color: '#000', fontFamily: 'Arial', align: 'center'})
-        this.turnCountText.setOrigin(0.5)
-        
         this.savingIcon = new SavingIcon(this)
+
+        this.turnCountBox = new TurnCount(this)
+
+        this.coinIcon = new CoinCount(this)
 
         this.attackAnimation = new AttackAnimation(this, this.player)
         this.blockAnimation = new BlockAnimation(this, this.player)
@@ -91,18 +97,16 @@ class FirstBattle extends Phaser.Scene {
     }
 
     update() {
-        if (this.enemy && this.enemy.currentHealth <= 0) {
+        if (this.enemy && this.enemy.currentHealth <= 0 && !this.hasBattleEnded) {
+            this.hasBattleEnded = true
             const overlay = this.add.rectangle(500, 462.5, 1000, 275, 0x929292, 0.015).setDepth(99)
-            this.savingIcon?.loadingIcon.setDepth(100)
-            this.savingIcon?.saveIcon.setDepth(100)
             
             this.disableButtonPanel()
             this.endTurnButton?.disableInteractive()
             this.resetButton?.disableInteractive()
             this.saveGameState()
+            if (this.player) this.coinIcon?.animateCoinGain(this.player, 10)
 
-            this.time.delayedCall(1000, () => this.savingIcon?.startSaveAnimation())
-            this.savingIcon?.startSaveAnimation()
             this.time.delayedCall(1500, () => {
                 this.showRewards()
             })
@@ -115,21 +119,16 @@ class FirstBattle extends Phaser.Scene {
         this.endTurnButton?.disableInteractive()
         this.resetButton?.disableInteractive()
         this.enemy?.useTurn()
-        const overlay = this.add.rectangle(500, 462.5, 1000, 275, 0x929292, 0.4).setDepth(99)
-        this.turnCountText?.setScale(1.3)
+        this.turnCount++
+        this.turnCountBox?.animateNewTurn(this)
 
-        this.time.delayedCall(1000, () => {
-            this.turnCountText?.setScale(1.15)
-        }) 
+        const overlay = this.add.rectangle(500, 462.5, 1000, 275, 0x929292, 0.4).setDepth(99)
         
         this.time.delayedCall(1500, () => {
             this.player!.block(-this.player!.blockAmount)
             this.player?.changeStamina(-this.player?.currentStamina + this.player?.maxStamina)
 
-            this.turnCount++
             overlay.destroy()
-            this.turnCountText?.setScale(1)
-            this.turnCountText!.setText(`Turn: ${this.turnCount}`)
 
             this.endTurnButton?.setInteractive()
             this.resetButton?.setInteractive()
@@ -138,6 +137,11 @@ class FirstBattle extends Phaser.Scene {
     }
 
     saveGameState() {
+        this.savingIcon?.loadingIcon.setDepth(100)
+        this.savingIcon?.saveIcon.setDepth(100)
+        
+        this.time.delayedCall(1000, () => this.savingIcon?.startSaveAnimation())
+
         const gameState = this.player
         localStorage.setItem('gameState', JSON.stringify(gameState))
     }

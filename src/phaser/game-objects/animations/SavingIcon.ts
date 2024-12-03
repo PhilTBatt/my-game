@@ -22,10 +22,10 @@ export default class SavingIcon extends Phaser.GameObjects.Container {
         this.scene.tweens.add({targets: this.saveIcon, y: 300, duration: 500, ease: 'Linear'})
         this.scene.tweens.add({targets: this.saveIcon, alpha: 1, duration: 1000, ease: 'Linear'})
 
-        this.scene.tweens.add({targets: this.loadingIcon, rotation: Phaser.Math.DegToRad(360), duration: 5000, repeat: -1, ease: 'Linear'})
+        this.scene.tweens.add({targets: this.loadingIcon, rotation: Phaser.Math.DegToRad(360), duration: 3000, repeat: -1, ease: 'Linear'})
         this.scene.tweens.add({targets: this.loadingIcon, alpha: 1, duration: 1000, ease: 'Linear'})
 
-        this.scene.time.delayedCall(5000, () => {
+        this.scene.time.delayedCall(3000, () => {
             this.saveIcon.setAlpha(0)
             this.loadingIcon.setAlpha(0)
         })

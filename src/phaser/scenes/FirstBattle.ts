@@ -105,7 +105,7 @@ class FirstBattle extends Phaser.Scene {
             this.endTurnButton?.disableInteractive()
             this.resetButton?.disableInteractive()
             this.saveGameState()
-            if (this.player) this.coinIcon?.animateCoinGain(this.player, 10)
+            if (this.player) this.coinIcon?.animateCoinGain(this.player, 12)
 
             this.time.delayedCall(1500, () => {
                 this.showRewards()
@@ -139,7 +139,7 @@ class FirstBattle extends Phaser.Scene {
     saveGameState() {
         this.savingIcon?.loadingIcon.setDepth(100)
         this.savingIcon?.saveIcon.setDepth(100)
-        
+
         this.time.delayedCall(1000, () => this.savingIcon?.startSaveAnimation())
 
         const gameState = this.player

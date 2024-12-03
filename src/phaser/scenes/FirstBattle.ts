@@ -74,7 +74,7 @@ class FirstBattle extends Phaser.Scene {
         
         this.resetButton = new Button(this, 42, 21, 70, 30, "Reset", 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
         
-        this.turnCountText = this.add.text(500, 15, 'Turn: 1', {fontSize: '20px', color: '#000', fontFamily: 'Arial', align: 'center'})
+        this.turnCountText = this.add.text(500, 20, 'Turn: 1', {fontSize: '25px', color: '#000', fontFamily: 'Arial', align: 'center'})
         this.turnCountText.setOrigin(0.5)
         
         this.savingIcon = new SavingIcon(this)
@@ -92,7 +92,7 @@ class FirstBattle extends Phaser.Scene {
 
     update() {
         if (this.enemy && this.enemy.currentHealth <= 0) {
-            const overlay = this.add.rectangle(500, 300, 1000, 600, 0x929292, 0.015).setDepth(99)
+            const overlay = this.add.rectangle(500, 462.5, 1000, 275, 0x929292, 0.015).setDepth(99)
             this.savingIcon?.loadingIcon.setDepth(100)
             this.savingIcon?.saveIcon.setDepth(100)
             
@@ -110,18 +110,27 @@ class FirstBattle extends Phaser.Scene {
     }
 
     endTurn() {
-        this.enemy?.useTurn()
         this.resetButtonPanel()
+        this.disableButtonPanel()
         this.endTurnButton?.disableInteractive()
         this.resetButton?.disableInteractive()
-        this.disableButtonPanel()
+        this.enemy?.useTurn()
+        const overlay = this.add.rectangle(500, 462.5, 1000, 275, 0x929292, 0.4).setDepth(99)
+        this.turnCountText?.setScale(1.3)
+
+        this.time.delayedCall(1000, () => {
+            this.turnCountText?.setScale(1.15)
+        }) 
+        
         this.time.delayedCall(1500, () => {
             this.player!.block(-this.player!.blockAmount)
             this.player?.changeStamina(-this.player?.currentStamina + this.player?.maxStamina)
+
             this.turnCount++
-        })
-        this.time.delayedCall(1500, () => {
+            overlay.destroy()
+            this.turnCountText?.setScale(1)
             this.turnCountText!.setText(`Turn: ${this.turnCount}`)
+
             this.endTurnButton?.setInteractive()
             this.resetButton?.setInteractive()
             this.enableButtonPanel()
@@ -142,19 +151,21 @@ class FirstBattle extends Phaser.Scene {
     }
 
     disableButtonPanel() {
-        this.buttonPanel?.disableInteractive()
-        this.attackButtonPanel?.disableInteractive()
-        this.defendButtonPanel?.disableInteractive()
-        this.skillButtonPanel?.disableInteractive()
-        this.statsButtonPanel?.disableInteractive()
+        const panels = [this.buttonPanel, this.attackButtonPanel, this.defendButtonPanel, this.skillButtonPanel, this.statsButtonPanel]
+
+        panels.forEach(panel => {
+            panel?.disableInteractive()
+            panel?.disableButtons()
+        })
     }
 
     enableButtonPanel() {
-        this.buttonPanel?.setInteractive()
-        this.attackButtonPanel?.setInteractive()
-        this.defendButtonPanel?.setInteractive()
-        this.skillButtonPanel?.setInteractive()
-        this.statsButtonPanel?.setInteractive()
+        const panels = [this.buttonPanel, this.attackButtonPanel, this.defendButtonPanel, this.skillButtonPanel, this.statsButtonPanel]
+
+        panels.forEach(panel => {
+            panel?.setInteractive()
+            panel?.enableButtons()
+        })
     }
 
 

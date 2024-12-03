@@ -38,4 +38,18 @@ export default class AttackButtonPanel extends Phaser.GameObjects.Container {
         scene.add.existing(this)
         this.setVisible(false)
     }
+
+    disableButtons() {
+        this.backButton.disableInteractive()
+        this.attack1?.disableInteractive()
+        this.attack2?.disableInteractive()
+        this.attack3?.disableInteractive()
+    }
+
+    enableButtons() {
+        this.backButton.setInteractive()
+        this.attack1?.setInteractive()
+        this.attack2?.setInteractive()
+        this.attack3?.setInteractive()
+    }
 }

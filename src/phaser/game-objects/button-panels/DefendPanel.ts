@@ -38,4 +38,18 @@ export default class DefendButtonPanel extends Phaser.GameObjects.Container {
         scene.add.existing(this)
         this.setVisible(false)
     }
+
+    disableButtons() {
+        this.backButton.disableInteractive()
+        this.defend1?.disableInteractive()
+        this.defend2?.disableInteractive()
+        this.defend3?.disableInteractive()
+    }
+
+    enableButtons() {
+        this.backButton.setInteractive()
+        this.defend1?.setInteractive()
+        this.defend2?.setInteractive()
+        this.defend3?.setInteractive()
+    }
 }

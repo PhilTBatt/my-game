@@ -38,4 +38,18 @@ export default class SkillButtonPanel extends Phaser.GameObjects.Container {
         scene.add.existing(this)
         this.setVisible(false)
     }
+
+    disableButtons() {
+        this.backButton.disableInteractive()
+        this.skill1?.disableInteractive()
+        this.skill2?.disableInteractive()
+        this.skill3?.disableInteractive()
+    }
+
+    enableButtons() {
+        this.backButton.setInteractive()
+        this.skill1?.setInteractive()
+        this.skill2?.setInteractive()
+        this.skill3?.setInteractive()
+    }
 }

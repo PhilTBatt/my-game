@@ -17,4 +17,12 @@ export default class StatsButtonPanel extends Phaser.GameObjects.Container {
         scene.add.existing(this)
         this.setVisible(false)
     }
+
+    disableButtons() {
+        this.backButton.disableInteractive()
+    }
+
+    enableButtons() {
+        this.backButton.setInteractive()
+    }
 }

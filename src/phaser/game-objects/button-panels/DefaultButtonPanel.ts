@@ -4,7 +4,7 @@ import FirstBattle from "../../scenes/FirstBattle";
 export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
     attacksButton: Button
     defendsButton: Button
-    skillButton: Button
+    skillsButton: Button
     statsButton: Button
     
     constructor(scene: FirstBattle) {
@@ -22,11 +22,11 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
         })
         this.add(this.defendsButton)
 
-        this.skillButton = new Button(scene, 257, 527, 440, 103, 'Skills', 0xE6E6E6, 0x00FF00, 10, '80px', () => {
+        this.skillsButton = new Button(scene, 257, 527, 440, 103, 'Skills', 0xE6E6E6, 0x00FF00, 10, '80px', () => {
             this.setVisible(false)
             scene.skillButtonPanel?.setVisible(true)
         })
-        this.add(this.skillButton)
+        this.add(this.skillsButton)
 
         this.statsButton = new Button(scene, 743, 527, 440, 105, 'Stats', 0xE6E6E6, 0xFFFF00, 10, '80px', () => {
             this.setVisible(false)
@@ -35,5 +35,19 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
         this.add(this.statsButton)
 
         scene.add.existing(this)
+    }
+
+    disableButtons() {
+        this.attacksButton.disableInteractive()
+        this.defendsButton.disableInteractive()
+        this.skillsButton.disableInteractive()
+        this.statsButton.disableInteractive()
+    }
+
+    enableButtons() {
+        this.attacksButton.setInteractive()
+        this.defendsButton.setInteractive()
+        this.skillsButton.setInteractive()
+        this.statsButton.setInteractive()
     }
 }

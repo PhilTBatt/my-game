@@ -40,10 +40,13 @@ export default class Enemy extends Character {
         this.blockBar.updateBlock(this.blockAmount)
 
         if (this.intent.action === "Block") {
-            this.block(this.intent.value)
+            this.scene.enemyBlockAnimation?.startBlockAnimation()
+            this.scene.time.delayedCall(400, () => this.block(this.intent.value))
         } else if (this.intent.action === "Attack") {
-            this.scene.player!.takeDamage(this.intent.value)
+            this.scene.enemyAttackAnimation?.startAttackAnimation()
+            this.scene.time.delayedCall(400, () => this.scene.player!.takeDamage(this.intent.value))
         }
-        this.randomizeIntent()
+        this.scene.time.delayedCall(1500, () => this.randomizeIntent())
+    
     }
 }

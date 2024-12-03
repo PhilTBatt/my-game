@@ -6,9 +6,16 @@ export default class Button extends Phaser.GameObjects.Container {
     
     const background = scene.add.graphics()
     background.fillStyle(colour)
-    background.fillRoundedRect(-width / 2, -height / 2, width, height, 30)
     background.lineStyle(borderWidth, borderColour)
-    background.strokeRoundedRect(-width / 2, -height / 2, width, height, 35)
+
+    if (width < 40 || height < 40) {
+      background.fillRoundedRect(-width / 2, -height / 2, width, height, 10)
+      background.strokeRoundedRect(-width / 2, -height / 2, width, height, 15)
+    } else {
+      background.fillRoundedRect(-width / 2, -height / 2, width, height, 30)
+      background.strokeRoundedRect(-width / 2, -height / 2, width, height, 35)
+    }
+
     this.add(background)
     
     const buttonText = scene.add.text(0, 0, text, {fontSize, color: '#000', fontFamily: 'Arial', align: 'center'})

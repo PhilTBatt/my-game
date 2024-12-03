@@ -9,7 +9,7 @@ export default class EnemyIntentBar extends Phaser.GameObjects.Container {
         this.intent = intent
 
         this.enemyIntentBar = scene.add.graphics()
-        this.enemyIntentBar.fillStyle(0xC300EA)
+        this.enemyIntentBar.fillStyle(0xF80000)
         this.enemyIntentBar.fillRoundedRect(645.83, 95, 175, 25, 15)
         this.enemyIntentBar.lineStyle(4, 0x000000)
         this.enemyIntentBar.strokeRoundedRect(645.83, 95, 175, 25, 20)

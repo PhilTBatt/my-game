@@ -8,11 +8,11 @@ export default class Player extends Character {
     maxStamina: number
     currentStamina: number
     staminaBar: StaminaBar
-    attacks: [Action, Action?, Action?]
-    defends: [Action, Action?, Action?]
-    skills: [Action?, Action?, Action?] | undefined = undefined
+    attacks: [Action, Action?, Action?] = [{name: 'Strike', action: 'Attack', value: 8, stamina: 3}]
+    defends: [Action, Action?, Action?] = [{name: 'Block', action: 'Block', value: 5, stamina: 2}]
+    skills: [Action?, Action?, Action?] | undefined = [{name: 'Poison', action: 'Poison', value: 5, stamina: 2}, {name: 'Fire', action: 'Fire', value: 5, stamina: 2}, {name: 'Frost', action: 'Frost', value: 5, stamina: 2}]
 
-    constructor(scene: FirstBattle, maxHealth: number, maxStamina: number, currentHealth: number = maxHealth, attacks: [Action, Action?, Action?] = [{name: 'Strike', action: 'Attack', value: 8, stamina: 3}], defends: [Action, Action?, Action?] = [{name: 'Block', action: 'Block', value: 5, stamina: 2}]) {
+    constructor(scene: FirstBattle, maxHealth: number, maxStamina: number, currentHealth: number = maxHealth) {
         super(scene, maxHealth)
         this.maxStamina = maxStamina
         this.currentStamina = maxStamina
@@ -27,10 +27,6 @@ export default class Player extends Character {
 
         this.staminaBar = new StaminaBar(scene, maxStamina, this.currentStamina)
         scene.add.existing(this.staminaBar)
-
-        this.attacks = attacks
-
-        this.defends = defends
 
         scene.add.existing(this)
     }

@@ -7,7 +7,7 @@ export default class SkillButton extends Button {
     staminaIcon: Phaser.GameObjects.Image
 
     constructor(scene: FirstBattle, x: number, y: number, skill: Action) {
-        super(scene, x, y, 440, 103, '', 0x003EF8, 0xF80000, 10, '50px', () => {
+        super(scene, x, y, 440, 103, '', 0xE6E6E6, 0x00FF00, 10, '50px', () => {
             if (scene.player && scene.player.currentStamina >= skill.stamina) {
                 scene.elementAnimation?.startSkillAnimation(scene, skill)
                 scene.time.delayedCall(400, () => {
@@ -21,16 +21,16 @@ export default class SkillButton extends Button {
 
 
 
-        const nameText = scene.add.text(-112, 0, `${skill.name}:`, {fontSize: '60px', color: '#000000', fontFamily: 'Arial'})
+        const nameText = scene.add.text(-112, 0, `${skill.name}:`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         nameText.setOrigin(0.5)
         
-        const valueText = scene.add.text(nameText.width / 2 - 75, 0, `${skill.value}`, {fontSize: '60px', color: '#000000', fontFamily: 'Arial'})
+        const valueText = scene.add.text(nameText.width / 2 - 75, 0, `${skill.value}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
         this.elementIcon = scene.add.image(nameText.width / 2 - 22, -2, `${skill.action.toLowerCase()[0]}-icon`).setScale(0.275)
         
-        const staminaText = scene.add.text(nameText.width / 2 + 40, 0, `${skill.stamina}`, {fontSize: '60px', color: '#000000', fontFamily: 'Arial'})
+        const staminaText = scene.add.text(nameText.width / 2 + 40, 0, `${skill.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)
-        this.staminaIcon = scene.add.image(nameText.width / 2 + 93, -2, 'stamina-icon').setScale(0.275)
+        this.staminaIcon = scene.add.image(nameText.width / 2 + 93, -2, 'stamina-icon').setScale(0.21)
 
         this.add(nameText)
         this.add(this.elementIcon)
@@ -43,7 +43,7 @@ export default class SkillButton extends Button {
             valueText.setScale(1.15)
             staminaText.setScale(1.15)
             this.elementIcon.setScale(0.325)
-            this.staminaIcon.setScale(0.325)
+            this.staminaIcon.setScale(0.26)
         })
             
         this.on('pointerout', () => {
@@ -51,7 +51,7 @@ export default class SkillButton extends Button {
             valueText.setScale(1)
             staminaText.setScale(1)
             this.elementIcon.setScale(0.275)
-            this.staminaIcon.setScale(0.275)
+            this.staminaIcon.setScale(0.21)
         })
     }
 }

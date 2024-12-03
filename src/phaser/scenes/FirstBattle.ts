@@ -66,7 +66,7 @@ class FirstBattle extends Phaser.Scene {
 
         this.endTurnButton = new Button(this, 930, 292, 110, 45, "End Turn", 0xFCA400, 0x000000, 5, '20px', () => this.time.delayedCall(300, () => this.endTurn()))
 
-        this.resetButton = new Button(this, 45, 22, 70, 30, "Reset", 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
+        this.resetButton = new Button(this, 42, 21, 70, 30, "Reset", 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
 
         this.turnCountText = this.add.text(500, 15, 'Turn: 1', {fontSize: '20px', color: '#000', fontFamily: 'Arial', align: 'center'})
         this.turnCountText.setOrigin(0.5)
@@ -95,7 +95,9 @@ class FirstBattle extends Phaser.Scene {
 
             this.time.delayedCall(1000, () => this.savingIcon?.startSaveAnimation())
             this.savingIcon?.startSaveAnimation()
-            this.time.delayedCall(5000, () => this.showRewards())
+            this.time.delayedCall(1500, () => {
+                this.showRewards()
+            })
         }
     }
 
@@ -104,7 +106,8 @@ class FirstBattle extends Phaser.Scene {
         this.resetButtonPanel()
         this.endTurnButton?.disableInteractive()
         this.resetButton?.disableInteractive()
-        this.time.delayedCall(500, () => {
+        this.disableButtonPanel()
+        this.time.delayedCall(1500, () => {
             this.player!.block(-this.player!.blockAmount)
             this.player?.changeStamina(-this.player?.currentStamina + this.player?.maxStamina)
             this.turnCount++
@@ -113,12 +116,12 @@ class FirstBattle extends Phaser.Scene {
             this.turnCountText!.setText(`Turn: ${this.turnCount}`)
             this.endTurnButton?.setInteractive()
             this.resetButton?.setInteractive()
+            this.enableButtonPanel()
         }) 
     }
 
     saveGameState() {
         const gameState = this.player
-
         localStorage.setItem('gameState', JSON.stringify(gameState))
     }
 
@@ -126,7 +129,6 @@ class FirstBattle extends Phaser.Scene {
         const savedState = localStorage.getItem('gameState')
         if (savedState) {
             const gameState = JSON.parse(savedState)
-
             this.player = gameState
         }
     }
@@ -139,6 +141,15 @@ class FirstBattle extends Phaser.Scene {
         this.statsButtonPanel?.disableInteractive()
     }
 
+    enableButtonPanel() {
+        this.buttonPanel?.setInteractive()
+        this.attackButtonPanel?.setInteractive()
+        this.defendButtonPanel?.setInteractive()
+        this.itemButtonPanel?.setInteractive()
+        this.statsButtonPanel?.setInteractive()
+    }
+
+
     resetButtonPanel() {
         this.buttonPanel?.setVisible(true)
         this.attackButtonPanel?.setVisible(false)
@@ -149,10 +160,18 @@ class FirstBattle extends Phaser.Scene {
 
     showRewards() {
         this.rewardBox = new RewardBox(this)
+        this.rewardBox?.rewardBox?.setDepth(100)
+        this.rewardBox?.title?.setDepth(100)
+        this.rewardBox?.reward1?.setDepth(100)
+        this.rewardBox?.reward2?.setDepth(100)
     }
 
     showNextDestinations() {
         this.nextDestinationBox = new NextDestinationBox(this)
+        this.nextDestinationBox?.nextDestinationBox?.setDepth(100)
+        this.nextDestinationBox?.title?.setDepth(100)
+        this.nextDestinationBox?.nextDestination1?.setDepth(100)
+        this.nextDestinationBox?.nextDestination2?.setDepth(100)
     }
 }
 

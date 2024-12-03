@@ -12,17 +12,17 @@ export default class RewardBox extends Phaser.GameObjects.Container {
 
         this.rewardBox = scene.add.graphics()
         this.rewardBox.fillStyle(0xBD7B00)
-        this.rewardBox.fillRoundedRect(200, 100, 600, 400)
+        this.rewardBox.fillRoundedRect(200, 75, 600, 330)
         this.rewardBox.lineStyle(10, 0x000000)
-        this.rewardBox.strokeRoundedRect(200, 100, 600, 400)
+        this.rewardBox.strokeRoundedRect(200, 75, 600, 330)
 
         scene.add.existing(this.rewardBox)
 
-        this.title = scene.add.text(500, 150, 'Next Destination', {fontSize: '40px', color: '#000', fontFamily: 'Arial', align: 'center'})
+        this.title = scene.add.text(500, 125, 'Rewards', {fontSize: '40px', color: '#000', fontFamily: 'Arial', align: 'center'})
         this.title.setOrigin(0.5)
         scene.add.existing(this.title)
 
-        this.reward1 = new Button(scene, 350, 350, 250, 150, "Reward 1", 0xFCA400, 0x000000, 10, '40px', () => {
+        this.reward1 = new Button(scene, 350, 270, 250, 160, "Reward 1", 0xFCA400, 0x000000, 10, '40px', () => {
             scene.time.delayedCall(500, () => {
                 this.setVisible(false)
                 scene.showNextDestinations
@@ -31,7 +31,7 @@ export default class RewardBox extends Phaser.GameObjects.Container {
         })
         scene.add.existing(this.reward1)
 
-        this.reward2 = new Button(scene, 650, 350, 250, 150, "Reward 2", 0xFCA400, 0x000000, 10, '40px', () => {
+        this.reward2 = new Button(scene, 650, 270, 250, 160, "Reward 2", 0xFCA400, 0x000000, 10, '40px', () => {
             scene.time.delayedCall(500, () => {
                 this.setVisible(false)
                 scene.showNextDestinations

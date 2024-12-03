@@ -9,7 +9,7 @@ export default class SkillButton extends Button {
     constructor(scene: FirstBattle, x: number, y: number, skill: Action) {
         super(scene, x, y, 440, 103, '', 0x003EF8, 0xF80000, 10, '50px', () => {
             if (scene.player && scene.player.currentStamina >= skill.stamina) {
-                scene.skillAnimation?.startskillAnimation()
+                scene.elementAnimation?.startSkillAnimation(scene, skill)
                 scene.time.delayedCall(400, () => {
                     scene.player?.changeStamina(-skill.stamina)
                     scene.time.delayedCall(400, () => {
@@ -26,7 +26,7 @@ export default class SkillButton extends Button {
         
         const valueText = scene.add.text(nameText.width / 2 - 75, 0, `${skill.value}`, {fontSize: '60px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
-        this.elementIcon = scene.add.image(nameText.width / 2 - 22, -2, `${skill.action.toUpperCase()[0] + skill.action.slice(1)}`).setScale(0.275)
+        this.elementIcon = scene.add.image(nameText.width / 2 - 22, -2, `${skill.action.toLowerCase()[0]}-icon`).setScale(0.275)
         
         const staminaText = scene.add.text(nameText.width / 2 + 40, 0, `${skill.stamina}`, {fontSize: '60px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)

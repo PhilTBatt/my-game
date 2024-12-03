@@ -19,6 +19,7 @@ export default class AttackAnimation extends Phaser.GameObjects.Container {
 
     startAttackAnimation() {
         if (this.character instanceof Player) {
+            this.damageIcon.flipY = false
             this.damageIcon.setPosition(375, 200)
             this.scene.tweens.add({targets: this.damageIcon, x: 625, duration: 900, ease: 'Linear'})
             this.scene.tweens.add({targets: this.damageIcon, alpha: 1, duration: 500, ease: 'Linear'})
@@ -28,6 +29,7 @@ export default class AttackAnimation extends Phaser.GameObjects.Container {
             })
         } else {
             this.damageIcon.setPosition(625, 200)
+            this.damageIcon.flipY = true
             this.scene.tweens.add({targets: this.damageIcon, x: 375, duration: 900, ease: 'Linear'})
             this.scene.tweens.add({targets: this.damageIcon, alpha: 1, duration: 500, ease: 'Linear'})
 

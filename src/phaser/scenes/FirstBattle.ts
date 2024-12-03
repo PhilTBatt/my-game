@@ -12,6 +12,7 @@ import AttackAnimation from "../game-objects/animations/AttackAnimation";
 import BlockAnimation from "../game-objects/animations/BlockAnimation";
 import RewardBox from "../game-objects/Misc/RewardBox";
 import NextDestinationBox from "../game-objects/Misc/NextDestinationBox";
+import SkillAnimation from "../game-objects/animations/SkillAnimation";
 
 class FirstBattle extends Phaser.Scene {
     key: string | undefined = undefined
@@ -29,8 +30,10 @@ class FirstBattle extends Phaser.Scene {
     savingIcon: SavingIcon | undefined = undefined
     attackAnimation: AttackAnimation | undefined = undefined
     blockAnimation: BlockAnimation | undefined = undefined
+    elementAnimation: SkillAnimation | undefined = undefined
     enemyAttackAnimation: AttackAnimation | undefined = undefined
     enemyBlockAnimation: BlockAnimation | undefined = undefined
+    enemyElementAnimation: SkillAnimation | undefined = undefined
     rewardBox: RewardBox  | undefined = undefined
     nextDestinationBox: NextDestinationBox  | undefined = undefined
     

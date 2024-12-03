@@ -4,7 +4,7 @@ import Player from "../game-objects/characters/Player";
 import Enemy from "../game-objects/characters/DefaultEnemy";
 import AttackButtonPanel from "../game-objects/button-panels/AttackPanel";
 import DefendButtonPanel from "../game-objects/button-panels/DefendPanel";
-import ItemButtonPanel from "../game-objects/button-panels/ItemPanel";
+import SkillButtonPanel from "../game-objects/button-panels/SkillPanel";
 import StatsButtonPanel from "../game-objects/button-panels/StatsPanel";
 import Button from "../game-objects/buttons/Button";
 import SavingIcon from "../game-objects/animations/SavingIcon";
@@ -18,7 +18,7 @@ class FirstBattle extends Phaser.Scene {
     buttonPanel: DefaultButtonPanel | undefined = undefined
     attackButtonPanel: AttackButtonPanel | undefined = undefined
     defendButtonPanel: DefendButtonPanel | undefined = undefined
-    itemButtonPanel: ItemButtonPanel | undefined = undefined
+    skillButtonPanel: SkillButtonPanel | undefined = undefined
     statsButtonPanel: StatsButtonPanel | undefined = undefined
     player: Player | undefined = undefined
     enemy: Enemy | undefined = undefined
@@ -41,8 +41,11 @@ class FirstBattle extends Phaser.Scene {
     
     preload() {
         this.load.image('damage-icon', '../../public/assets/icons/damage-icon.png')
-        this.load.image('stamina-icon', '../../public/assets/icons/damage-icon.png')
+        this.load.image('stamina-icon', '../../public/assets/icons/stamina-icon.png')
         this.load.image('block-icon', '../../public/assets/icons/block-icon.png')
+        this.load.image('fire-icon', '../../public/assets/icons/fire-icon.png')
+        this.load.image('poison-icon', '../../public/assets/icons/posion-icon.png')
+        this.load.image('frost-icon', '../../public/assets/icons/frost-icon.png')
         this.load.image('save-icon', '../../public/assets/icons/save-icon.png')
         this.load.image('loading-icon', '../../public/assets/icons/loading-icon.png')
     }
@@ -52,16 +55,16 @@ class FirstBattle extends Phaser.Scene {
         this.add.rectangle(500, 375, 1000, 300, 0x40CF55)
         this.add.rectangle(500, 462.5, 1000, 275, 0x929292)
 
-        this.player = new Player(this, 100, 6)
+        this.player = new Player(this, 75, 6)
         if (this.key === 'FirstBattle') {
-            this.enemy = new Enemy(this, 40)
+            this.enemy = new Enemy(this, 6)
         }
 
         this.buttonPanel = new DefaultButtonPanel(this)
 
         this.attackButtonPanel = new AttackButtonPanel(this)
         this.defendButtonPanel = new DefendButtonPanel(this)
-        this.itemButtonPanel = new ItemButtonPanel(this)
+        this.skillButtonPanel = new SkillButtonPanel(this)
         this.statsButtonPanel = new StatsButtonPanel(this)
 
         this.endTurnButton = new Button(this, 930, 292, 110, 45, "End Turn", 0xFCA400, 0x000000, 5, '20px', () => this.time.delayedCall(300, () => this.endTurn()))
@@ -137,7 +140,7 @@ class FirstBattle extends Phaser.Scene {
         this.buttonPanel?.disableInteractive()
         this.attackButtonPanel?.disableInteractive()
         this.defendButtonPanel?.disableInteractive()
-        this.itemButtonPanel?.disableInteractive()
+        this.skillButtonPanel?.disableInteractive()
         this.statsButtonPanel?.disableInteractive()
     }
 
@@ -145,7 +148,7 @@ class FirstBattle extends Phaser.Scene {
         this.buttonPanel?.setInteractive()
         this.attackButtonPanel?.setInteractive()
         this.defendButtonPanel?.setInteractive()
-        this.itemButtonPanel?.setInteractive()
+        this.skillButtonPanel?.setInteractive()
         this.statsButtonPanel?.setInteractive()
     }
 
@@ -154,7 +157,7 @@ class FirstBattle extends Phaser.Scene {
         this.buttonPanel?.setVisible(true)
         this.attackButtonPanel?.setVisible(false)
         this.defendButtonPanel?.setVisible(false)
-        this.itemButtonPanel?.setVisible(false)
+        this.skillButtonPanel?.setVisible(false)
         this.statsButtonPanel?.setVisible(false)
     }
 

@@ -10,6 +10,7 @@ export default class Player extends Character {
     staminaBar: StaminaBar
     attacks: [Action, Action?, Action?]
     defends: [Action, Action?, Action?]
+    skills: [Action?, Action?, Action?] | undefined = undefined
 
     constructor(scene: FirstBattle, maxHealth: number, maxStamina: number, currentHealth: number = maxHealth, attacks: [Action, Action?, Action?] = [{name: 'Strike', action: 'Attack', value: 8, stamina: 3}], defends: [Action, Action?, Action?] = [{name: 'Block', action: 'Block', value: 5, stamina: 2}]) {
         super(scene, maxHealth)

@@ -12,5 +12,7 @@ export default class PurpleCircle extends Enemy {
 
         this.intent = {action: "Block", value: 8}
         this.intents = [{action: "Attack", value: 7}, {action: "Block", value: 8}]
+
+        scene.add.existing(this)
     }
 }

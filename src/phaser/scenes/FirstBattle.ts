@@ -62,29 +62,31 @@ class FirstBattle extends Phaser.Scene {
         if (this.key === 'FirstBattle') {
             this.enemy = new Enemy(this, 15)
         }
-
+        
         this.buttonPanel = new DefaultButtonPanel(this)
-
+        
         this.attackButtonPanel = new AttackButtonPanel(this)
         this.defendButtonPanel = new DefendButtonPanel(this)
         this.skillButtonPanel = new SkillButtonPanel(this)
         this.statsButtonPanel = new StatsButtonPanel(this)
-
+        
         this.endTurnButton = new Button(this, 930, 292, 110, 45, "End Turn", 0xFCA400, 0x000000, 5, '20px', () => this.time.delayedCall(300, () => this.endTurn()))
-
+        
         this.resetButton = new Button(this, 42, 21, 70, 30, "Reset", 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
-
+        
         this.turnCountText = this.add.text(500, 15, 'Turn: 1', {fontSize: '20px', color: '#000', fontFamily: 'Arial', align: 'center'})
         this.turnCountText.setOrigin(0.5)
-
+        
         this.savingIcon = new SavingIcon(this)
 
         this.attackAnimation = new AttackAnimation(this, this.player)
         this.blockAnimation = new BlockAnimation(this, this.player)
+        this.elementAnimation = new SkillAnimation(this, this.player)
 
         if (this.enemy) {
             this.enemyAttackAnimation = new AttackAnimation(this, this.enemy)
             this.enemyBlockAnimation = new BlockAnimation(this, this.enemy)
+            this.enemyElementAnimation = new SkillAnimation(this, this.enemy)
         }
     }
 

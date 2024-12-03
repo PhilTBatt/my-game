@@ -10,7 +10,7 @@ export default class BlockAnimation extends Phaser.GameObjects.Container {
         super(scene, 0, 0)
         this.character = character
         
-        this.blockIcon = scene.add.image(400, 275, 'block-icon').setScale(0.2)
+        this.blockIcon = scene.add.image(400, 275, 'block-icon').setScale(0.325)
         scene.add.existing(this.blockIcon)
         this.blockIcon.setAlpha(0)
 
@@ -29,19 +29,15 @@ export default class BlockAnimation extends Phaser.GameObjects.Container {
         if (this.character instanceof Player) {
             this.blockIcon.setPosition(400, 275)
             this.scene.tweens.add({targets: this.blockIcon, y: 200, duration: 900, ease: 'Linear'})
-            this.scene.tweens.add({targets: this.blockIcon, alpha: 1, duration: 500, ease: 'Linear'})
-
-            this.scene.time.delayedCall(1100, () => {
-                this.blockIcon.setAlpha(0)
-            })
         } else {
             this.blockIcon.setPosition(600, 275)
             this.scene.tweens.add({targets: this.blockIcon, y: 200, duration: 900, ease: 'Linear'})
-            this.scene.tweens.add({targets: this.blockIcon, alpha: 1, duration: 500, ease: 'Linear'})
-
-            this.scene.time.delayedCall(1100, () => {
-                this.blockIcon.setAlpha(0)
-            })
         }
+        
+        this.scene.tweens.add({targets: this.blockIcon, alpha: 1, duration: 500, ease: 'Linear'})
+
+        this.scene.time.delayedCall(1100, () => {
+            this.blockIcon.setAlpha(0)
+        })
     }
 }

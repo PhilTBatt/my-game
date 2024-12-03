@@ -26,11 +26,13 @@ export default class SkillButton extends Button {
         
         const valueText = scene.add.text(nameText.width / 2 - 75, 0, `${skill.value}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
-        this.elementIcon = scene.add.image(nameText.width / 2 - 22, -2, `${skill.action.toLowerCase()[0]}-icon`).setScale(0.275)
+        if (skill.action === 'Fire') this.elementIcon = scene.add.image(nameText.width / 2 - 22, 0, `fire-icon`).setScale(0.275)
+        else if (skill.action === 'Frost') this.elementIcon = scene.add.image(nameText.width / 2 - 22, 0, `frost-icon`).setScale(0.275)
+        else this.elementIcon = scene.add.image(nameText.width / 2 - 22, 0, `poison-icon`).setScale(0.095)
         
         const staminaText = scene.add.text(nameText.width / 2 + 40, 0, `${skill.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)
-        this.staminaIcon = scene.add.image(nameText.width / 2 + 93, -2, 'stamina-icon').setScale(0.21)
+        this.staminaIcon = scene.add.image(nameText.width / 2 + 93, -2, 'stamina-icon').setScale(0.22)
 
         this.add(nameText)
         this.add(this.elementIcon)
@@ -42,7 +44,7 @@ export default class SkillButton extends Button {
             nameText.setScale(1.1)
             valueText.setScale(1.15)
             staminaText.setScale(1.15)
-            this.elementIcon.setScale(0.325)
+            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.setScale(0.325) : this.elementIcon.setScale(0.115)
             this.staminaIcon.setScale(0.26)
         })
             
@@ -50,8 +52,8 @@ export default class SkillButton extends Button {
             nameText.setScale(1)
             valueText.setScale(1)
             staminaText.setScale(1)
-            this.elementIcon.setScale(0.275)
-            this.staminaIcon.setScale(0.21)
+            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.setScale(0.275) : this.elementIcon.setScale(0.095)
+            this.staminaIcon.setScale(0.22)
         })
     }
 }

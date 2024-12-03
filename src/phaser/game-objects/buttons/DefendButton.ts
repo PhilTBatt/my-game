@@ -24,12 +24,12 @@ export default class DefendButton extends Button {
 
         const valueText = scene.add.text(nameText.width / 2 - 78, 0, `${defend.value}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
-        this.blockIcon = scene.add.image(nameText.width / 2 - 23, 2, 'block-icon').setScale(0.145)
+        this.blockIcon = scene.add.image(nameText.width / 2 - 23, 0, 'block-icon').setScale(0.145)
 
 
         const staminaText = scene.add.text(nameText.width / 2 + 43, 0, `${defend.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)
-        this.staminaIcon = scene.add.image(nameText.width / 2 + 95, 2, 'stamina-icon').setScale(0.21)
+        this.staminaIcon = scene.add.image(nameText.width / 2 + 95, 0, 'stamina-icon').setScale(0.22)
 
 
         this.add(nameText)
@@ -51,7 +51,7 @@ export default class DefendButton extends Button {
             valueText.setScale(1)
             staminaText.setScale(1)
             this.blockIcon.setScale(0.14)
-            this.staminaIcon.setScale(0.21)
+            this.staminaIcon.setScale(0.22)
           })
     }
 }

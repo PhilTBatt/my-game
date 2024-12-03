@@ -24,7 +24,7 @@ export default class NextDestinationBox extends Phaser.GameObjects.Container {
 
         this.nextDestination1 = new Button(scene, 350, 270, 250, 160, "Reset", 0xFCA400, 0x000000, 10, '40px', () => {
             scene.time.delayedCall(500, () => {
-                scene.scene.start('FirstScreen')
+                scene.scene.start('IntroScreen')
                 
             })
         })

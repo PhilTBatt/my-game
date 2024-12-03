@@ -25,7 +25,7 @@ export default class RewardBox extends Phaser.GameObjects.Container {
         this.reward1 = new Button(scene, 350, 270, 250, 160, "Reward 1", 0xFCA400, 0x000000, 10, '40px', () => {
             scene.time.delayedCall(500, () => {
                 this.setVisible(false)
-                scene.showNextDestinations
+                scene.showNextDestinations()
                 
             })
         })
@@ -34,7 +34,7 @@ export default class RewardBox extends Phaser.GameObjects.Container {
         this.reward2 = new Button(scene, 650, 270, 250, 160, "Reward 2", 0xFCA400, 0x000000, 10, '40px', () => {
             scene.time.delayedCall(500, () => {
                 this.setVisible(false)
-                scene.showNextDestinations
+                scene.showNextDestinations()
                 
             })
         })

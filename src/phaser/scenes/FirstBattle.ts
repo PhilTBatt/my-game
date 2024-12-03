@@ -168,10 +168,10 @@ class FirstBattle extends Phaser.Scene {
 
     showNextDestinations() {
         this.nextDestinationBox = new NextDestinationBox(this)
-        this.nextDestinationBox?.nextDestinationBox?.setDepth(100)
-        this.nextDestinationBox?.title?.setDepth(100)
-        this.nextDestinationBox?.nextDestination1?.setDepth(100)
-        this.nextDestinationBox?.nextDestination2?.setDepth(100)
+        this.nextDestinationBox?.nextDestinationBox?.setDepth(101)
+        this.nextDestinationBox?.title?.setDepth(101)
+        this.nextDestinationBox?.nextDestination1?.setDepth(101)
+        this.nextDestinationBox?.nextDestination2?.setDepth(101)
     }
 }
 

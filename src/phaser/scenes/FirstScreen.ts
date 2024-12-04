@@ -17,7 +17,7 @@ class FirstScreen extends Phaser.Scene {
         background.strokeRoundedRect(0, 0, 1000, 600, 50)
 
         const introMessageBox = this.add.graphics()
-        introMessageBox.fillStyle(0xBD7B00)
+        introMessageBox.fillStyle(0xE7C078)
         introMessageBox.fillRoundedRect(200, 100, 600, 400)
         introMessageBox.lineStyle(10, 0x000000)
         introMessageBox.strokeRoundedRect(200, 100, 600, 400)
@@ -34,6 +34,14 @@ class FirstScreen extends Phaser.Scene {
     }
 
     update() {
+    }
+
+    loadGameState() {
+        const savedState = localStorage.getItem('gameState')
+        if (savedState) {
+            const gameState = JSON.parse(savedState)
+            this.scene.start(`${gameState.key}`)
+        }
     }
 }
 

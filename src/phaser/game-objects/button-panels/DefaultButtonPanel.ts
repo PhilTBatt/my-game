@@ -48,6 +48,6 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
         this.attacksButton.setInteractive()
         this.defendsButton.setInteractive()
         this.skillsButton.setInteractive()
-        this.statsButton.setInteractive()
+        this.statsButton.disableInteractive()
     }
 }

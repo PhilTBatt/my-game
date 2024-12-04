@@ -22,20 +22,16 @@ export default class NextDestinationBox extends Phaser.GameObjects.Container {
         this.title.setOrigin(0.5)
         scene.add.existing(this.title)
 
-        this.nextDestination1 = new Button(scene, 350, 270, 250, 160, "Reset", 0xFCA400, 0x000000, 10, '40px', () => {
-            scene.time.delayedCall(500, () => {
-                scene.scene.start('IntroScreen')
-                
-            })
-        })
+        this.nextDestination1 = new Button(scene, 350, 270, 250, 160, "Reset", 0xFCA400, 0x000000, 10, '40px', () => this.changeDestination(scene, 'IntroScreen'))
         scene.add.existing(this.nextDestination1)
 
-        this.nextDestination2 = new Button(scene, 650, 270, 250, 160, "Battle", 0xFCA400, 0x000000, 10, '40px', () => {
-            scene.time.delayedCall(500, () => {
-                scene.scene.start('WorldOneBattle')
-                
-            })
-        })
+        this.nextDestination2 = new Button(scene, 650, 270, 250, 160, "Battle", 0xFCA400, 0x000000, 10, '40px', () => this.changeDestination(scene, 'WorldOneBattle'))
         scene.add.existing(this.nextDestination2)
+    }
+
+    changeDestination (scene: Phaser.Scene, destination: string) {
+        scene.time.delayedCall(500, () => {
+            scene.scene.start(destination)
+        })
     }
 }

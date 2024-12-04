@@ -10,7 +10,7 @@ import Button from "../game-objects/buttons/Button";
 import SavingIcon from "../game-objects/animations/SavingIcon";
 import AttackAnimation from "../game-objects/animations/AttackAnimation";
 import BlockAnimation from "../game-objects/animations/BlockAnimation";
-import RewardBox from "../game-objects/Misc/RewardBox";
+import FirstRewardBox from "../game-objects/Misc/FirstRewardBox";
 import NextDestinationBox from "../game-objects/Misc/NextDestinationBox";
 import SkillAnimation from "../game-objects/animations/SkillAnimation";
 import TurnCount from "../game-objects/Misc/TurnCountBox";
@@ -37,7 +37,7 @@ class FirstBattle extends Phaser.Scene {
     enemyBlockAnimation: BlockAnimation | undefined = undefined
     enemyElementAnimation: SkillAnimation | undefined = undefined
     coinIcon: CoinCount | undefined = undefined
-    rewardBox: RewardBox  | undefined = undefined
+    rewardBox: FirstRewardBox  | undefined = undefined
     nextDestinationBox: NextDestinationBox  | undefined = undefined
     hasBattleEnded: boolean = false
     
@@ -64,8 +64,9 @@ class FirstBattle extends Phaser.Scene {
         this.add.rectangle(500, 462.5, 1000, 275, 0x929292)
 
         this.player = new Player(this, 75, 6)
+        
         if (this.key === 'FirstBattle') {
-            this.enemy = new Enemy(this, 15)
+            this.enemy = new Enemy(this, 5)
         }
         
         this.buttonPanel = new DefaultButtonPanel(this)
@@ -104,10 +105,9 @@ class FirstBattle extends Phaser.Scene {
             this.disableButtonPanel()
             this.endTurnButton?.disableInteractive()
             this.resetButton?.disableInteractive()
-            this.saveGameState()
             if (this.player) this.coinIcon?.animateCoinGain(this.player, 12)
 
-            this.time.delayedCall(1500, () => {
+            this.time.delayedCall(2000, () => {
                 this.showRewards()
             })
         }
@@ -142,7 +142,7 @@ class FirstBattle extends Phaser.Scene {
 
         this.time.delayedCall(1000, () => this.savingIcon?.startSaveAnimation())
 
-        const gameState = this.player
+        const gameState = {key: this.key, player: this.player}
         localStorage.setItem('gameState', JSON.stringify(gameState))
     }
 
@@ -150,7 +150,7 @@ class FirstBattle extends Phaser.Scene {
         const savedState = localStorage.getItem('gameState')
         if (savedState) {
             const gameState = JSON.parse(savedState)
-            this.player = gameState
+            this.player = gameState.player
         }
     }
 
@@ -182,7 +182,7 @@ class FirstBattle extends Phaser.Scene {
     }
 
     showRewards() {
-        this.rewardBox = new RewardBox(this)
+        this.rewardBox = new FirstRewardBox(this)
         this.rewardBox?.rewardBox?.setDepth(100)
         this.rewardBox?.title?.setDepth(100)
         this.rewardBox?.reward1?.setDepth(100)

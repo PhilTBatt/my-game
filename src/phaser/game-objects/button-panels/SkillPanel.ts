@@ -25,11 +25,11 @@ export default class SkillButtonPanel extends Phaser.GameObjects.Container {
                     this.add(this.skill1)
                 }
                 if (index === 1 && skill) {
-                    this.skill2 = new SkillButton(scene, 743, 527, skill)
+                    this.skill2 = new SkillButton(scene, 743, 398, skill)
                     this.add(this.skill2)
                 }
                 if (index === 2 && skill) {
-                    this.skill3 = new SkillButton(scene, 743, 398, skill)
+                    this.skill3 = new SkillButton(scene, 743, 527, skill)
                     this.add(this.skill3)
                 }
             })

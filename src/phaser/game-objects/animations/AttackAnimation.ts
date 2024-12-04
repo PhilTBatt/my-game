@@ -30,8 +30,8 @@ export default class AttackAnimation extends Phaser.GameObjects.Container {
 
         this.scene.tweens.add({targets: this.damageIcon, alpha: 1, duration: 500, ease: 'Linear'})
     
-        this.scene.time.delayedCall(1100, () => {
-            this.damageIcon.setAlpha(0)
+        this.scene.time.delayedCall(800, () => {
+            this.scene.tweens.add({targets: this.damageIcon, alpha: 0, duration: 200, ease: 'Linear'})
         })
     }
 }

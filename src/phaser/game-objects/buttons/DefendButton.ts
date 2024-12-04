@@ -10,9 +10,9 @@ export default class DefendButton extends Button {
         super(scene, x, y, 440, 103, ``, '#000000', 0xE6E6E6, 0x003EF8, 10, '70px', () => {
             if (scene.player && scene.player.currentStamina >= defend.stamina) {
                 scene.blockAnimation?.startBlockAnimation()
-                scene.time.delayedCall(400, () => {
+                scene.time.delayedCall(475, () => {
                     scene.player?.changeStamina(-defend.stamina)
-                    scene.time.delayedCall(400, () => {
+                    scene.time.delayedCall(450, () => {
                         scene.player?.block(defend.value)
                     })
                 })
@@ -29,7 +29,7 @@ export default class DefendButton extends Button {
 
         const staminaText = scene.add.text(nameText.width / 2 + 43, 0, `${defend.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)
-        this.staminaIcon = scene.add.image(nameText.width / 2 + 95, 0, 'stamina-icon').setScale(0.22)
+        this.staminaIcon = scene.add.image(nameText.width / 2 + 95, -2, 'stamina-icon').setScale(0.22)
 
 
         this.add(nameText)

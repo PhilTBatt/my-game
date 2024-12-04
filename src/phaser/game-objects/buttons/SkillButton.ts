@@ -10,9 +10,9 @@ export default class SkillButton extends Button {
         super(scene, x, y, 440, 103, '', '#000000', 0xE6E6E6, 0x00FF00, 10, '50px', () => {
             if (scene.player && scene.player.currentStamina >= skill.stamina) {
                 scene.elementAnimation?.startSkillAnimation(scene, skill)
-                scene.time.delayedCall(400, () => {
+                scene.time.delayedCall(475, () => {
                     scene.player?.changeStamina(-skill.stamina)
-                    scene.time.delayedCall(400, () => {
+                    scene.time.delayedCall(450, () => {
                         scene.enemy?.takeDamage(skill.value)
                     })
                 })
@@ -26,10 +26,13 @@ export default class SkillButton extends Button {
         
         const valueText = scene.add.text(nameText.width / 2 - 75, 0, `${skill.value}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
-        if (skill.action === 'Fire') this.elementIcon = scene.add.image(nameText.width / 2 - 22, 0, `fire-icon`).setScale(0.275)
-        else if (skill.action === 'Frost') this.elementIcon = scene.add.image(nameText.width / 2 - 22, 0, `frost-icon`).setScale(0.275)
-        else this.elementIcon = scene.add.image(nameText.width / 2 - 22, 0, `poison-icon`).setScale(0.095)
+
+        if (skill.action === 'Fire') this.elementIcon = scene.add.image(nameText.width / 2 - 22, -1, `fire-icon`).setScale(0.275)
+        else if (skill.action === 'Frost') this.elementIcon = scene.add.image(nameText.width / 2 - 22, -1, `frost-icon`).setScale(0.275)
+        else if (skill.action === 'Poison') this.elementIcon = scene.add.image(nameText.width / 2 - 22, 0, `poison-icon`).setScale(0.175)
+        else this.elementIcon = scene.add.image(nameText.width / 2 - 22, -1, `electric-icon`).setScale(0.1475)
         
+
         const staminaText = scene.add.text(nameText.width / 2 + 40, 0, `${skill.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)
         this.staminaIcon = scene.add.image(nameText.width / 2 + 93, -2, 'stamina-icon').setScale(0.22)
@@ -44,7 +47,8 @@ export default class SkillButton extends Button {
             nameText.setScale(1.1)
             valueText.setScale(1.15)
             staminaText.setScale(1.15)
-            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.setScale(0.325) : this.elementIcon.setScale(0.115)
+            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.setScale(0.325) : 
+                skill.action === 'Poison' ? this.elementIcon.setScale(0.2) : this.elementIcon.setScale(0.175)
             this.staminaIcon.setScale(0.26)
         })
             
@@ -52,7 +56,8 @@ export default class SkillButton extends Button {
             nameText.setScale(1)
             valueText.setScale(1)
             staminaText.setScale(1)
-            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.setScale(0.275) : this.elementIcon.setScale(0.095)
+            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.setScale(0.275) : 
+            skill.action === 'Poison' ? this.elementIcon.setScale(0.175) : this.elementIcon.setScale(0.1475)
             this.staminaIcon.setScale(0.22)
         })
     }

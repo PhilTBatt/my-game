@@ -21,8 +21,10 @@ export default class SkillAnimation extends Phaser.GameObjects.Container {
             this.elementIcon = scene.add.image(375, 200, 'fire-icon').setScale(0.45)
         } else if (skill.action === 'Frost') {
             this.elementIcon = scene.add.image(375, 200, 'frost-icon').setScale(0.5)
+        } else if (skill.action === 'Poison') {
+            this.elementIcon = scene.add.image(375, 200, 'poison-icon').setScale(0.275)
         } else {
-            this.elementIcon = scene.add.image(375, 200, 'poison-icon').setScale(0.175)
+            this.elementIcon = scene.add.image(375, 200, 'electric-icon').setScale(0.25)
         }
         
         scene.add.existing(this.elementIcon)
@@ -40,8 +42,8 @@ export default class SkillAnimation extends Phaser.GameObjects.Container {
         
         this.scene.tweens.add({targets: this.elementIcon, alpha: 1, duration: 500, ease: 'Linear'})
         
-        this.scene.time.delayedCall(1100, () => {
-            if (this.elementIcon) this.elementIcon.setAlpha(0)
+        this.scene.time.delayedCall(800, () => {
+            this.scene.tweens.add({targets: this.elementIcon, alpha: 0, duration: 200, ease: 'Linear'})
         })
     }
 }

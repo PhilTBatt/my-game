@@ -10,7 +10,7 @@ export default class BlockAnimation extends Phaser.GameObjects.Container {
         super(scene, 0, 0)
         this.character = character
         
-        this.blockIcon = scene.add.image(400, 275, 'block-icon').setScale(0.325)
+        this.blockIcon = scene.add.image(400, 275, 'block-icon').setScale(0.3)
         scene.add.existing(this.blockIcon)
         this.blockIcon.setAlpha(0)
 
@@ -36,8 +36,8 @@ export default class BlockAnimation extends Phaser.GameObjects.Container {
         
         this.scene.tweens.add({targets: this.blockIcon, alpha: 1, duration: 500, ease: 'Linear'})
 
-        this.scene.time.delayedCall(1100, () => {
-            this.blockIcon.setAlpha(0)
+        this.scene.time.delayedCall(800, () => {
+            this.scene.tweens.add({targets: this.blockIcon, alpha: 0, duration: 250, ease: 'Linear'})
         })
     }
 }

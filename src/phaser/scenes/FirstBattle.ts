@@ -53,7 +53,7 @@ class FirstBattle extends Phaser.Scene {
         this.load.image('fire-icon', '../../public/assets/icons/fire-icon.png')
         this.load.image('frost-icon', '../../public/assets/icons/frost-icon.png')
         this.load.image('poison-icon', '../../public/assets/icons/poison-icon.png')
-        this.load.image('electric-icon', '../../public/assets/icons/electric-icon.png')
+        this.load.image('shock-icon', '../../public/assets/icons/shock-icon.png')
         this.load.image('save-icon', '../../public/assets/icons/save-icon.png')
         this.load.image('loading-icon', '../../public/assets/icons/loading-icon.png')
         this.load.image('coin-icon', '../../public/assets/icons/coin-icon.png')

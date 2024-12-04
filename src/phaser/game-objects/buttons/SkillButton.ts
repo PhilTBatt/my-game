@@ -19,8 +19,6 @@ export default class SkillButton extends Button {
             }
         })
 
-
-
         const nameText = scene.add.text(-112, 0, `${skill.name}:`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         nameText.setOrigin(0.5)
         
@@ -30,7 +28,7 @@ export default class SkillButton extends Button {
         if (skill.action === 'Fire') this.elementIcon = scene.add.image(nameText.width / 2 - 22, -1, `fire-icon`).setScale(0.275)
         else if (skill.action === 'Frost') this.elementIcon = scene.add.image(nameText.width / 2 - 22, -1, `frost-icon`).setScale(0.275)
         else if (skill.action === 'Poison') this.elementIcon = scene.add.image(nameText.width / 2 - 22, 0, `poison-icon`).setScale(0.175)
-        else this.elementIcon = scene.add.image(nameText.width / 2 - 22, -1, `electric-icon`).setScale(0.1475)
+        else this.elementIcon = scene.add.image(nameText.width / 2 - 22, -1, `shock-icon`).setScale(0.1475)
         
 
         const staminaText = scene.add.text(nameText.width / 2 + 40, 0, `${skill.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})

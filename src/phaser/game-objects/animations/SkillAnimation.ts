@@ -24,7 +24,7 @@ export default class SkillAnimation extends Phaser.GameObjects.Container {
         } else if (skill.action === 'Poison') {
             this.elementIcon = scene.add.image(375, 200, 'poison-icon').setScale(0.275)
         } else {
-            this.elementIcon = scene.add.image(375, 200, 'electric-icon').setScale(0.25)
+            this.elementIcon = scene.add.image(375, 200, 'shock-icon').setScale(0.25)
         }
         
         scene.add.existing(this.elementIcon)

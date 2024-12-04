@@ -7,7 +7,7 @@ export default class SkillButton extends Button {
     staminaIcon: Phaser.GameObjects.Image
 
     constructor(scene: FirstBattle, x: number, y: number, skill: Action) {
-        super(scene, x, y, 440, 103, '', 0xE6E6E6, 0x00FF00, 10, '50px', () => {
+        super(scene, x, y, 440, 103, '', '#000000', 0xE6E6E6, 0x00FF00, 10, '50px', () => {
             if (scene.player && scene.player.currentStamina >= skill.stamina) {
                 scene.elementAnimation?.startSkillAnimation(scene, skill)
                 scene.time.delayedCall(400, () => {

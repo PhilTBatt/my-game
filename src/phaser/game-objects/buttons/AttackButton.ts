@@ -7,7 +7,7 @@ export default class AttackButton extends Button {
     staminaIcon: Phaser.GameObjects.Image
 
     constructor(scene: FirstBattle, x: number, y: number, attack: Action) {
-        super(scene, x, y, 440, 103, ``, 0xE6E6E6, 0xF80000, 10, '50px', () => {
+        super(scene, x, y, 440, 103, ``, '#000000', 0xE6E6E6, 0xF80000, 10, '50px', () => {
             if (scene.player && scene.player.currentStamina >= attack.stamina) {
                 scene.attackAnimation?.startAttackAnimation()
                 scene.time.delayedCall(400, () => {

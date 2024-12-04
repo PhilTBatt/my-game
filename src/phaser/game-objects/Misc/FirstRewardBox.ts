@@ -40,10 +40,10 @@ export default class FirstRewardBox extends Phaser.GameObjects.Container {
         this.reward2.disableInteractive()
         scene.add.existing(this.reward2)
 
-        this.reward1InteractiveBox = new Button(scene, 500, 245, 440, 103, '', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem1))
+        this.reward1InteractiveBox = new Button(scene, 500, 245, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem1))
         this.reward1InteractiveBox.setAlpha(0.0001).setDepth(100)
 
-        this.reward2InteractiveBox = new Button(scene, 500, 385, 440, 103, '', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem2))
+        this.reward2InteractiveBox = new Button(scene, 500, 385, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem2))
         this.reward2InteractiveBox.setAlpha(0.0001).setDepth(100)
 
         this.reward1InteractiveBox.on('pointerover', () => {

@@ -76,9 +76,9 @@ class FirstBattle extends Phaser.Scene {
         this.skillButtonPanel = new SkillButtonPanel(this)
         this.statsButtonPanel = new StatsButtonPanel(this)
         
-        this.endTurnButton = new Button(this, 930, 292, 110, 45, "End Turn", 0xFCA400, 0x000000, 5, '20px', () => this.time.delayedCall(300, () => this.endTurn()))
+        this.endTurnButton = new Button(this, 930, 292, 110, 45, "End Turn", '#000000', 0xFCA400, 0x000000, 5, '20px', () => this.time.delayedCall(300, () => this.endTurn()))
         
-        this.resetButton = new Button(this, 42, 21, 70, 30, "Reset", 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
+        this.resetButton = new Button(this, 42, 21, 70, 30, "Reset", '#000000', 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
         
         this.savingIcon = new SavingIcon(this)
 
@@ -100,7 +100,8 @@ class FirstBattle extends Phaser.Scene {
     update() {
         if (this.enemy && this.enemy.currentHealth <= 0 && !this.hasBattleEnded) {
             this.hasBattleEnded = true
-            const overlay = this.add.rectangle(500, 462.5, 1000, 275, 0x929292, 0.015).setDepth(99)
+            const overlay = this.add.rectangle(500, 462.5, 1000, 275, 0x929292, 0.015)
+            overlay.setDepth(99)
             
             this.disableButtonPanel()
             this.endTurnButton?.disableInteractive()

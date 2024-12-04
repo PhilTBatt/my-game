@@ -1,7 +1,7 @@
 export default class Button extends Phaser.GameObjects.Container {
   cooldownActive: boolean = false
 
-  constructor(scene: Phaser.Scene, x: number, y: number, width: number, height: number, text: string, colour: number, borderColour: number, borderWidth: number, fontSize: string, onClick: () => void) {
+  constructor(scene: Phaser.Scene, x: number, y: number, width: number, height: number, text: string, textColour: string, colour: number, borderColour: number, borderWidth: number, fontSize: string, onClick: () => void) {
     super(scene, x, y)
     
     const background = scene.add.graphics()
@@ -18,7 +18,7 @@ export default class Button extends Phaser.GameObjects.Container {
 
     this.add(background)
     
-    const buttonText = scene.add.text(0, 0, text, {fontSize, color: '#000', fontFamily: 'Arial', align: 'center'})
+    const buttonText = scene.add.text(0, 0, text, {fontSize, color: textColour, fontFamily: 'Arial', align: 'center'})
     buttonText.setOrigin(0.5)
     this.add(buttonText)
     

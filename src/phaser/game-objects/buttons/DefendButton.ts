@@ -7,7 +7,7 @@ export default class DefendButton extends Button {
     staminaIcon: Phaser.GameObjects.Image
 
     constructor(scene: FirstBattle, x: number, y: number, defend: Action) {
-        super(scene, x, y, 440, 103, ``, 0xE6E6E6, 0x003EF8, 10, '70px', () => {
+        super(scene, x, y, 440, 103, ``, '#000000', 0xE6E6E6, 0x003EF8, 10, '70px', () => {
             if (scene.player && scene.player.currentStamina >= defend.stamina) {
                 scene.blockAnimation?.startBlockAnimation()
                 scene.time.delayedCall(400, () => {

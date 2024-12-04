@@ -13,7 +13,7 @@ export default class SkillButton extends Button {
                 scene.time.delayedCall(475, () => {
                     scene.player?.changeStamina(-skill.stamina)
                     scene.time.delayedCall(450, () => {
-                        scene.enemy?.takeDamage(skill.value)
+                        this.inflictStatusCondition(scene, skill)
                     })
                 })
             }
@@ -58,6 +58,15 @@ export default class SkillButton extends Button {
             skill.action === 'Poison' ? this.elementIcon.setScale(0.175) : this.elementIcon.setScale(0.1475)
             this.staminaIcon.setScale(0.22)
         })
+    }
+
+    inflictStatusCondition(scene: FirstBattle, skill: Action) {
+        if (scene.enemy && skill.action === 'Fire') scene.enemy.burn += skill.value
+        else if (scene.enemy && skill.action === 'Frost') scene.enemy.frost += skill.value
+        else if (scene.enemy && skill.action === 'Poison') scene.enemy.poison += skill.value
+        else if (scene.enemy && skill.action === 'Shock') scene.enemy.shock += skill.value
+
+        scene.enemy?.healthBar.updateHealth(scene, scene.enemy, scene.enemy.currentHealth)
     }
 }
 

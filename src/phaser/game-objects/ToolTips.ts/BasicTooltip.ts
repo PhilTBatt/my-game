@@ -11,7 +11,7 @@ export default class Tooltip extends Phaser.GameObjects.Container {
         
         this.background = scene.add.graphics()
         this.background.fillStyle(0x333333, 8)
-        this.background.lineStyle(3, colour)
+        this.background.lineStyle(4, colour)
         this.background.fillRoundedRect(0, 0, width, height, 10)
         this.background.strokeRoundedRect(0, 0, width, height, 10)
         
@@ -19,7 +19,7 @@ export default class Tooltip extends Phaser.GameObjects.Container {
         titleBox.lineStyle(1, 0xFFFFFF, 0.5)
         titleBox.strokeRoundedRect(0, 0, width, 28, 10)
         
-        this.title = scene.add.text(8, 3, titleText, {fontSize: "20px", color: `#${colour}`, fontFamily: "Arial",  wordWrap: {width: width - 20}})
+        this.title = scene.add.text(8, 3, titleText, {fontSize: "20px", color: `#${colour.toString(16)}`, fontFamily: "Arial",  wordWrap: {width: width - 20}})
 
         this.icon = scene.add.image(this.title.width + 25, 14, iconName).setScale(0.08).setOrigin(0.5)
 

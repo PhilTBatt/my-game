@@ -1,6 +1,5 @@
 import FirstBattle from "../../scenes/FirstBattle"
 import Character from "../characters/DefaultCharacter"
-import Player from "../characters/Player"
 import FireTooltip from "../ToolTips.ts/FireTooltip"
 import FrostTooltip from "../ToolTips.ts/FrostTooltip"
 import PoisonTooltip from "../ToolTips.ts/PoisonTooltip"
@@ -12,9 +11,13 @@ export default class HealthBar extends Phaser.GameObjects.Container {
     healthBar: Phaser.GameObjects.Graphics
     healthText: Phaser.GameObjects.Text
     burnIcon: FireTooltip | undefined
+    burnAmount:  Phaser.GameObjects.Text | undefined
     frostIcon: FrostTooltip | undefined
+    frostAmount:  Phaser.GameObjects.Text | undefined
     poisonIcon: PoisonTooltip | undefined
+    poisonAmount:  Phaser.GameObjects.Text | undefined
     shockIcon: ShockTooltip | undefined
+    shockAmount:  Phaser.GameObjects.Text | undefined
 
     constructor(scene: FirstBattle, maxHealth: number, currentHealth: number) {
         super(scene, 0, 0)
@@ -57,11 +60,72 @@ export default class HealthBar extends Phaser.GameObjects.Container {
         this.poisonIcon?.destroy()
         this.shockIcon?.destroy()
 
-        const x = character instanceof Player ? 400 : 600
+        this.updateStatusIcons(scene, character)
+    }
 
-        if (scene.player && scene.player.burn > 0) this.burnIcon = new PoisonTooltip(scene, x, 45, 400, 45)
-        if (scene.player && scene.player.frost > 0) this.frostIcon = new FireTooltip(scene, x, 45, 400, 45)
-        if (scene.player && scene.player.poison > 0) this.poisonIcon = new FrostTooltip(scene, x, 45, 400, 45)
-        if (scene.player && scene.player.shock > 0) this.shockIcon = new ShockTooltip(scene, x, 45, 400, 45)
+    updateStatusIcons(scene: FirstBattle, character: Character) {
+        this.burnIcon?.destroy()
+        this.frostIcon?.destroy()
+        this.poisonIcon?.destroy()
+        this.shockIcon?.destroy()
+        this.burnAmount?.destroy()
+        this.frostAmount?.destroy()
+        this.poisonAmount?.destroy()
+        this.shockAmount?.destroy()
+    
+        let iconY = 45
+
+        if ('coinAmount' in character) {
+            if (character.burn > 0) {
+                this.burnIcon = new FireTooltip(scene, 205, iconY, 400, 34 + iconY)
+                this.burnAmount = scene.add.text(170, iconY, `${character.burn}`, {fontSize: '25px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.burnAmount.setOrigin(0.5)
+                iconY += 60
+            }
+            if (character.frost > 0) {
+                this.frostIcon = new FrostTooltip(scene, 205, iconY, 400, 34 + iconY )
+                this.frostAmount = scene.add.text(940, iconY, `${character.frost}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.frostAmount.setOrigin(0.5)
+                iconY += 60
+            }
+            if (character.poison > 0) {
+                this.poisonIcon = new PoisonTooltip(scene, 205, iconY, 400, 34 + iconY)
+                this.poisonAmount = scene.add.text(940, iconY, `${character.poison}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.poisonAmount.setOrigin(0.5)
+                iconY += 60
+            }
+            if (character.shock > 0) {
+                this.shockIcon = new ShockTooltip(scene, 205, iconY, 400, 34 + iconY)
+                this.shockAmount = scene.add.text(940, iconY, `${character.shock}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.shockAmount.setOrigin(0.5)
+                iconY += 60
+            }
+        } else {
+            if (character.burn > 0) {
+                this.burnIcon = new FireTooltip(scene, 895, iconY, 850, 34 + iconY)
+                this.burnAmount = scene.add.text(940, iconY, `${character.burn}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.burnAmount.setOrigin(0.5)
+                iconY += 60
+            }
+            if (character.frost > 0) {
+                this.frostIcon = new FrostTooltip(scene, 895, iconY, 850, 34 + iconY)
+                this.frostAmount = scene.add.text(940, iconY, `${character.frost}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.frostAmount.setOrigin(0.5)
+                iconY += 60
+            }
+            if (character.poison > 0) {
+                this.poisonIcon = new PoisonTooltip(scene, 895, iconY, 850, 34 + iconY)
+                this.poisonAmount = scene.add.text(940, iconY, `${character.poison}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.poisonAmount.setOrigin(0.5)
+                iconY += 60
+            }
+            if (character.shock > 0) {
+                this.shockIcon = new ShockTooltip(scene, 895, iconY, 850, 34 + iconY)
+                this.shockAmount = scene.add.text(940, iconY, `${character.shock}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.shockAmount.setOrigin(0.5)
+                iconY += 60
+            }
+        }
+        
     }
 }

@@ -16,7 +16,9 @@ export default class FrostTooltip extends Phaser.GameObjects.Container {
         this.icon.on('pointerover', () => {
             const text = 'End of turn:\nLose X hp\nLose 1 stack'
             this.tooltip = new Tooltip(scene, tooltipX, tooltipY, 115, 90, 'Frost', text, 'frost-icon', 0xADD8E6)
-            this.add(this.tooltip)
+            this.tooltip.setDepth(3)
+            this.tooltip.icon?.setScale(0.13)
+            scene.add.existing(this)
         })
                 
         this.icon.on('pointerout', () => this.tooltip?.destroy())

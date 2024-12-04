@@ -9,6 +9,7 @@ export default class ShockTooltip extends Phaser.GameObjects.Container {
 
         this.icon = scene.add.image(iconX, iconY, 'shock-icon').setScale(0.3).setOrigin(0.5)
         this.icon.setInteractive()
+        this.icon?.setScale(0.18)
         this.add(this.icon)
 
         scene.add.existing(this)
@@ -16,7 +17,9 @@ export default class ShockTooltip extends Phaser.GameObjects.Container {
         this.icon.on('pointerover', () => {
             const text = 'End of turn:\nLose X hp\nLose 1 stack'
             this.tooltip = new Tooltip(scene, tooltipX, tooltipY, 115, 90, 'Shock', text, 'shock-icon', 0xFFFF00)
-            this.add(this.tooltip)
+            this.tooltip.setDepth(3)
+            this.tooltip.icon?.setScale(0.07)
+            scene.add.existing(this)
         })
                 
         this.icon.on('pointerout', () => this.tooltip?.destroy())

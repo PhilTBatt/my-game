@@ -16,7 +16,8 @@ export default class PoisonTooltip extends Phaser.GameObjects.Container {
         this.icon.on('pointerover', () => {
             const text = 'End of turn:\nLose X hp\nLose 1 stack'
             this.tooltip = new Tooltip(scene, tooltipX, tooltipY, 115, 90, 'Poison', text, 'poison-icon', 0x800080)
-            this.add(this.tooltip)
+            this.tooltip.setDepth(3)
+            scene.add.existing(this)
         })
                 
         this.icon.on('pointerout', () => this.tooltip?.destroy())

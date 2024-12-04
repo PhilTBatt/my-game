@@ -2,11 +2,15 @@ import Phaser from "phaser";
 import Button from "../game-objects/buttons/Button";
 
 class FirstScreen extends Phaser.Scene {
+    playButton: Button | undefined = undefined
+    loadButton: Button | undefined = undefined
+
     constructor() {
         super('IntroScreen')
     }
 
     preload() {
+        this.load.image('save-icon', '../../public/assets/icons/save-icon.png')
     }
 
     create() {
@@ -30,7 +34,17 @@ class FirstScreen extends Phaser.Scene {
             wordWrap: {width: 550}
         }).setOrigin(0.5, 0.5)
 
-        const playButton = new Button(this, 500, 240, 300, 150, "Play!", 0xFCA400, 0x000000, 10, '70px', () => this.scene.start('FirstBattle'))
+        this.playButton = new Button(this, 500, 240, 300, 150, "Play!", 0xFCA400, 0x000000, 10, '70px', () => this.scene.start('FirstBattle'))
+        this.add.existing(this.playButton)
+
+        this.loadButton = new Button(this, 500, 547, 200, 56, "Load Game", 0x929292, 0x000000, 8, '30px', () => this.loadGameState())
+        this.add.existing(this.loadButton)
+
+        const saveIcon1 = this.add.image(360, 547, 'save-icon').setScale(0.05).setOrigin(0.5)
+        this.add.existing(saveIcon1)
+
+        const saveIcon2 = this.add.image(640, 547, 'save-icon').setScale(0.05).setOrigin(0.5)
+        this.add.existing(saveIcon2)
     }
 
     update() {

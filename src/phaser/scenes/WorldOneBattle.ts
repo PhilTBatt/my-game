@@ -13,6 +13,7 @@ class WorldOneBattle extends FirstBattle {
     create() {
         super.create()
         this.loadGameState()
+        this.saveGameState()
 
         this.enemy = new PurpleCircle(this)
     }

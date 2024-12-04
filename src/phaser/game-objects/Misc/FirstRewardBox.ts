@@ -76,6 +76,13 @@ export default class FirstRewardBox extends Phaser.GameObjects.Container {
 
             scene.time.delayedCall(250, () => {
                 this.setVisible(false)
+                this.rewardBox.setVisible(false)
+                this.title?.setVisible(false)
+                this.reward1?.setVisible(false)
+                this.reward2?.setVisible(false)
+                this.reward1InteractiveBox.setVisible(false)
+                this.reward2InteractiveBox.setVisible(false)
+
                 scene.showNextDestinations()
             })
         })

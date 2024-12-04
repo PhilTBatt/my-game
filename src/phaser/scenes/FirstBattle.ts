@@ -11,7 +11,7 @@ import SavingIcon from "../game-objects/animations/SavingIcon";
 import AttackAnimation from "../game-objects/animations/AttackAnimation";
 import BlockAnimation from "../game-objects/animations/BlockAnimation";
 import FirstRewardBox from "../game-objects/Misc/FirstRewardBox";
-import NextDestinationBox from "../game-objects/Misc/NextDestinationBox";
+import NextDestinationBox from "../game-objects/Misc/FirstNextDestinationBox";
 import SkillAnimation from "../game-objects/animations/SkillAnimation";
 import TurnCount from "../game-objects/Misc/TurnCountBox";
 import CoinCount from "../game-objects/Misc/CoinCount";
@@ -79,7 +79,7 @@ class FirstBattle extends Phaser.Scene {
         
         this.endTurnButton = new Button(this, 930, 292, 110, 45, "End Turn", '#000000', 0xFCA400, 0x000000, 5, '20px', () => this.time.delayedCall(300, () => this.endTurn()))
         
-        this.resetButton = new Button(this, 42, 21, 70, 30, "Reset", '#000000', 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
+        this.resetButton = new Button(this, 42, 21, 70, 30, "Home", '#000000', 0xF80000, 0x000000, 5, '15px', () => this.scene.start('IntroScreen'))
         
         this.savingIcon = new SavingIcon(this)
 

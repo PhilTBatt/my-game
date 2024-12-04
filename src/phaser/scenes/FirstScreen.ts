@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import Button from "../game-objects/buttons/Button";
+import PoisonTooltip from "../game-objects/ToolTips.ts/PoisonTooltip";
 
 class FirstScreen extends Phaser.Scene {
     playButton: Button | undefined = undefined
@@ -10,6 +11,7 @@ class FirstScreen extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('poison-icon', '../../public/assets/icons/poison-icon.png')
         this.load.image('save-icon', '../../public/assets/icons/save-icon.png')
     }
 
@@ -45,6 +47,8 @@ class FirstScreen extends Phaser.Scene {
 
         const saveIcon2 = this.add.image(640, 547, 'save-icon').setScale(0.05).setOrigin(0.5)
         this.add.existing(saveIcon2)
+
+        const test = new PoisonTooltip(this, 500, 300, 500, 300)
     }
 
     update() {

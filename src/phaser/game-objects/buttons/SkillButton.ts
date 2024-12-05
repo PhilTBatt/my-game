@@ -1,9 +1,13 @@
 import FirstBattle from "../../scenes/FirstBattle";
 import { Action } from "../../types";
+import FireTooltip from "../ToolTips.ts/FireTooltip";
+import FrostTooltip from "../ToolTips.ts/FrostTooltip";
+import PoisonTooltip from "../ToolTips.ts/PoisonTooltip";
+import ShockTooltip from "../ToolTips.ts/ShockTooltip";
 import Button from "./Button";
 
 export default class SkillButton extends Button {
-    elementIcon: Phaser.GameObjects.Image
+    elementIcon: FireTooltip | FrostTooltip | PoisonTooltip | ShockTooltip
     staminaIcon: Phaser.GameObjects.Image
 
     constructor(scene: FirstBattle, x: number, y: number, skill: Action) {
@@ -25,28 +29,34 @@ export default class SkillButton extends Button {
         const valueText = scene.add.text(nameText.width / 2 - 75, 0, `${skill.value}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
 
-        if (skill.action === 'Fire') this.elementIcon = scene.add.image(nameText.width / 2 - 22, -1, `fire-icon`).setScale(0.275)
-        else if (skill.action === 'Frost') this.elementIcon = scene.add.image(nameText.width / 2 - 22, -1, `frost-icon`).setScale(0.275)
-        else if (skill.action === 'Poison') this.elementIcon = scene.add.image(nameText.width / 2 - 22, 0, `poison-icon`).setScale(0.175)
-        else this.elementIcon = scene.add.image(nameText.width / 2 - 22, -1, `shock-icon`).setScale(0.1475)
+        if (skill.action === 'Fire') {
+            this.elementIcon = new FireTooltip(scene, nameText.width / 2 - 22, 0, 0, 0)
+            this.elementIcon.icon?.setScale(0.275)
+
+        } else if (skill.action === 'Frost') {
+            this.elementIcon = new FrostTooltip(scene, nameText.width / 2 - 22, 0, 0, 0)
+            this.elementIcon.icon?.setScale(0.275)
+        } else if (skill.action === 'Poison') {
+            this.elementIcon = new PoisonTooltip(scene, nameText.width / 2 - 22, 0, 0, 0)
+            this.elementIcon.icon?.setScale(0.175)
+        } else {
+            this.elementIcon = new ShockTooltip(scene, nameText.width / 2 - 22, 0, 0, 0)
+            this.elementIcon.icon?.setScale(0.1475)
+        }
         
 
         const staminaText = scene.add.text(nameText.width / 2 + 40, 0, `${skill.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)
         this.staminaIcon = scene.add.image(nameText.width / 2 + 93, -2, 'stamina-icon').setScale(0.22)
 
-        this.add(nameText)
-        this.add(this.elementIcon)
-        this.add(valueText)
-        this.add(this.staminaIcon)
-        this.add(staminaText)
+        this.add([nameText, this.elementIcon, valueText, this.staminaIcon, staminaText])
 
         this.on('pointerover', () => {
             nameText.setScale(1.1)
             valueText.setScale(1.15)
             staminaText.setScale(1.15)
-            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.setScale(0.325) : 
-                skill.action === 'Poison' ? this.elementIcon.setScale(0.2) : this.elementIcon.setScale(0.175)
+            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.icon?.setScale(0.325) : 
+                skill.action === 'Poison' ? this.elementIcon.icon?.setScale(0.2) : this.elementIcon.icon?.setScale(0.175)
             this.staminaIcon.setScale(0.26)
         })
             
@@ -54,8 +64,8 @@ export default class SkillButton extends Button {
             nameText.setScale(1)
             valueText.setScale(1)
             staminaText.setScale(1)
-            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.setScale(0.275) : 
-            skill.action === 'Poison' ? this.elementIcon.setScale(0.175) : this.elementIcon.setScale(0.1475)
+            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.icon?.setScale(0.275) : 
+            skill.action === 'Poison' ? this.elementIcon.icon?.setScale(0.175) : this.elementIcon.icon?.setScale(0.1475)
             this.staminaIcon.setScale(0.22)
         })
     }

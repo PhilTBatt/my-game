@@ -10,7 +10,7 @@ export default class Player extends Character {
     staminaBar: StaminaBar
     attacks: [Action, Action?, Action?] = [{name: 'Strike', action: 'Attack', value: 8, stamina: 3}]
     defends: [Action, Action?, Action?] = [{name: 'Block', action: 'Block', value: 5, stamina: 2}]
-    skills: [Action?, Action?, Action?] | undefined = [{name: 'Frost', action: 'Frost', value: 3, stamina: 2}, {name: 'Burn', action: 'Fire', value: 3, stamina: 2}, {name: 'Shock', action: 'Shock', value: 3, stamina: 2}]
+    skills: [Action?, Action?, Action?] | undefined = [{name: 'Poison', action: 'Poison', value: 3, stamina: 2}, {name: 'Burn', action: 'Fire', value: 3, stamina: 2}, {name: 'Shock', action: 'Shock', value: 3, stamina: 2}]
     coinAmount: number = 0
 
     constructor(scene: FirstBattle, maxHealth: number, maxStamina: number, currentHealth: number = maxHealth) {

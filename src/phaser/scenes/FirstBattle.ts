@@ -18,27 +18,27 @@ import CoinCount from "../game-objects/Misc/CoinCount";
 
 class FirstBattle extends Phaser.Scene {
     key: string | undefined = undefined
-    buttonPanel: DefaultButtonPanel | undefined = undefined
-    attackButtonPanel: AttackButtonPanel | undefined = undefined
-    defendButtonPanel: DefendButtonPanel | undefined = undefined
-    skillButtonPanel: SkillButtonPanel | undefined = undefined
-    statsButtonPanel: StatsButtonPanel | undefined = undefined
-    player: Player | undefined = undefined
-    enemy: Enemy | undefined = undefined
-    endTurnButton: Button | undefined = undefined
-    resetButton: Button | undefined = undefined
+    buttonPanel: DefaultButtonPanel | undefined
+    attackButtonPanel: AttackButtonPanel | undefined
+    defendButtonPanel: DefendButtonPanel | undefined
+    skillButtonPanel: SkillButtonPanel | undefined
+    statsButtonPanel: StatsButtonPanel | undefined
+    player: Player | undefined
+    enemy: Enemy | undefined
+    endTurnButton: Button | undefined 
+    resetButton: Button | undefined
     turnCount: number = 1
-    turnCountBox: TurnCount  | undefined = undefined
-    savingIcon: SavingIcon | undefined = undefined
-    attackAnimation: AttackAnimation | undefined = undefined
-    blockAnimation: BlockAnimation | undefined = undefined
-    elementAnimation: SkillAnimation | undefined = undefined
-    enemyAttackAnimation: AttackAnimation | undefined = undefined
-    enemyBlockAnimation: BlockAnimation | undefined = undefined
-    enemyElementAnimation: SkillAnimation | undefined = undefined
-    coinIcon: CoinCount | undefined = undefined
-    rewardBox: FirstRewardBox  | undefined = undefined
-    nextDestinationBox: NextDestinationBox  | undefined = undefined
+    turnCountBox: TurnCount  | undefined
+    savingIcon: SavingIcon | undefined
+    attackAnimation: AttackAnimation | undefined
+    blockAnimation: BlockAnimation | undefined
+    elementAnimation: SkillAnimation | undefined 
+    enemyAttackAnimation: AttackAnimation | undefined
+    enemyBlockAnimation: BlockAnimation | undefined
+    enemyElementAnimation: SkillAnimation | undefined
+    coinIcon: CoinCount | undefined
+    rewardBox: FirstRewardBox  | undefined
+    nextDestinationBox: NextDestinationBox  | undefined
     hasBattleEnded: boolean = false
     
     constructor(key: string = 'FirstBattle') {

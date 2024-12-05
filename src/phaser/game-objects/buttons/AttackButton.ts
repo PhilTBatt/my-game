@@ -1,9 +1,10 @@
 import FirstBattle from "../../scenes/FirstBattle";
 import { Action } from "../../types";
+import AttackTooltip from "../tooltips/AttackTooltip";
 import Button from "./Button";
 
 export default class AttackButton extends Button {
-    damageIcon: Phaser.GameObjects.Image
+    damageIcon: AttackTooltip
     staminaIcon: Phaser.GameObjects.Image
 
     constructor(scene: FirstBattle, x: number, y: number, attack: Action) {
@@ -24,19 +25,16 @@ export default class AttackButton extends Button {
         
         const valueText = scene.add.text(nameText.width / 2 - 78, 0, `${attack.value}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
-        this.damageIcon = scene.add.image(nameText.width / 2 - 23, -2, 'damage-icon').setScale(0.26)
-
+        this.damageIcon = new AttackTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
+        this.damageIcon.setDepth(2)
+        this.damageIcon.setVisible(false)
 
         const staminaText = scene.add.text(nameText.width / 2 + 43, 0, `${attack.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)
         this.staminaIcon = scene.add.image(nameText.width / 2 + 95, -2, 'stamina-icon').setScale(0.22)
 
-
-        this.add(nameText)
-        this.add(this.damageIcon)
-        this.add(valueText)
-        this.add(this.staminaIcon)
-        this.add(staminaText)
+        this.add([nameText, valueText, this.staminaIcon, staminaText])
+        scene.add.existing(this.damageIcon)
 
         this.on('pointerover', () => {
             nameText.setScale(1.1)

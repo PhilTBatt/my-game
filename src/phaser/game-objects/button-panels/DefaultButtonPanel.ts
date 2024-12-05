@@ -13,12 +13,18 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
         this.attacksButton = new Button(scene, 257, 398, 440, 103, 'Attacks', '#000000', 0xE6E6E6, 0xF80000, 10, '80px',  () => {
             this.setVisible(false)
             scene.attackButtonPanel?.setVisible(true)
+            scene.attackButtonPanel?.attack1?.damageIcon.setVisible(true)
+            scene.attackButtonPanel?.attack2?.damageIcon.setVisible(true)
+            scene.attackButtonPanel?.attack3?.damageIcon.setVisible(true)
         })
         this.add(this.attacksButton)
 
         this.defendsButton = new Button(scene, 743, 398, 440, 103, 'Defends', '#000000', 0xE6E6E6, 0x003EF8, 10, '80px', () => {
             this.setVisible(false)
             scene.defendButtonPanel?.setVisible(true)
+            scene.defendButtonPanel?.defend1?.blockIcon.setVisible(true)
+            scene.defendButtonPanel?.defend2?.blockIcon.setVisible(true)
+            scene.defendButtonPanel?.defend3?.blockIcon.setVisible(true)
         })
         this.add(this.defendsButton)
 

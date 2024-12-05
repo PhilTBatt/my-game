@@ -1,9 +1,9 @@
 import FirstBattle from "../../scenes/FirstBattle";
 import { Action } from "../../types";
-import FireTooltip from "../ToolTips.ts/FireTooltip";
-import FrostTooltip from "../ToolTips.ts/FrostTooltip";
-import PoisonTooltip from "../ToolTips.ts/PoisonTooltip";
-import ShockTooltip from "../ToolTips.ts/ShockTooltip";
+import FireTooltip from "../tooltips/FireTooltip";
+import FrostTooltip from "../tooltips/FrostTooltip";
+import PoisonTooltip from "../tooltips/PoisonTooltip";
+import ShockTooltip from "../tooltips/ShockTooltip";
 import Button from "./Button";
 
 export default class SkillButton extends Button {

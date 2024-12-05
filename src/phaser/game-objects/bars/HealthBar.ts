@@ -1,9 +1,9 @@
 import FirstBattle from "../../scenes/FirstBattle"
 import Character from "../characters/DefaultCharacter"
-import FireTooltip from "../ToolTips.ts/FireTooltip"
-import FrostTooltip from "../ToolTips.ts/FrostTooltip"
-import PoisonTooltip from "../ToolTips.ts/PoisonTooltip"
-import ShockTooltip from "../ToolTips.ts/ShockTooltip"
+import FireTooltip from "../tooltips/FireTooltip"
+import FrostTooltip from "../tooltips/FrostTooltip"
+import PoisonTooltip from "../tooltips/PoisonTooltip"
+import ShockTooltip from "../tooltips/ShockTooltip"
 
 export default class HealthBar extends Phaser.GameObjects.Container {
     maxHealth: number

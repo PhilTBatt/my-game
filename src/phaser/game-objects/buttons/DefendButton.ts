@@ -1,9 +1,10 @@
 import FirstBattle from "../../scenes/FirstBattle";
 import { Action } from "../../types";
+import BlockTooltip from "../tooltips/BlockTooltips";
 import Button from "./Button";
 
 export default class DefendButton extends Button {
-    blockIcon: Phaser.GameObjects.Image 
+    blockIcon: BlockTooltip
     staminaIcon: Phaser.GameObjects.Image
 
     constructor(scene: FirstBattle, x: number, y: number, defend: Action) {
@@ -24,25 +25,22 @@ export default class DefendButton extends Button {
 
         const valueText = scene.add.text(nameText.width / 2 - 78, 0, `${defend.value}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
-        this.blockIcon = scene.add.image(nameText.width / 2 - 23, 0, 'block-icon').setScale(0.145)
-
+        this.blockIcon = new BlockTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
+        this.blockIcon.setDepth(2).setVisible(false)
+        this.blockIcon.icon?.setScale(0.16)
 
         const staminaText = scene.add.text(nameText.width / 2 + 43, 0, `${defend.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)
         this.staminaIcon = scene.add.image(nameText.width / 2 + 95, -2, 'stamina-icon').setScale(0.22)
 
-
-        this.add(nameText)
-        this.add(this.blockIcon)
-        this.add(valueText)
-        this.add(this.staminaIcon)
-        this.add(staminaText)
+        this.add([nameText, valueText, this.staminaIcon, staminaText])
+        scene.add.existing(this.blockIcon)
 
         this.on('pointerover', () => {
             nameText.setScale(1.1)
             valueText.setScale(1.15)
             staminaText.setScale(1.15)
-            this.blockIcon.setScale(0.18)
+            this.blockIcon.setScale(0.2)
             this.staminaIcon.setScale(0.26)
           })
             
@@ -50,7 +48,7 @@ export default class DefendButton extends Button {
             nameText.setScale(1)
             valueText.setScale(1)
             staminaText.setScale(1)
-            this.blockIcon.setScale(0.14)
+            this.blockIcon.setScale(0.16)
             this.staminaIcon.setScale(0.22)
           })
     }

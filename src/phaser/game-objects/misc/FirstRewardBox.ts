@@ -75,8 +75,6 @@ export default class FirstRewardBox extends Phaser.GameObjects.Container {
 
             scene.player?.skills?.push(reward)
 
-            scene.savingIcon?.startSaveAnimation()
-
             scene.time.delayedCall(250, () => {
                 this.setVisible(false)
                 this.rewardBox.setVisible(false)

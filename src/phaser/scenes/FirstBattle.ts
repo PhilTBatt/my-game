@@ -4,17 +4,17 @@ import Player from "../game-objects/characters/Player";
 import Enemy from "../game-objects/characters/DefaultEnemy";
 import AttackButtonPanel from "../game-objects/button-panels/AttackPanel";
 import DefendButtonPanel from "../game-objects/button-panels/DefendPanel";
-import SkillButtonPanel from "../game-objects/button-panels/SkillPanel";
+import SkillButtonPanel from "../game-objects/button-panels/SkillButtonPanel";
 import StatsButtonPanel from "../game-objects/button-panels/StatsPanel";
 import Button from "../game-objects/buttons/Button";
 import SavingIcon from "../game-objects/animations/SavingIcon";
 import AttackAnimation from "../game-objects/animations/AttackAnimation";
 import BlockAnimation from "../game-objects/animations/BlockAnimation";
-import FirstRewardBox from "../game-objects/Misc/FirstRewardBox";
-import NextDestinationBox from "../game-objects/Misc/FirstNextDestinationBox";
+import FirstRewardBox from "../game-objects/misc/FirstRewardBox";
+import NextDestinationBox from "../game-objects/misc/FirstNextDestinationBox";
 import SkillAnimation from "../game-objects/animations/SkillAnimation";
-import TurnCount from "../game-objects/Misc/TurnCountBox";
-import CoinCount from "../game-objects/Misc/CoinCount";
+import TurnCount from "../game-objects/misc/TurnCountBox";
+import CoinCount from "../game-objects/misc/CoinCount";
 
 class FirstBattle extends Phaser.Scene {
     key: string | undefined = undefined

@@ -18,6 +18,7 @@ export default class FireTooltip extends Phaser.GameObjects.Container {
             this.tooltip = new Tooltip(scene, tooltipX, tooltipY, 115, 90, 'Fire', text, 'fire-icon', 0xFF0000)
             this.tooltip.setDepth(3)
             this.tooltip.icon?.setScale(0.12)
+            console.log(this.icon?.x, this.icon?.y)
             scene.add.existing(this)
         })
                 

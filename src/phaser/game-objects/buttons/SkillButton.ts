@@ -30,26 +30,27 @@ export default class SkillButton extends Button {
         valueText.setOrigin(0.5)
 
         if (skill.action === 'Fire') {
-            this.elementIcon = new FireTooltip(scene, nameText.width / 2 - 22, 0, 0, 0)
+            this.elementIcon = new FireTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
             this.elementIcon.icon?.setScale(0.275)
-
         } else if (skill.action === 'Frost') {
-            this.elementIcon = new FrostTooltip(scene, nameText.width / 2 - 22, 0, 0, 0)
+            this.elementIcon = new FrostTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
             this.elementIcon.icon?.setScale(0.275)
         } else if (skill.action === 'Poison') {
-            this.elementIcon = new PoisonTooltip(scene, nameText.width / 2 - 22, 0, 0, 0)
+            this.elementIcon = new PoisonTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
             this.elementIcon.icon?.setScale(0.175)
         } else {
-            this.elementIcon = new ShockTooltip(scene, nameText.width / 2 - 22, 0, 0, 0)
+            this.elementIcon = new ShockTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
             this.elementIcon.icon?.setScale(0.1475)
         }
-        
+        this.elementIcon.setDepth(2)
+        this.elementIcon.setVisible(false)
 
         const staminaText = scene.add.text(nameText.width / 2 + 40, 0, `${skill.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)
         this.staminaIcon = scene.add.image(nameText.width / 2 + 93, -2, 'stamina-icon').setScale(0.22)
 
-        this.add([nameText, this.elementIcon, valueText, this.staminaIcon, staminaText])
+        this.add([nameText, valueText, this.staminaIcon, staminaText])
+        scene.add.existing(this.elementIcon)
 
         this.on('pointerover', () => {
             nameText.setScale(1.1)

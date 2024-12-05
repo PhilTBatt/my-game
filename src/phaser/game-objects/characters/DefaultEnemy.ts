@@ -36,6 +36,7 @@ export default class Enemy extends Character {
     }
 
     useTurn() {
+        this.endTurn()
         this.blockAmount = 0
         this.blockBar.updateBlock(this.blockAmount)
 

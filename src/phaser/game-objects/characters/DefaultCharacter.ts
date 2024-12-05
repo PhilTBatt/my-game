@@ -50,5 +50,7 @@ export default class Character extends Phaser.GameObjects.Container {
         this.frost = Math.max(this.frost - 1, 0)
         this.poison = Math.max(this.poison - 1, 0)
         this.shock = Math.max(this.shock - 1, 0)
+
+        this.healthBar.updateHealth(this.scene, this, this.currentHealth)
     }
 }

@@ -121,6 +121,7 @@ class FirstBattle extends Phaser.Scene {
         this.endTurnButton?.disableInteractive()
         this.resetButton?.disableInteractive()
         this.enemy?.useTurn()
+        this.player?.endTurn()
         this.turnCount++
         this.turnCountBox?.animateNewTurn(this)
 
@@ -174,13 +175,16 @@ class FirstBattle extends Phaser.Scene {
         })
     }
 
-
     resetButtonPanel() {
         this.buttonPanel?.setVisible(true)
         this.attackButtonPanel?.setVisible(false)
         this.defendButtonPanel?.setVisible(false)
         this.skillButtonPanel?.setVisible(false)
         this.statsButtonPanel?.setVisible(false)
+
+        this.skillButtonPanel?.skill1?.elementIcon.setVisible(false)
+        this.skillButtonPanel?.skill2?.elementIcon.setVisible(false)
+        this.skillButtonPanel?.skill3?.elementIcon.setVisible(false)
     }
 
     showRewards() {

@@ -14,6 +14,9 @@ export default class SkillButtonPanel extends Phaser.GameObjects.Container {
         this.backButton = new BackButton(scene, 257, 527, 0x00FF00,  () => {
             this.setVisible(false)
             scene.buttonPanel?.setVisible(true)
+            scene.skillButtonPanel?.skill1?.elementIcon.setVisible(false)
+            scene.skillButtonPanel?.skill2?.elementIcon.setVisible(false)
+            scene.skillButtonPanel?.skill3?.elementIcon.setVisible(false)
         })
 
         this.add(this.backButton)

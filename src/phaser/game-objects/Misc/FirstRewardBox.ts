@@ -32,11 +32,14 @@ export default class FirstRewardBox extends Phaser.GameObjects.Container {
         
         const rewardItem1 = {action: 'Poison', name: 'Poison', value: 3, stamina: 2}
         this.reward1 = new SkillButton(scene, 500, 245, rewardItem1)
+        this.reward1.elementIcon.setVisible(true)
+        this.reward1.elementIcon.setDepth(101).setVisible(true)
         this.reward1.disableInteractive()
         scene.add.existing(this.reward1)
 
         const rewardItem2 = {action: 'Fire', name: 'Fire', value: 4, stamina: 3}
         this.reward2 = new SkillButton(scene, 500, 385, rewardItem2)
+        this.reward2.elementIcon.setDepth(101).setVisible(true)
         this.reward2.disableInteractive()
         scene.add.existing(this.reward2)
 

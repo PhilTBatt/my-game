@@ -17,7 +17,7 @@ export default class ShockTooltip extends Phaser.GameObjects.Container {
         this.icon.on('pointerover', () => {
             const text = 'End of turn:\nLose X hp\nLose 1 stack'
             this.tooltip = new Tooltip(scene, tooltipX, tooltipY, 115, 90, 'Shock', text, 'shock-icon', 0xFFFF00)
-            this.tooltip.setDepth(3)
+            this.tooltip.setDepth(102)
             this.tooltip.icon?.setScale(0.07)
             scene.add.existing(this)
         })

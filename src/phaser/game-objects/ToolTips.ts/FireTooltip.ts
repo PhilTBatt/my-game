@@ -16,9 +16,8 @@ export default class FireTooltip extends Phaser.GameObjects.Container {
         this.icon.on('pointerover', () => {
             const text = 'End of turn:\nLose X hp\nLose 1 stack'
             this.tooltip = new Tooltip(scene, tooltipX, tooltipY, 115, 90, 'Fire', text, 'fire-icon', 0xFF0000)
-            this.tooltip.setDepth(3)
+            this.tooltip.setDepth(102)
             this.tooltip.icon?.setScale(0.12)
-            console.log(this.icon?.x, this.icon?.y)
             scene.add.existing(this)
         })
                 

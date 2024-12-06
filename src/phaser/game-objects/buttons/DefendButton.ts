@@ -21,10 +21,11 @@ export default class DefendButton extends Button {
         })
 
         const nameText = scene.add.text(-114, 0, `${defend.name}:`, {fontSize: '60px', color: '#000000', fontFamily: 'Arial'})
-        nameText.setOrigin(0.5, 0.5)
+        nameText.setOrigin(0.5)
 
         const valueText = scene.add.text(nameText.width / 2 - 78, 0, `${defend.value}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
+
         this.blockIcon = new BlockTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
         this.blockIcon.setDepth(2).setVisible(false)
         this.blockIcon.icon?.setScale(0.16)
@@ -40,7 +41,7 @@ export default class DefendButton extends Button {
             nameText.setScale(1.1)
             valueText.setScale(1.15)
             staminaText.setScale(1.15)
-            this.blockIcon.setScale(0.2)
+            this.blockIcon.icon?.setScale(0.19)
             this.staminaIcon.setScale(0.26)
           })
             
@@ -48,7 +49,7 @@ export default class DefendButton extends Button {
             nameText.setScale(1)
             valueText.setScale(1)
             staminaText.setScale(1)
-            this.blockIcon.setScale(0.16)
+            this.blockIcon.icon?.setScale(0.16)
             this.staminaIcon.setScale(0.22)
           })
     }

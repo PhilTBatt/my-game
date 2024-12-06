@@ -41,7 +41,7 @@ class FirstBattle extends Phaser.Scene {
     nextDestinationBox: NextDestinationBox  | undefined
     hasBattleEnded: boolean = false
     
-    constructor(key: string = 'FirstBattle') {
+    constructor(key: string = 'FirstBattle', player: Player | undefined) {
         super(key)
         this.key = key
     }
@@ -54,7 +54,7 @@ class FirstBattle extends Phaser.Scene {
         this.load.image('frost-icon', '../../public/assets/icons/frost-icon.png')
         this.load.image('poison-icon', '../../public/assets/icons/poison-icon.png')
         this.load.image('shock-icon', '../../public/assets/icons/shock-icon.png')
-        this.load.image('save-icon', '../../public/assets/icons/save-icon.png')
+        this.load.image('save-icon', '../../public/assets/icons/floppy.png')
         this.load.image('loading-icon', '../../public/assets/icons/loading-icon.png')
         this.load.image('coin-icon', '../../public/assets/icons/coin-icon.png')
     }
@@ -139,13 +139,13 @@ class FirstBattle extends Phaser.Scene {
         }) 
     }
 
-    saveGameState() {
+    saveGameState(player: Player) {
         this.savingIcon?.loadingIcon.setDepth(100)
         this.savingIcon?.saveIcon.setDepth(100)
 
-        this.time.delayedCall(1000, () => this.savingIcon?.startSaveAnimation())
+        this.savingIcon?.startSaveAnimation()
 
-        const gameState = {key: this.key, player: this.player}
+        const gameState = {key: this.key, player: Player}
         localStorage.setItem('gameState', JSON.stringify(gameState))
     }
 

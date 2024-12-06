@@ -14,8 +14,8 @@ export default class BlockTooltip extends Phaser.GameObjects.Container {
         scene.add.existing(this)
 
         this.icon.on('pointerover', () => {
-            const text = 'Blocks incoming damage.\nResets at the beginning of turn\n'
-            this.tooltip = new Tooltip(scene, tooltipX, tooltipY, 140, 120, 'Block', text, 'block-icon', 0x003EF8)
+            const text = 'Blocks damage\nResets at the beginning of turn\n'
+            this.tooltip = new Tooltip(scene, tooltipX - 10, tooltipY - 20, 140, 105, 'Block', text, 'block-icon', 0x003EF8)
             this.tooltip.setDepth(102)
             this.tooltip.icon?.setScale(0.07)
             scene.add.existing(this)

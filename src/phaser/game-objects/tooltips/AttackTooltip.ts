@@ -7,7 +7,7 @@ export default class AttackTooltip extends Phaser.GameObjects.Container {
     constructor(scene: Phaser.Scene, iconX: number, iconY: number, tooltipX: number, tooltipY: number) {
         super(scene, 0, 0)
 
-        this.icon = scene.add.image(iconX, iconY, 'attack-icon').setScale(0.3).setOrigin(0.5)
+        this.icon = scene.add.image(iconX, iconY, 'damage-icon').setScale(0.26).setOrigin(0.5)
         this.icon.setInteractive()
         this.add(this.icon)
 

@@ -25,7 +25,7 @@ export default class AttackButton extends Button {
         
         const valueText = scene.add.text(nameText.width / 2 - 78, 0, `${attack.value}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
-        this.damageIcon = new AttackTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
+        this.damageIcon = new AttackTooltip(scene, nameText.width / 2 + x - 24, y - 2, nameText.width / 2 + x - 85, y - 135)
         this.damageIcon.setDepth(2)
         this.damageIcon.setVisible(false)
 
@@ -40,7 +40,7 @@ export default class AttackButton extends Button {
             nameText.setScale(1.1)
             valueText.setScale(1.15)
             staminaText.setScale(1.15)
-            this.damageIcon.setScale(0.3)
+            this.damageIcon.icon?.setScale(0.3)
             this.staminaIcon.setScale(0.26)
           })
             
@@ -48,7 +48,7 @@ export default class AttackButton extends Button {
             nameText.setScale(1)
             valueText.setScale(1)
             staminaText.setScale(1)
-            this.damageIcon.setScale(0.26)
+            this.damageIcon.icon?.setScale(0.26)
             this.staminaIcon.setScale(0.22)
           })
     }

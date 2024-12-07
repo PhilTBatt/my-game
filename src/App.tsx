@@ -10,9 +10,6 @@ function App() {
 
   return (
     <>
-      <h1>
-        Phil's Game
-      </h1>
       <div id="game-container"/>
     </>
   )

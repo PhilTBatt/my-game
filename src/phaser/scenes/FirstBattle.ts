@@ -15,6 +15,7 @@ import NextDestinationBox from "../game-objects/misc/FirstNextDestinationBox";
 import SkillAnimation from "../game-objects/animations/SkillAnimation";
 import TurnCount from "../game-objects/misc/TurnCountBox";
 import CoinCount from "../game-objects/misc/CoinCount";
+import PlayerState from "../tyes.ts"
 
 class FirstBattle extends Phaser.Scene {
     key: string | undefined = undefined
@@ -41,7 +42,7 @@ class FirstBattle extends Phaser.Scene {
     nextDestinationBox: NextDestinationBox  | undefined
     hasBattleEnded: boolean = false
     
-    constructor(key: string = 'FirstBattle', player: Player | undefined) {
+    constructor(key: string = 'FirstBattle') {
         super(key)
         this.key = key
     }
@@ -66,9 +67,7 @@ class FirstBattle extends Phaser.Scene {
 
         this.player = new Player(this, 75, 6)
         
-        if (this.key === 'FirstBattle') {
-            this.enemy = new Enemy(this, 5)
-        }
+        if (this.key === 'FirstBattle') this.enemy = new Enemy(this, 50)
         
         this.buttonPanel = new DefaultButtonPanel(this)
         
@@ -139,21 +138,46 @@ class FirstBattle extends Phaser.Scene {
         }) 
     }
 
-    saveGameState(player: Player) {
+    saveGameState() {
         this.savingIcon?.loadingIcon.setDepth(100)
         this.savingIcon?.saveIcon.setDepth(100)
 
         this.savingIcon?.startSaveAnimation()
 
-        const gameState = {key: this.key, player: Player}
+        const playerState: PlayerState = {
+            maxHealth: this.player?.maxHealth,
+            currentHealth: this.player?.currentHealth,
+            sprite: this.player?.sprite,
+            maxStamina: this.player?.maxStamina,
+            attacks: this.player?.attacks,
+            defends: this.player?.defends,
+            skills: this.player?.skills,
+            coinAmount: this.player?.coinAmount
+        }
+
+        const gameState = {key: this.key, playerState}
+        console.log(gameState, gameState.playerState)
         localStorage.setItem('gameState', JSON.stringify(gameState))
     }
 
     loadGameState() {
         const savedState = localStorage.getItem('gameState')
+
         if (savedState) {
             const gameState = JSON.parse(savedState)
-            this.player = gameState.player
+            console.log(gameState, gameState.playerState)
+            this.player.maxHealth = gameState.playerState.maxHealth,
+            this.player.currentHealth = gameState.playerState.currentHealth,
+            this.player.sprite = gameState.playerState.sprite,
+            this.player.maxStamina = gameState.playerState.maxStamina,
+            this.player.attacks = gameState.playerState.attacks,
+            this.player.defends = gameState.playerState.defends,
+            this.player.skills = gameState.playerState.skills,
+            this.player.coinAmount = gameState.playerState.coinAmount
+
+            this.player.heal(0)
+            this.player.changeStamina(0)
+            this.coinIcon.animateCoinGain(this.player, gameState.playerState.coinAmount)
         }
     }
 
@@ -185,6 +209,14 @@ class FirstBattle extends Phaser.Scene {
         this.skillButtonPanel?.skill1?.elementIcon.setVisible(false)
         this.skillButtonPanel?.skill2?.elementIcon.setVisible(false)
         this.skillButtonPanel?.skill3?.elementIcon.setVisible(false)
+
+        this.defendButtonPanel?.defend1?.blockIcon.setVisible(false)
+        this.defendButtonPanel?.defend2?.blockIcon.setVisible(false)
+        this.defendButtonPanel?.defend3?.blockIcon.setVisible(false)
+
+        this.attackButtonPanel?.attack1?.damageIcon.setVisible(false)
+        this.attackButtonPanel?.attack2?.damageIcon.setVisible(false)
+        this.attackButtonPanel?.attack3?.damageIcon.setVisible(false)
     }
 
     showRewards() {

@@ -14,8 +14,8 @@ export default class AttackTooltip extends Phaser.GameObjects.Container {
         scene.add.existing(this)
 
         this.icon.on('pointerover', () => {
-            const text = 'End of turn:\nLose X hp\nLose 1 stack'
-            this.tooltip = new Tooltip(scene, tooltipX, tooltipY, 115, 90, 'Attack', text, 'damage-icon', 0xFF0000)
+            const text = 'Deals damage'
+            this.tooltip = new Tooltip(scene, tooltipX, tooltipY, 95, 70, 'Attack', text, 'damage-icon', 0xFF0000)
             this.tooltip.setDepth(102)
             this.tooltip.icon?.setScale(0.12)
             scene.add.existing(this)

@@ -70,7 +70,7 @@ class FirstBattle extends Phaser.Scene {
 
         if (this.key === 'FirstBattle') this.player = new Player(this, 75, 6)
         
-        if (this.key === 'FirstBattle') this.enemy = new Enemy(this, 40)
+        if (this.key === 'FirstBattle') this.enemy = new Enemy(this, 30)
         
         this.buttonPanel = new DefaultButtonPanel(this)
         

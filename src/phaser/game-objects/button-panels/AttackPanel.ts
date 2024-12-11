@@ -11,7 +11,7 @@ export default class AttackButtonPanel extends Phaser.GameObjects.Container {
     constructor(scene: FirstBattle) {
         super(scene, 500, 138)
         
-        this.backButton = new BackButton(scene,  -243, 260, 0xF80000,  () => {
+        this.backButton = new BackButton(scene, -243, 260, 0xF80000,  () => {
             this.setVisible(false)
             scene.buttonPanel?.setVisible(true)
             scene.attackButtonPanel?.attack1?.damageIcon.setVisible(false)

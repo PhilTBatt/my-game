@@ -80,50 +80,50 @@ export default class HealthBar extends Phaser.GameObjects.Container {
                 this.burnIcon = new FireTooltip(scene, 135, iconY, 160, iconY - 40)
                 this.burnAmount = scene.add.text(85, iconY, `${character.burn}`, {fontSize: '25px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.burnAmount.setOrigin(0.5)
-                iconY += 60
+                iconY += 70
             }
             if (character.frost > 0) {
                 this.frostIcon = new FrostTooltip(scene, 135, iconY, 160, iconY - 40)
                 this.frostAmount = scene.add.text(85, iconY, `${character.frost}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.frostAmount.setOrigin(0.5)
-                iconY += 60
+                iconY += 70
             }
             if (character.poison > 0) {
                 this.poisonIcon = new PoisonTooltip(scene, 135, iconY, 175, iconY - 40)
                 this.poisonAmount = scene.add.text(85, iconY, `${character.poison}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.poisonAmount.setOrigin(0.5)
-                iconY += 60
+                iconY += 70
             }
             if (character.shock > 0) {
                 this.shockIcon = new ShockTooltip(scene, 135, iconY, 160, iconY - 40)
                 this.shockAmount = scene.add.text(85, iconY, `${character.shock}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.shockAmount.setOrigin(0.5)
-                iconY += 60
+                iconY += 70
             }
         } else {
             if (character.burn > 0) {
-                this.burnIcon = new FireTooltip(scene, 895, iconY, 850, 34 + iconY)
-                this.burnAmount = scene.add.text(940, iconY, `${character.burn}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.burnIcon = new FireTooltip(scene, 895, iconY - 60, 850, 34 + iconY)
+                this.burnAmount = scene.add.text(940, iconY - 60, `${character.burn}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.burnAmount.setOrigin(0.5)
-                iconY += 60
+                iconY += 70
             }
             if (character.frost > 0) {
-                this.frostIcon = new FrostTooltip(scene, 895, iconY, 850, 34 + iconY)
-                this.frostAmount = scene.add.text(940, iconY, `${character.frost}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.frostIcon = new FrostTooltip(scene, 895, iconY - 60, 850, 34 + iconY)
+                this.frostAmount = scene.add.text(940, iconY - 60, `${character.frost}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.frostAmount.setOrigin(0.5)
-                iconY += 60
+                iconY += 70
             }
             if (character.poison > 0) {
-                this.poisonIcon = new PoisonTooltip(scene, 895, iconY, 850, 34 + iconY)
-                this.poisonAmount = scene.add.text(940, iconY, `${character.poison}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.poisonIcon = new PoisonTooltip(scene, 895, iconY - 60, 850, 34 + iconY)
+                this.poisonAmount = scene.add.text(940, iconY - 60, `${character.poison}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.poisonAmount.setOrigin(0.5)
-                iconY += 60
+                iconY += 70
             }
             if (character.shock > 0) {
-                this.shockIcon = new ShockTooltip(scene, 895, iconY, 850, 34 + iconY)
-                this.shockAmount = scene.add.text(940, iconY, `${character.shock}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.shockIcon = new ShockTooltip(scene, 895, iconY - 60, 850, 34 + iconY)
+                this.shockAmount = scene.add.text(940, iconY - 60, `${character.shock}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.shockAmount.setOrigin(0.5)
-                iconY += 60
+                iconY += 70
             }
         }
         

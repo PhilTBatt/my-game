@@ -9,9 +9,9 @@ export default class AttackButtonPanel extends Phaser.GameObjects.Container {
     attack3: AttackButton | undefined = undefined
     
     constructor(scene: FirstBattle) {
-        super(scene, 0, 0)
+        super(scene, 500, 138)
         
-        this.backButton = new BackButton(scene,  257, 398, 0xF80000,  () => {
+        this.backButton = new BackButton(scene,  -243, 260, 0xF80000,  () => {
             this.setVisible(false)
             scene.buttonPanel?.setVisible(true)
             scene.attackButtonPanel?.attack1?.damageIcon.setVisible(false)
@@ -24,21 +24,21 @@ export default class AttackButtonPanel extends Phaser.GameObjects.Container {
         if (scene.player?.attacks) {
             scene.player.attacks.forEach((attack, index) => {
                 if (index === 0 && attack) {
-                    this.attack1 = new AttackButton(scene, 743, 398, attack)
+                    this.attack1 = new AttackButton(scene, 243, 260, attack)
                     this.add(this.attack1)
                 }
                 if (index === 1 && attack) {
-                    this.attack2 = new AttackButton(scene, 257, 527, attack)
+                    this.attack2 = new AttackButton(scene, -243, 389, attack)
                     this.add(this.attack2)
                 }
                 if (index === 2 && attack) {
-                    this.attack3 = new AttackButton(scene, 743, 527, attack)
+                    this.attack3 = new AttackButton(scene, 243, 389, attack)
                     this.add(this.attack3)
                 }
             })
         }
 
-        this.setSize(1000, 275)
+        this.setSize(1000, 276)
         scene.add.existing(this)
         this.setVisible(false)
     }

@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import Button from "../game-objects/buttons/Button";
+import Player from "../game-objects/characters/Player";
 
 class FirstScreen extends Phaser.Scene {
     playButton: Button | undefined = undefined
@@ -52,9 +53,14 @@ class FirstScreen extends Phaser.Scene {
 
     loadGameState() {
         const savedState = localStorage.getItem('gameState')
-        if (savedState) {
+        if (!savedState) {
+            return
+        } else {
             const gameState = JSON.parse(savedState)
-            this.scene.start(`${gameState.key}`)
+            const sceneInstance = this.scene.get(gameState.key)
+            const player = Player.fromState(sceneInstance, gameState.playerState)
+
+            this.scene.start(gameState.key, {player})
         }
     }
 }

@@ -13,12 +13,12 @@ interface EnemyIntent {
 interface PlayerState {
     maxHealth: number
     currentHealth: number
-    sprite: Phaser.GameObjects.Graphics
     maxStamina: number
     attacks: [Action, Action?, Action?]
     defends: [Action, Action?, Action?]
-    skills: [Action?, Action?, Action?]
+    skills: [Action?, Action?, Action?] | undefined
     coinAmount: number
+    eventCount: number
 }
 
 export type {Action, EnemyIntent, PlayerState}

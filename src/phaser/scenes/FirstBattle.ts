@@ -15,7 +15,6 @@ import NextDestinationBox from "../game-objects/misc/FirstNextDestinationBox";
 import SkillAnimation from "../game-objects/animations/SkillAnimation";
 import TurnCount from "../game-objects/misc/TurnCountBox";
 import CoinCount from "../game-objects/misc/CoinCount";
-import PlayerState from "../tyes.ts"
 
 class FirstBattle extends Phaser.Scene {
     key: string | undefined = undefined
@@ -46,6 +45,10 @@ class FirstBattle extends Phaser.Scene {
         super(key)
         this.key = key
     }
+
+    init(data: {player: Player}) {
+        this.player = data.player
+    }
     
     preload() {
         this.load.image('damage-icon', '../../public/assets/icons/damage-icon.png')
@@ -65,9 +68,9 @@ class FirstBattle extends Phaser.Scene {
         this.add.rectangle(500, 375, 1000, 300, 0x40CF55)
         this.add.rectangle(500, 462.5, 1000, 275, 0x929292)
 
-        this.player = new Player(this, 75, 6)
+        if (this.key === 'FirstBattle') this.player = new Player(this, 75, 6)
         
-        if (this.key === 'FirstBattle') this.enemy = new Enemy(this, 50)
+        if (this.key === 'FirstBattle') this.enemy = new Enemy(this, 5)
         
         this.buttonPanel = new DefaultButtonPanel(this)
         
@@ -86,9 +89,11 @@ class FirstBattle extends Phaser.Scene {
 
         this.coinIcon = new CoinCount(this)
 
-        this.attackAnimation = new AttackAnimation(this, this.player)
-        this.blockAnimation = new BlockAnimation(this, this.player)
-        this.elementAnimation = new SkillAnimation(this, this.player)
+        if (this.player) {
+            this.attackAnimation = new AttackAnimation(this, this.player)
+            this.blockAnimation = new BlockAnimation(this, this.player)
+            this.elementAnimation = new SkillAnimation(this, this.player)
+        }
 
         if (this.enemy) {
             this.enemyAttackAnimation = new AttackAnimation(this, this.enemy)
@@ -141,43 +146,28 @@ class FirstBattle extends Phaser.Scene {
     saveGameState() {
         this.savingIcon?.loadingIcon.setDepth(100)
         this.savingIcon?.saveIcon.setDepth(100)
+        
+        this.time.delayedCall(200, () => {
+            this.savingIcon?.startSaveAnimation()
+        })
 
-        this.savingIcon?.startSaveAnimation()
+        if (this.player) {
+            const playerState = this.player.serialise()
+            const gameState = {key: this.key, playerState}
 
-        const playerState: PlayerState = {
-            maxHealth: this.player?.maxHealth,
-            currentHealth: this.player?.currentHealth,
-            sprite: this.player?.sprite,
-            maxStamina: this.player?.maxStamina,
-            attacks: this.player?.attacks,
-            defends: this.player?.defends,
-            skills: this.player?.skills,
-            coinAmount: this.player?.coinAmount
+            localStorage.setItem('gameState', JSON.stringify(gameState))
         }
-
-        const gameState = {key: this.key, playerState}
-        console.log(gameState, gameState.playerState)
-        localStorage.setItem('gameState', JSON.stringify(gameState))
     }
 
     loadGameState() {
         const savedState = localStorage.getItem('gameState')
 
-        if (savedState) {
+        if (savedState && this.player) {
             const gameState = JSON.parse(savedState)
-            console.log(gameState, gameState.playerState)
-            this.player.maxHealth = gameState.playerState.maxHealth,
-            this.player.currentHealth = gameState.playerState.currentHealth,
-            this.player.sprite = gameState.playerState.sprite,
-            this.player.maxStamina = gameState.playerState.maxStamina,
-            this.player.attacks = gameState.playerState.attacks,
-            this.player.defends = gameState.playerState.defends,
-            this.player.skills = gameState.playerState.skills,
-            this.player.coinAmount = gameState.playerState.coinAmount
+            this.player = Player.fromState(this, gameState.playerState)
 
-            this.player.heal(0)
-            this.player.changeStamina(0)
-            this.coinIcon.animateCoinGain(this.player, gameState.playerState.coinAmount)
+            this.player.healthBar.updateHealth(this, this.player, this.player.currentHealth)
+            this.coinIcon?.update(this.player, this.player.coinAmount)
         }
     }
 

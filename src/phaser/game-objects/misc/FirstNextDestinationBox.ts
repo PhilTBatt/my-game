@@ -29,9 +29,10 @@ export default class NextDestinationBox extends Phaser.GameObjects.Container {
         scene.add.existing(this.nextDestination2)
     }
 
-    changeDestination (scene: Phaser.Scene, destination: string) {
+    changeDestination (scene: FirstBattle, destination: string) {
         scene.time.delayedCall(500, () => {
-            scene.scene.start(destination)
+            if (scene.player) scene.player.eventCount++
+            scene.scene.start(destination, {player: scene.player})
         })
     }
 }

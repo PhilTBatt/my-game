@@ -15,8 +15,6 @@ export default class SkillAnimation extends Phaser.GameObjects.Container {
     }
     
     startSkillAnimation(scene: FirstBattle, skill: Action) {
-        this.elementIcon?.destroy()
-        
         if (skill.action === 'Burn') {
             this.elementIcon = scene.add.image(375, 200, 'fire-icon').setScale(0.45)
         } else if (skill.action === 'Frost') {
@@ -29,6 +27,8 @@ export default class SkillAnimation extends Phaser.GameObjects.Container {
         
         scene.add.existing(this.elementIcon)
         this.elementIcon.setAlpha(0)
+
+        console.log(this.character, this.character instanceof Player)
 
         if (this.character instanceof Player) {
             this.elementIcon.setPosition(375, 200)
@@ -44,6 +44,10 @@ export default class SkillAnimation extends Phaser.GameObjects.Container {
         
         this.scene.time.delayedCall(800, () => {
             this.scene.tweens.add({targets: this.elementIcon, alpha: 0, duration: 200, ease: 'Linear'})
+        })
+
+        this.scene.time.delayedCall(1000, () => {
+            this.elementIcon?.destroy()
         })
     }
 }

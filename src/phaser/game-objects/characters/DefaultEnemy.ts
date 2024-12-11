@@ -47,7 +47,7 @@ export default class Enemy extends Character {
             this.scene.enemyBlockAnimation?.startBlockAnimation()
             this.scene.time.delayedCall(400, () => this.block(this.intent.value))
         } else if (this.intent.action === "Poison") {
-            this.scene.elementAnimation?.startSkillAnimation(this.scene, {name: 'N/A', action: this.intent.action, value: this.intent.value, stamina: 0})
+            this.scene.enemyElementAnimation?.startSkillAnimation(this.scene, {name: 'N/A', action: this.intent.action, value: this.intent.value, stamina: 0})
             this.scene.time.delayedCall(475, () => this.scene.player?.inflictStatusCondition(this.scene, this.intent.action.toLowerCase() as 'burn' | 'frost' | 'poison' | 'shock', this.intent.value))
         }
 

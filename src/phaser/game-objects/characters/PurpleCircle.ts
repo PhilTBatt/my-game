@@ -11,7 +11,8 @@ export default class PurpleCircle extends Enemy {
         this.sprite.strokeCircle(733.33, 200, 65)
 
         this.intent = {action: "Block", value: 8}
-        this.intents = [{action: "Attack", value: 7}, {action: "Block", value: 8}]
+        this.enemyIntentBar.updateIntent(this.intent)
+        this.intents = [{action: "Attack", value: 7}, {action: "Block", value: 8}, {action: "Poison", value: 2}]
 
         scene.add.existing(this)
     }

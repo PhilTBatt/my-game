@@ -17,7 +17,7 @@ export default class SkillButton extends Button {
                 scene.time.delayedCall(475, () => {
                     scene.player?.changeStamina(-skill.stamina)
                     scene.time.delayedCall(450, () => {
-                        this.inflictStatusCondition(scene, skill)
+                        scene.enemy?.inflictStatusCondition(scene, skill.action.toLowerCase() as 'burn' | 'frost' | 'poison' | 'shock', skill.value)
                     })
                 })
             }
@@ -29,7 +29,7 @@ export default class SkillButton extends Button {
         const valueText = scene.add.text(nameText.width / 2 - 75, 0, `${skill.value}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
 
-        if (skill.action === 'Fire') {
+        if (skill.action === 'Burn') {
             this.elementIcon = new FireTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
             this.elementIcon.icon?.setScale(0.275)
         } else if (skill.action === 'Frost') {
@@ -56,7 +56,7 @@ export default class SkillButton extends Button {
             nameText.setScale(1.1)
             valueText.setScale(1.15)
             staminaText.setScale(1.15)
-            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.icon?.setScale(0.325) : 
+            skill.action === 'Burn' || skill.action === 'Frost' ? this.elementIcon.icon?.setScale(0.325) : 
                 skill.action === 'Poison' ? this.elementIcon.icon?.setScale(0.2) : this.elementIcon.icon?.setScale(0.175)
             this.staminaIcon.setScale(0.26)
         })
@@ -65,19 +65,10 @@ export default class SkillButton extends Button {
             nameText.setScale(1)
             valueText.setScale(1)
             staminaText.setScale(1)
-            skill.action === 'Fire' || skill.action === 'Frost' ? this.elementIcon.icon?.setScale(0.275) : 
+            skill.action === 'Burn' || skill.action === 'Frost' ? this.elementIcon.icon?.setScale(0.275) : 
             skill.action === 'Poison' ? this.elementIcon.icon?.setScale(0.175) : this.elementIcon.icon?.setScale(0.1475)
             this.staminaIcon.setScale(0.22)
         })
-    }
-
-    inflictStatusCondition(scene: FirstBattle, skill: Action) {
-        if (scene.enemy && skill.action === 'Fire') scene.enemy.burn += skill.value
-        else if (scene.enemy && skill.action === 'Frost') scene.enemy.frost += skill.value
-        else if (scene.enemy && skill.action === 'Poison') scene.enemy.poison += skill.value
-        else if (scene.enemy && skill.action === 'Shock') scene.enemy.shock += skill.value
-
-        scene.enemy?.healthBar.updateHealth(scene, scene.enemy, scene.enemy.currentHealth)
     }
 }
 

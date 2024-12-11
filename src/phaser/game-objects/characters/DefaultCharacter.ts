@@ -53,4 +53,9 @@ export default class Character extends Phaser.GameObjects.Container {
 
         this.healthBar.updateHealth(this.scene, this, this.currentHealth)
     }
+
+    inflictStatusCondition(scene: FirstBattle, action: 'burn' | 'frost' | 'poison' | 'shock', value: number) {
+        this[action] += value
+        this.healthBar.updateHealth(scene, this, this.currentHealth)
+    }
 }

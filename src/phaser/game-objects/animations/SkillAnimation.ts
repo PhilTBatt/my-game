@@ -17,7 +17,7 @@ export default class SkillAnimation extends Phaser.GameObjects.Container {
     startSkillAnimation(scene: FirstBattle, skill: Action) {
         this.elementIcon?.destroy()
         
-        if (skill.action === 'Fire') {
+        if (skill.action === 'Burn') {
             this.elementIcon = scene.add.image(375, 200, 'fire-icon').setScale(0.45)
         } else if (skill.action === 'Frost') {
             this.elementIcon = scene.add.image(375, 200, 'frost-icon').setScale(0.5)

@@ -73,30 +73,30 @@ export default class HealthBar extends Phaser.GameObjects.Container {
         this.poisonAmount?.destroy()
         this.shockAmount?.destroy()
     
-        let iconY = 45
+        let iconY = 95
 
         if ('coinAmount' in character) {
             if (character.burn > 0) {
-                this.burnIcon = new FireTooltip(scene, 205, iconY, 400, 34 + iconY)
-                this.burnAmount = scene.add.text(170, iconY, `${character.burn}`, {fontSize: '25px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.burnIcon = new FireTooltip(scene, 105, iconY, 160, 34 + iconY)
+                this.burnAmount = scene.add.text(60, iconY, `${character.burn}`, {fontSize: '25px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.burnAmount.setOrigin(0.5)
                 iconY += 60
             }
             if (character.frost > 0) {
-                this.frostIcon = new FrostTooltip(scene, 205, iconY, 400, 34 + iconY )
-                this.frostAmount = scene.add.text(940, iconY, `${character.frost}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.frostIcon = new FrostTooltip(scene, 105, iconY, 160, 34 + iconY )
+                this.frostAmount = scene.add.text(60, iconY, `${character.frost}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.frostAmount.setOrigin(0.5)
                 iconY += 60
             }
             if (character.poison > 0) {
-                this.poisonIcon = new PoisonTooltip(scene, 205, iconY, 400, 34 + iconY)
-                this.poisonAmount = scene.add.text(940, iconY, `${character.poison}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.poisonIcon = new PoisonTooltip(scene, 105, iconY, 160, 34 + iconY)
+                this.poisonAmount = scene.add.text(60, iconY, `${character.poison}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.poisonAmount.setOrigin(0.5)
                 iconY += 60
             }
             if (character.shock > 0) {
-                this.shockIcon = new ShockTooltip(scene, 205, iconY, 400, 34 + iconY)
-                this.shockAmount = scene.add.text(940, iconY, `${character.shock}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
+                this.shockIcon = new ShockTooltip(scene, 105, iconY, 160, 34 + iconY)
+                this.shockAmount = scene.add.text(60, iconY, `${character.shock}`, {fontSize: '35px', color: '#000', fontFamily: 'Arial', align: 'center'})
                 this.shockAmount.setOrigin(0.5)
                 iconY += 60
             }

@@ -40,14 +40,17 @@ export default class Enemy extends Character {
         this.blockAmount = 0
         this.blockBar.updateBlock(this.blockAmount)
 
-        if (this.intent.action === "Block") {
-            this.scene.enemyBlockAnimation?.startBlockAnimation()
-            this.scene.time.delayedCall(400, () => this.block(this.intent.value))
-        } else if (this.intent.action === "Attack") {
+        if (this.intent.action === "Attack") {
             this.scene.enemyAttackAnimation?.startAttackAnimation()
             this.scene.time.delayedCall(400, () => this.scene.player!.takeDamage(this.intent.value))
+        } else if (this.intent.action === "Block") {
+            this.scene.enemyBlockAnimation?.startBlockAnimation()
+            this.scene.time.delayedCall(400, () => this.block(this.intent.value))
+        } else if (this.intent.action === "Poison") {
+            this.scene.elementAnimation?.startSkillAnimation(this.scene, {name: 'N/A', action: this.intent.action, value: this.intent.value, stamina: 0})
+            this.scene.time.delayedCall(475, () => this.scene.player?.inflictStatusCondition(this.scene, this.intent.action.toLowerCase() as 'burn' | 'frost' | 'poison' | 'shock', this.intent.value))
         }
+
         this.scene.time.delayedCall(1500, () => this.randomizeIntent())
-    
     }
 }

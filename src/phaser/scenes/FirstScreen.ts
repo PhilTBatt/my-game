@@ -41,10 +41,10 @@ class FirstScreen extends Phaser.Scene {
         this.loadButton = new Button(this, 500, 547, 200, 56, "Load Game", '#FFFFFF', 0x686868, 0x000000, 6, '30px', () => this.loadGameState())
         this.add.existing(this.loadButton)
 
-        const saveIcon1 = this.add.image(360, 547, 'save-icon').setScale(0.05).setOrigin(0.5)
+        const saveIcon1 = this.add.image(360, 547, 'save-icon').setScale(0.075).setOrigin(0.5)
         this.add.existing(saveIcon1)
 
-        const saveIcon2 = this.add.image(640, 547, 'save-icon').setScale(0.05).setOrigin(0.5)
+        const saveIcon2 = this.add.image(640, 547, 'save-icon').setScale(0.075).setOrigin(0.5)
         this.add.existing(saveIcon2)
     }
 

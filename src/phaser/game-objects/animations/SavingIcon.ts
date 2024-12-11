@@ -7,7 +7,7 @@ export default class SavingIcon extends Phaser.GameObjects.Container {
     constructor(scene: FirstBattle) {
         super(scene, 0, 0)
 
-        this.saveIcon = scene.add.image(25, 340, 'save-icon').setScale(0.05).setOrigin(0.5)
+        this.saveIcon = scene.add.image(25, 340, 'save-icon').setScale(0.075).setOrigin(0.5)
         scene.add.existing(this.saveIcon)
         this.saveIcon.setAlpha(0)
 

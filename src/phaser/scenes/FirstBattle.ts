@@ -58,7 +58,7 @@ class FirstBattle extends Phaser.Scene {
         this.load.image('frost-icon', '../../public/assets/icons/frost-icon.png')
         this.load.image('poison-icon', '../../public/assets/icons/poison-icon.png')
         this.load.image('shock-icon', '../../public/assets/icons/shock-icon.png')
-        this.load.image('save-icon', '../../public/assets/icons/floppy.png')
+        this.load.image('save-icon', '../../public/assets/icons/save-icon.png')
         this.load.image('loading-icon', '../../public/assets/icons/loading-icon.png')
         this.load.image('coin-icon', '../../public/assets/icons/coin-icon.png')
     }
@@ -70,7 +70,7 @@ class FirstBattle extends Phaser.Scene {
 
         if (this.key === 'FirstBattle') this.player = new Player(this, 75, 6)
         
-        if (this.key === 'FirstBattle') this.enemy = new Enemy(this, 5)
+        if (this.key === 'FirstBattle') this.enemy = new Enemy(this, 25)
         
         this.buttonPanel = new DefaultButtonPanel(this)
         

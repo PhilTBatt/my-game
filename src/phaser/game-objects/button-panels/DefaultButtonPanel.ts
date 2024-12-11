@@ -37,7 +37,7 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
         })
         this.add(this.skillsButton)
 
-        this.statsButton = new Button(scene, 743, 527, 440, 105, 'Stats', '#000000', 0xE6E6E6, 0xFFFF00, 10, '80px', () => {
+        this.statsButton = new Button(scene, 743, 527, 440, 105, 'TBD', '#000000', 0xE6E6E6, 0xFFFF00, 10, '80px', () => {
             this.setVisible(false)
             scene.statsButtonPanel?.setVisible(true)
         })

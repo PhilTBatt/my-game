@@ -38,6 +38,7 @@ export default class DefendButtonPanel extends Phaser.GameObjects.Container {
             })
         }
 
+        this.setSize(1000, 275)
         scene.add.existing(this)
         this.setVisible(false)
     }

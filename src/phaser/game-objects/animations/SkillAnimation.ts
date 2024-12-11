@@ -28,8 +28,6 @@ export default class SkillAnimation extends Phaser.GameObjects.Container {
         scene.add.existing(this.elementIcon)
         this.elementIcon.setAlpha(0)
 
-        console.log(this.character, this.character instanceof Player)
-
         if (this.character instanceof Player) {
             this.elementIcon.setPosition(375, 200)
             this.elementIcon.flipX = false

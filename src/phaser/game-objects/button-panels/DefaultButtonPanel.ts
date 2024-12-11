@@ -43,6 +43,7 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
         })
         this.add(this.statsButton)
 
+        this.setSize(1000, 275)
         scene.add.existing(this)
     }
 

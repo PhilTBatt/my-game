@@ -30,16 +30,16 @@ export default class SkillButton extends Button {
         valueText.setOrigin(0.5)
 
         if (skill.action === 'Burn') {
-            this.elementIcon = new FireTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
+            this.elementIcon = new FireTooltip(scene, nameText.width / 2 + x + 475, y + 136, nameText.width / 2 + x + 415, y + 2)
             this.elementIcon.icon?.setScale(0.275)
         } else if (skill.action === 'Frost') {
-            this.elementIcon = new FrostTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
+            this.elementIcon = new FrostTooltip(scene, nameText.width / 2 + x + 475, y + 136, nameText.width / 2 + x + 415, y + 2)
             this.elementIcon.icon?.setScale(0.275)
         } else if (skill.action === 'Poison') {
-            this.elementIcon = new PoisonTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
+            this.elementIcon = new PoisonTooltip(scene, nameText.width / 2 + x + 475, y + 136, nameText.width / 2 + x + 415, y + 2)
             this.elementIcon.icon?.setScale(0.175)
         } else {
-            this.elementIcon = new ShockTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
+            this.elementIcon = new ShockTooltip(scene, nameText.width / 2 + x + 475, y + 136, nameText.width / 2 + x + 415, y + 2)
             this.elementIcon.icon?.setScale(0.1475)
         }
         this.elementIcon.setDepth(2)

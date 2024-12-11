@@ -26,7 +26,7 @@ export default class DefendButton extends Button {
         const valueText = scene.add.text(nameText.width / 2 - 78, 0, `${defend.value}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         valueText.setOrigin(0.5)
 
-        this.blockIcon = new BlockTooltip(scene, nameText.width / 2 + x - 25, y, nameText.width / 2 + x - 85, y - 135)
+        this.blockIcon = new BlockTooltip(scene, nameText.width / 2 + x + 475, y + 136, nameText.width / 2 + x + 415, y + 7)
         this.blockIcon.setDepth(2).setVisible(false)
         this.blockIcon.icon?.setScale(0.16)
 

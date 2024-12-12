@@ -15,8 +15,11 @@ export default class DefendButtonPanel extends Phaser.GameObjects.Container {
             this.setVisible(false)
             scene.buttonPanel?.setVisible(true)
             scene.defendButtonPanel?.defend1?.blockIcon.setVisible(false)
+            scene.defendButtonPanel?.defend1?.staminaIcon.setVisible(false)
             scene.defendButtonPanel?.defend2?.blockIcon.setVisible(false)
+            scene.defendButtonPanel?.defend2?.staminaIcon.setVisible(false)
             scene.defendButtonPanel?.defend3?.blockIcon.setVisible(false)
+            scene.defendButtonPanel?.defend3?.staminaIcon.setVisible(false)
         })
 
         this.add(this.backButton)
@@ -55,5 +58,16 @@ export default class DefendButtonPanel extends Phaser.GameObjects.Container {
         this.defend1?.setInteractive()
         this.defend2?.setInteractive()
         this.defend3?.setInteractive()
+    }
+
+    resetPanel() {
+        this.setVisible(false)
+
+        this.defend1?.blockIcon.setVisible(false)
+        this.defend2?.blockIcon.setVisible(false)
+        this.defend3?.blockIcon.setVisible(false)
+        this.defend1?.staminaIcon.setVisible(false)
+        this.defend2?.staminaIcon.setVisible(false)
+        this.defend3?.staminaIcon.setVisible(false)
     }
 }

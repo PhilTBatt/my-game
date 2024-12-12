@@ -15,8 +15,11 @@ export default class SkillButtonPanel extends Phaser.GameObjects.Container {
             this.setVisible(false)
             scene.buttonPanel?.setVisible(true)
             scene.skillButtonPanel?.skill1?.elementIcon.setVisible(false)
+            scene.skillButtonPanel?.skill1?.staminaIcon.setVisible(false)
             scene.skillButtonPanel?.skill2?.elementIcon.setVisible(false)
+            scene.skillButtonPanel?.skill2?.staminaIcon.setVisible(false)
             scene.skillButtonPanel?.skill3?.elementIcon.setVisible(false)
+            scene.skillButtonPanel?.skill3?.staminaIcon.setVisible(false)
         })
 
         this.add(this.backButton)
@@ -55,5 +58,16 @@ export default class SkillButtonPanel extends Phaser.GameObjects.Container {
         this.skill1?.setInteractive()
         this.skill2?.setInteractive()
         this.skill3?.setInteractive()
+    }
+
+    resetPanel() {
+        this.setVisible(false)
+
+        this.skill1?.elementIcon.setVisible(false)
+        this.skill2?.elementIcon.setVisible(false)
+        this.skill3?.elementIcon.setVisible(false)
+        this.skill1?.staminaIcon.setVisible(false)
+        this.skill2?.staminaIcon.setVisible(false)
+        this.skill3?.staminaIcon.setVisible(false)
     }
 }

@@ -15,8 +15,11 @@ export default class AttackButtonPanel extends Phaser.GameObjects.Container {
             this.setVisible(false)
             scene.buttonPanel?.setVisible(true)
             scene.attackButtonPanel?.attack1?.damageIcon.setVisible(false)
+            scene.attackButtonPanel?.attack1?.staminaIcon.setVisible(false)
             scene.attackButtonPanel?.attack2?.damageIcon.setVisible(false)
+            scene.attackButtonPanel?.attack2?.staminaIcon.setVisible(false)
             scene.attackButtonPanel?.attack3?.damageIcon.setVisible(false)
+            scene.attackButtonPanel?.attack3?.staminaIcon.setVisible(false)
         })
 
         this.add(this.backButton)
@@ -55,5 +58,16 @@ export default class AttackButtonPanel extends Phaser.GameObjects.Container {
         this.attack1?.setInteractive()
         this.attack2?.setInteractive()
         this.attack3?.setInteractive()
+    }
+
+    resetPanel() {
+        this.setVisible(false)
+
+        this.attack1?.damageIcon.setVisible(false)
+        this.attack2?.damageIcon.setVisible(false)
+        this.attack3?.damageIcon.setVisible(false)
+        this.attack1?.staminaIcon.setVisible(false)
+        this.attack2?.staminaIcon.setVisible(false)
+        this.attack3?.staminaIcon.setVisible(false)
     }
 }

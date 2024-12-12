@@ -10,7 +10,7 @@ export default class Player extends Character {
     staminaBar: StaminaBar
     attacks: [Action, Action?, Action?] = [{name: 'Strike', action: 'Attack', value: 5, stamina: 2}]
     defends: [Action, Action?, Action?] = [{name: 'Block', action: 'Block', value: 4, stamina: 2}]
-    skills: [Action?, Action?, Action?] | undefined = [{name: 'Burn', action: 'Burn', value: 2, stamina: 4}, {name: 'Frost', action: 'Frost', value: 2, stamina: 1}]
+    skills: [Action?, Action?, Action?] | undefined = [{name: 'Burn', action: 'Burn', value: 2, stamina: 4}]
     coinAmount: number = 0
     eventCount = 0
 

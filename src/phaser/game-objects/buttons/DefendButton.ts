@@ -1,11 +1,12 @@
 import FirstBattle from "../../scenes/FirstBattle";
 import { Action } from "../../types";
 import BlockTooltip from "../tooltips/BlockTooltips";
+import StaminaTooltip from "../tooltips/StaminaTooltip";
 import Button from "./Button";
 
 export default class DefendButton extends Button {
     blockIcon: BlockTooltip
-    staminaIcon: Phaser.GameObjects.Image
+    staminaIcon: StaminaTooltip
 
     constructor(scene: FirstBattle, x: number, y: number, defend: Action) {
         super(scene, x, y, 440, 103, ``, '#000000', 0xE6E6E6, 0x003EF8, 10, '70px', () => {
@@ -30,19 +31,23 @@ export default class DefendButton extends Button {
         this.blockIcon.setDepth(2).setVisible(false)
         this.blockIcon.icon?.setScale(0.16)
 
-        const staminaText = scene.add.text(nameText.width / 2 + 43, 0, `${defend.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
+        const staminaText = scene.add.text(nameText.width / 2 + 50, 0, `${defend.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)
-        this.staminaIcon = scene.add.image(nameText.width / 2 + 95, -2, 'stamina-icon').setScale(0.22)
 
-        this.add([nameText, valueText, this.staminaIcon, staminaText])
+        this.staminaIcon = new StaminaTooltip(scene, nameText.width / 2 + x + 600, y + 135, nameText.width / 2 + x + 598, y - 6)
+        this.staminaIcon.setDepth(2)
+        this.staminaIcon.setVisible(false)
+
+        this.add([nameText, valueText, staminaText])
         scene.add.existing(this.blockIcon)
+        scene.add.existing(this.staminaIcon)
 
         this.on('pointerover', () => {
             nameText.setScale(1.1)
             valueText.setScale(1.15)
             staminaText.setScale(1.15)
             this.blockIcon.icon?.setScale(0.19)
-            this.staminaIcon.setScale(0.26)
+            this.staminaIcon.icon?.setScale(0.27)
           })
             
           this.on('pointerout', () => {
@@ -50,7 +55,7 @@ export default class DefendButton extends Button {
             valueText.setScale(1)
             staminaText.setScale(1)
             this.blockIcon.icon?.setScale(0.16)
-            this.staminaIcon.setScale(0.22)
+            this.staminaIcon.icon?.setScale(0.22)
           })
     }
 }

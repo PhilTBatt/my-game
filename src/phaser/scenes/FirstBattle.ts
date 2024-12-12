@@ -191,22 +191,10 @@ class FirstBattle extends Phaser.Scene {
 
     resetButtonPanel() {
         this.buttonPanel?.setVisible(true)
-        this.attackButtonPanel?.setVisible(false)
-        this.defendButtonPanel?.setVisible(false)
-        this.skillButtonPanel?.setVisible(false)
-        this.statsButtonPanel?.setVisible(false)
-
-        this.skillButtonPanel?.skill1?.elementIcon.setVisible(false)
-        this.skillButtonPanel?.skill2?.elementIcon.setVisible(false)
-        this.skillButtonPanel?.skill3?.elementIcon.setVisible(false)
-
-        this.defendButtonPanel?.defend1?.blockIcon.setVisible(false)
-        this.defendButtonPanel?.defend2?.blockIcon.setVisible(false)
-        this.defendButtonPanel?.defend3?.blockIcon.setVisible(false)
-
-        this.attackButtonPanel?.attack1?.damageIcon.setVisible(false)
-        this.attackButtonPanel?.attack2?.damageIcon.setVisible(false)
-        this.attackButtonPanel?.attack3?.damageIcon.setVisible(false)
+        this.attackButtonPanel?.resetPanel()
+        this.defendButtonPanel?.resetPanel()
+        this.skillButtonPanel?.resetPanel()
+        this.statsButtonPanel?.resetPanel()
     }
 
     showRewards() {

@@ -14,8 +14,12 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
             this.setVisible(false)
             scene.attackButtonPanel?.setVisible(true)
             scene.attackButtonPanel?.attack1?.damageIcon.setVisible(true)
+            scene.attackButtonPanel?.attack1?.staminaIcon.setVisible(true)
             scene.attackButtonPanel?.attack2?.damageIcon.setVisible(true)
+            scene.attackButtonPanel?.attack2?.staminaIcon.setVisible(true)
             scene.attackButtonPanel?.attack3?.damageIcon.setVisible(true)
+            scene.attackButtonPanel?.attack3?.staminaIcon.setVisible(true)
+
         })
         this.add(this.attacksButton)
 
@@ -23,8 +27,11 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
             this.setVisible(false)
             scene.defendButtonPanel?.setVisible(true)
             scene.defendButtonPanel?.defend1?.blockIcon.setVisible(true)
+            scene.defendButtonPanel?.defend1?.staminaIcon.setVisible(true)
             scene.defendButtonPanel?.defend2?.blockIcon.setVisible(true)
+            scene.defendButtonPanel?.defend2?.staminaIcon.setVisible(true)
             scene.defendButtonPanel?.defend3?.blockIcon.setVisible(true)
+            scene.defendButtonPanel?.defend3?.staminaIcon.setVisible(true)
         })
         this.add(this.defendsButton)
 
@@ -32,8 +39,11 @@ export default class DefaultButtonPanel extends Phaser.GameObjects.Container {
             this.setVisible(false)
             scene.skillButtonPanel?.setVisible(true)
             scene.skillButtonPanel?.skill1?.elementIcon.setVisible(true)
+            scene.skillButtonPanel?.skill1?.staminaIcon.setVisible(true)
             scene.skillButtonPanel?.skill2?.elementIcon.setVisible(true)
+            scene.skillButtonPanel?.skill2?.staminaIcon.setVisible(true)
             scene.skillButtonPanel?.skill3?.elementIcon.setVisible(true)
+            scene.skillButtonPanel?.skill3?.staminaIcon.setVisible(true)
         })
         this.add(this.skillsButton)
 

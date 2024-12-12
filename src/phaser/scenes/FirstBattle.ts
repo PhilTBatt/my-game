@@ -51,16 +51,16 @@ class FirstBattle extends Phaser.Scene {
     }
     
     preload() {
-        this.load.image('damage-icon', '../../public/assets/icons/damage-icon.png')
-        this.load.image('stamina-icon', '../../public/assets/icons/stamina-icon.png')
-        this.load.image('block-icon', '../../public/assets/icons/block-icon.png')
-        this.load.image('fire-icon', '../../public/assets/icons/fire-icon.png')
-        this.load.image('frost-icon', '../../public/assets/icons/frost-icon.png')
-        this.load.image('poison-icon', '../../public/assets/icons/poison-icon.png')
-        this.load.image('shock-icon', '../../public/assets/icons/shock-icon.png')
-        this.load.image('save-icon', '../../public/assets/icons/save-icon.png')
-        this.load.image('loading-icon', '../../public/assets/icons/loading-icon.png')
-        this.load.image('coin-icon', '../../public/assets/icons/coin-icon.png')
+        this.load.image('damage-icon', '/assets/icons/damage-icon.png')
+        this.load.image('stamina-icon', '/assets/icons/stamina-icon.png')
+        this.load.image('block-icon', '/assets/icons/block-icon.png')
+        this.load.image('fire-icon', '/assets/icons/fire-icon.png')
+        this.load.image('frost-icon', '/assets/icons/frost-icon.png')
+        this.load.image('poison-icon', '/assets/icons/poison-icon.png')
+        this.load.image('shock-icon', '/assets/icons/shock-icon.png')
+        this.load.image('save-icon', '/assets/icons/save-icon.png')
+        this.load.image('loading-icon', '/assets/icons/loading-icon.png')
+        this.load.image('coin-icon', '/assets/icons/coin-icon.png')
     }
 
     create() {

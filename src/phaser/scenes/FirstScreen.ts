@@ -11,7 +11,7 @@ class FirstScreen extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('save-icon', '../../public/assets/icons/save-icon.png')
+        this.load.image('save-icon', '/assets/icons/save-icon.png')
     }
 
     create() {

@@ -87,12 +87,11 @@ class FirstBattle extends Phaser.Scene {
 
         this.turnCountBox = new TurnCount(this)
 
-        this.coinIcon = new CoinCount(this)
-
         if (this.player) {
             this.attackAnimation = new AttackAnimation(this, this.player)
             this.blockAnimation = new BlockAnimation(this, this.player)
             this.elementAnimation = new SkillAnimation(this, this.player)
+            this.coinIcon = new CoinCount(this, this.player.coinAmount)
         }
 
         if (this.enemy) {

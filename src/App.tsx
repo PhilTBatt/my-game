@@ -9,9 +9,7 @@ function App() {
   }, [])
 
   return (
-    <>
-      <div id="game-container"/>
-    </>
+    <div id="game-container"/>
   )
 }
 

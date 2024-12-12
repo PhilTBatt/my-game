@@ -7,7 +7,7 @@ const config: Phaser.Types.Core.GameConfig = {
     width: 1000,
     height: 600,
     scene: [FirstScreen, BattleScreen, WorldOneBattle],
-    parent: 'game-container',
+    parent: "game-container",
     physics: {
     },
 }

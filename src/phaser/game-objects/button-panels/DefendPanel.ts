@@ -11,7 +11,7 @@ export default class DefendButtonPanel extends Phaser.GameObjects.Container {
     constructor(scene: FirstBattle) {
         super(scene, 500, 138)
         
-        this.backButton = new BackButton(scene, -243, 260, 0x003EF8,  () => {
+        this.backButton = new BackButton(scene, 243, 260, 0x003EF8,  () => {
             this.setVisible(false)
             scene.buttonPanel?.setVisible(true)
             scene.defendButtonPanel?.defend1?.blockIcon.setVisible(false)
@@ -27,7 +27,7 @@ export default class DefendButtonPanel extends Phaser.GameObjects.Container {
         if (scene.player?.defends) {
             scene.player.defends.forEach((defend, index) => {
                 if (index === 0 && defend) {
-                    this.defend1 = new DefendButton(scene, 243, 260, defend)
+                    this.defend1 = new DefendButton(scene, -243, 260, defend)
                     this.add(this.defend1)
                 }
                 if (index === 1 && defend) {

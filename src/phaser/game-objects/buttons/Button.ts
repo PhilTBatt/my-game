@@ -1,30 +1,34 @@
 export default class Button extends Phaser.GameObjects.Container {
   cooldownActive: boolean = false
+  background: Phaser.GameObjects.Graphics
+  buttonText: Phaser.GameObjects.Text
 
   constructor(scene: Phaser.Scene, x: number, y: number, width: number, height: number, text: string, textColour: string, colour: number, borderColour: number, borderWidth: number, fontSize: string, onClick: () => void) {
     super(scene, x, y)
     
-    const background = scene.add.graphics()
-    background.fillStyle(colour)
-    background.lineStyle(borderWidth, borderColour)
+    this.background = scene.add.graphics()
+    this.background.fillStyle(colour)
+    this.background.lineStyle(borderWidth, borderColour)
 
     if (width < 40 || height < 40) {
-      background.fillRoundedRect(-width / 2, -height / 2, width, height, 10)
-      background.strokeRoundedRect(-width / 2, -height / 2, width, height, 15)
+      this.background.fillRoundedRect(-width / 2, -height / 2, width, height, 10)
+      this.background.strokeRoundedRect(-width / 2, -height / 2, width, height, 15)
     } else {
-      background.fillRoundedRect(-width / 2, -height / 2, width, height, 30)
-      background.strokeRoundedRect(-width / 2, -height / 2, width, height, 35)
+      this.background.fillRoundedRect(-width / 2, -height / 2, width, height, 30)
+      this.background.strokeRoundedRect(-width / 2, -height / 2, width, height, 35)
     }
 
-    this.add(background)
+    this.add(this.background)
     
-    const buttonText = scene.add.text(0, 0, text, {fontSize, color: textColour, fontFamily: 'Arial', align: 'center'})
-    buttonText.setOrigin(0.5)
-    this.add(buttonText)
+    this.buttonText = scene.add.text(0, 0, text, {fontSize, color: textColour, fontFamily: 'Arial', align: 'center'})
+    this.buttonText.setOrigin(0.5)
+    this.add(this.buttonText)
     
     this.setSize(width, height)
     this.setInteractive({ useHandCursor: true })
     
+    scene.add.existing(this)
+
     this.on('pointerup', () => {
       if (this.cooldownActive) return
       this.cooldownActive = true
@@ -36,16 +40,13 @@ export default class Button extends Phaser.GameObjects.Container {
     })
       
     this.on('pointerover', () => {
-      background.setScale(1.1)
-      buttonText.setScale(1.25)
+      this.background.setScale(1.1)
+      this.buttonText.setScale(1.25)
     })
       
     this.on('pointerout', () => {
-      background.setScale(1)
-      buttonText.setScale(1)
+      this.background.setScale(1)
+      this.buttonText.setScale(1)
     })
-
-    scene.add.existing(this)
   }
-    
-  }
+}

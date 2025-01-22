@@ -25,7 +25,7 @@ export default class Button extends Phaser.GameObjects.Container {
     this.add(this.buttonText)
     
     this.setSize(width, height)
-    this.setInteractive({ useHandCursor: true })
+    this.setInteractive({useHandCursor: true})
     
     scene.add.existing(this)
 

@@ -18,7 +18,7 @@ export default class Button extends Phaser.GameObjects.Container {
       this.background.strokeRoundedRect(-width / 2, -height / 2, width, height, 35)
     }
 
-    this.add(this.background)
+    this.add(this.background)s
     
     this.buttonText = scene.add.text(0, 0, text, {fontSize, color: textColour, fontFamily: 'Arial', align: 'center'})
     this.buttonText.setOrigin(0.5)

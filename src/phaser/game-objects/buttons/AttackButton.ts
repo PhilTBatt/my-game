@@ -31,6 +31,7 @@ export default class AttackButton extends Button {
         this.damageIcon.setDepth(2)
         this.damageIcon.setVisible(false)
 
+        
         const staminaText = scene.add.text(nameText.width / 2 + 50, 0, `${attack.stamina}`, {fontSize: '55px', color: '#000000', fontFamily: 'Arial'})
         staminaText.setOrigin(0.5)
 

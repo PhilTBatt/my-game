@@ -3,7 +3,7 @@ import Character from "../characters/DefaultCharacter"
 import Player from "../characters/Player"
 
 export default class AttackAnimation extends Phaser.GameObjects.Container {
-    character: Character | undefined = undefined
+    character: Character | undefined
     damageIcon: Phaser.GameObjects.Image
 
     constructor(scene: FirstBattle, character: Character) {

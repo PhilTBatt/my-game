@@ -4,8 +4,8 @@ import Character from "../characters/DefaultCharacter"
 import Player from "../characters/Player"
 
 export default class SkillAnimation extends Phaser.GameObjects.Container {
-    character: Character | undefined = undefined
-    elementIcon: Phaser.GameObjects.Image | undefined = undefined
+    character: Character | undefined
+    elementIcon: Phaser.GameObjects.Image | undefined
 
     constructor(scene: FirstBattle, character: Character) {
         super(scene, 0, 0)

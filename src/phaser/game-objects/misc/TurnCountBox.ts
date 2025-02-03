@@ -2,7 +2,7 @@ import FirstBattle from "../../scenes/FirstBattle"
 
 export default class TurnCount extends Phaser.GameObjects.Container {
     turnBox: Phaser.GameObjects.Graphics
-    turnText: Phaser.GameObjects.Text | undefined = undefined
+    turnText: Phaser.GameObjects.Text | undefined
 
     constructor(scene: FirstBattle) {
         super(scene, 500, 24)

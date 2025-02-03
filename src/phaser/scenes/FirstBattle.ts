@@ -116,6 +116,8 @@ class FirstBattle extends Phaser.Scene {
                 this.showRewards()
             })
         }
+
+        if (this.player  && this.player.currentHealth <= 0 && !this.hasBattleEnded) this.playerDies()
     }
 
     endTurn() {
@@ -140,6 +142,10 @@ class FirstBattle extends Phaser.Scene {
             this.resetButton?.setInteractive()
             this.enableButtonPanel()
         }) 
+    }
+
+    playerDies() {
+        
     }
 
     saveGameState() {

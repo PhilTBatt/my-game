@@ -3,9 +3,9 @@ import Button from "../buttons/Button"
 
 export default class NextDestinationBox extends Phaser.GameObjects.Container {
     nextDestinationBox: Phaser.GameObjects.Graphics
-    title: Phaser.GameObjects.Text | undefined = undefined
-    nextDestination1: Button | undefined = undefined
-    nextDestination2: Button | undefined = undefined
+    title: Phaser.GameObjects.Text | undefined
+    nextDestination1: Button | undefined
+    nextDestination2: Button | undefined
 
     constructor(scene: FirstBattle) {
         super(scene, 0, 0)

@@ -5,9 +5,9 @@ import SkillButton from "../buttons/SkillButton"
 
 export default class FirstRewardBox extends Phaser.GameObjects.Container {
     rewardBox: Phaser.GameObjects.Graphics
-    title: Phaser.GameObjects.Text | undefined = undefined
-    reward1: SkillButton | undefined = undefined
-    reward2: SkillButton | undefined = undefined
+    title: Phaser.GameObjects.Text | undefined
+    reward1: SkillButton | undefined
+    reward2: SkillButton | undefined
     reward1InteractiveBox: Button
     reward2InteractiveBox: Button
 

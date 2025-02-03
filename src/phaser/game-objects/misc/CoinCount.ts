@@ -3,7 +3,7 @@ import Player from "../characters/Player"
 
 export default class CoinCount extends Phaser.GameObjects.Container {
     coinIcon: Phaser.GameObjects.Image
-    coinCount: Phaser.GameObjects.Text | undefined = undefined
+    coinCount: Phaser.GameObjects.Text | undefined
 
     constructor(scene: FirstBattle, amount: number) {
         super(scene, 0, 0)

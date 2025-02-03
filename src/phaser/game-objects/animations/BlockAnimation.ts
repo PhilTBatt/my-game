@@ -4,7 +4,7 @@ import Player from "../characters/Player"
 
 export default class BlockAnimation extends Phaser.GameObjects.Container {
     blockIcon: Phaser.GameObjects.Image
-    character: Character | undefined = undefined
+    character: Character | undefined
 
     constructor(scene: FirstBattle, character: Character) {
         super(scene, 0, 0)

@@ -6,7 +6,7 @@ export default class Tooltip extends Phaser.GameObjects.Container {
     background: Phaser.GameObjects.Graphics
     title: Phaser.GameObjects.Text
     text: Phaser.GameObjects.Text
-    icon: Phaser.GameObjects.Image | undefined = undefined
+    icon: Phaser.GameObjects.Image | undefined
 
     constructor(scene: Phaser.Scene, x: number, y: number, width: number, height: number, titleText: string, tooltipText: string, iconName: string, colour: number) {
         super(scene, x, y)

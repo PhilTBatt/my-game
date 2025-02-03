@@ -4,9 +4,9 @@ import SkillButton from "../buttons/SkillButton";
 
 export default class SkillButtonPanel extends Phaser.GameObjects.Container {
     backButton: BackButton
-    skill1: SkillButton | undefined = undefined
-    skill2: SkillButton | undefined = undefined
-    skill3: SkillButton | undefined = undefined
+    skill1: SkillButton | undefined
+    skill2: SkillButton | undefined
+    skill3: SkillButton | undefined
     
     constructor(scene: FirstBattle) {
         super(scene, 500, 138)

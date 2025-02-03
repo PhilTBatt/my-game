@@ -4,9 +4,9 @@ import FirstBattle from "../../scenes/FirstBattle";
 
 export default class DefendButtonPanel extends Phaser.GameObjects.Container {
     backButton: BackButton
-    defend1: DefendButton | undefined = undefined
-    defend2: DefendButton | undefined = undefined
-    defend3: DefendButton | undefined = undefined
+    defend1: DefendButton | undefined
+    defend2: DefendButton | undefined
+    defend3: DefendButton | undefined
     
     constructor(scene: FirstBattle) {
         super(scene, 500, 138)

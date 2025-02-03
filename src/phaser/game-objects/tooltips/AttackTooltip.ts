@@ -1,8 +1,8 @@
 import Tooltip from "./BasicTooltip";
 
 export default class AttackTooltip extends Phaser.GameObjects.Container {
-    icon: Phaser.GameObjects.Image | undefined = undefined
-    tooltip: Tooltip | undefined = undefined
+    icon: Phaser.GameObjects.Image | undefined
+    tooltip: Tooltip | undefined
 
     constructor(scene: Phaser.Scene, iconX: number, iconY: number, tooltipX: number, tooltipY: number) {
         super(scene, 0, 0)

@@ -4,9 +4,9 @@ import BackButton from "../buttons/BackButton";
 
 export default class AttackButtonPanel extends Phaser.GameObjects.Container {
     backButton: BackButton
-    attack1: AttackButton | undefined = undefined
-    attack2: AttackButton | undefined = undefined
-    attack3: AttackButton | undefined = undefined
+    attack1: AttackButton | undefined
+    attack2: AttackButton | undefined
+    attack3: AttackButton | undefined
     
     constructor(scene: FirstBattle) {
         super(scene, 500, 138)

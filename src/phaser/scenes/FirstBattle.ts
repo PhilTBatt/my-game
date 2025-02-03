@@ -46,6 +46,7 @@ class FirstBattle extends Phaser.Scene {
     constructor(key: string = 'FirstBattle') {
         super(key)
         this.key = key
+        this.hasBattleEnded = false
     }
 
     init(data: {player: Player}) {
@@ -108,6 +109,8 @@ class FirstBattle extends Phaser.Scene {
         if (this.enemy && this.enemy.currentHealth <= 0 && !this.hasBattleEnded) this.enemyDefeated()
 
         if (this.player && this.player.currentHealth <= 0 && !this.hasBattleEnded) this.gameOver()
+
+        console.log(this.player, this.player!.currentHealth, this.hasBattleEnded)
     }
 
     endTurn() {
@@ -135,7 +138,6 @@ class FirstBattle extends Phaser.Scene {
     }
     
     enemyDefeated() {
-        this.hasBattleEnded = true
         const overlay = this.add.rectangle(500, 462.5, 1000, 275, 0x929292, 0.015)
         overlay.setDepth(99)
         
@@ -150,7 +152,9 @@ class FirstBattle extends Phaser.Scene {
     }
         
     gameOver() {
-        this.hasBattleEnded = true
+        localStorage.removeItem("gameState")
+        this.savingIcon?.startSaveAnimation()
+
         this.time.delayedCall(1100, () => {
             this.gameOverBox = new GameOverBox(this)
             this.gameOverBox.homeScreenBox?.setDepth(100)

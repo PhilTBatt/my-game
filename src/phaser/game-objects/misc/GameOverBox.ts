@@ -27,7 +27,6 @@ export default class GameOverBox extends Phaser.GameObjects.Container {
 
     changeDestination (scene: FirstBattle, destination: string) {
         scene.time.delayedCall(500, () => {
-            localStorage.removeItem("gameState")
             scene.scene.start(destination)
         })
     }

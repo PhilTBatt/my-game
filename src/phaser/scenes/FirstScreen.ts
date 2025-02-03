@@ -27,7 +27,7 @@ class FirstScreen extends Phaser.Scene {
         introMessageBox.lineStyle(10, 0x000000)
         introMessageBox.strokeRoundedRect(200, 100, 600, 400)
 
-        this.add.text(500, 425, "Welcome to my game! It’s a simple turn based game made using Vite, React, Typescript and Phaser.", {
+        this.add.text(500, 425, "Welcome to my game! It\’s a simple turn based game made using Vite, React, Typescript and Phaser.", {
             fontSize: '30px',
             color: '#000',
             fontFamily: 'Arial',

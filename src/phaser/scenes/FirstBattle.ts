@@ -15,9 +15,10 @@ import NextDestinationBox from "../game-objects/misc/FirstNextDestinationBox";
 import SkillAnimation from "../game-objects/animations/SkillAnimation";
 import TurnCount from "../game-objects/misc/TurnCountBox";
 import CoinCount from "../game-objects/misc/CoinCount";
+import GameOverBox from "../game-objects/misc/GameOverBox";
 
 class FirstBattle extends Phaser.Scene {
-    key: string | undefined = undefined
+    key: string | undefined
     buttonPanel: DefaultButtonPanel | undefined
     attackButtonPanel: AttackButtonPanel | undefined
     defendButtonPanel: DefendButtonPanel | undefined
@@ -37,6 +38,7 @@ class FirstBattle extends Phaser.Scene {
     enemyBlockAnimation: BlockAnimation | undefined
     enemyElementAnimation: SkillAnimation | undefined
     coinIcon: CoinCount | undefined
+    gameOverBox: GameOverBox | undefined
     rewardBox: FirstRewardBox  | undefined
     nextDestinationBox: NextDestinationBox  | undefined
     hasBattleEnded: boolean = false
@@ -64,11 +66,12 @@ class FirstBattle extends Phaser.Scene {
     }
 
     create() {
+        this.turnCount = 1
         this.add.rectangle(500, 300, 1000, 600, 0x00ffff)
         this.add.rectangle(500, 375, 1000, 300, 0x40CF55)
         this.add.rectangle(500, 462.5, 1000, 275, 0x929292)
 
-        if (this.key === 'FirstBattle') this.player = new Player(this, 75, 6)
+        if (this.key === 'FirstBattle') this.player = new Player(this, 5, 6)
         
         if (this.key === 'FirstBattle') this.enemy = new Enemy(this, 5)
         
@@ -102,22 +105,9 @@ class FirstBattle extends Phaser.Scene {
     }
 
     update() {
-        if (this.enemy && this.enemy.currentHealth <= 0 && !this.hasBattleEnded) {
-            this.hasBattleEnded = true
-            const overlay = this.add.rectangle(500, 462.5, 1000, 275, 0x929292, 0.015)
-            overlay.setDepth(99)
-            
-            this.disableButtonPanel()
-            this.endTurnButton?.disableInteractive()
-            this.resetButton?.disableInteractive()
-            if (this.player) this.coinIcon?.animateCoinGain(this.player, 12)
+        if (this.enemy && this.enemy.currentHealth <= 0 && !this.hasBattleEnded) this.enemyDefeated()
 
-            this.time.delayedCall(2000, () => {
-                this.showRewards()
-            })
-        }
-
-        if (this.player  && this.player.currentHealth <= 0 && !this.hasBattleEnded) this.playerDies()
+        if (this.player && this.player.currentHealth <= 0 && !this.hasBattleEnded) this.gameOver()
     }
 
     endTurn() {
@@ -143,9 +133,30 @@ class FirstBattle extends Phaser.Scene {
             this.enableButtonPanel()
         }) 
     }
-
-    playerDies() {
+    
+    enemyDefeated() {
+        this.hasBattleEnded = true
+        const overlay = this.add.rectangle(500, 462.5, 1000, 275, 0x929292, 0.015)
+        overlay.setDepth(99)
         
+        this.disableButtonPanel()
+        this.endTurnButton?.disableInteractive()
+        this.resetButton?.disableInteractive()
+        if (this.player) this.coinIcon?.animateCoinGain(this.player, 12)
+            
+        this.time.delayedCall(2000, () => {
+            this.showRewards()
+        })
+    }
+        
+    gameOver() {
+        this.hasBattleEnded = true
+        this.time.delayedCall(1100, () => {
+            this.gameOverBox = new GameOverBox(this)
+            this.gameOverBox.homeScreenBox?.setDepth(100)
+            this.gameOverBox.title?.setDepth(100)
+            this.gameOverBox.homeScreenButton?.setDepth(100)
+        })
     }
 
     saveGameState() {

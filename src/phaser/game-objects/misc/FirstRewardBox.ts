@@ -16,22 +16,22 @@ export default class FirstRewardBox extends Phaser.GameObjects.Container {
         
         this.rewardBox = scene.add.graphics()
         this.rewardBox.fillStyle(0xFCA400)
-        this.rewardBox.fillRoundedRect(200, 90, 600, 385)
+        this.rewardBox.fillRoundedRect(200, 95, 600, 385)
         this.rewardBox.lineStyle(10, 0x000000)
-        this.rewardBox.strokeRoundedRect(200, 90, 600, 385)
+        this.rewardBox.strokeRoundedRect(200, 95, 600, 385)
         scene.add.existing(this.rewardBox)
         
         const textOutline = scene.add.graphics().setDepth(100)
         textOutline.lineStyle(5, 0x000000)
-        textOutline.strokeRoundedRect(330, 105, 340, 60)
+        textOutline.strokeRoundedRect(330, 110, 340, 60)
         scene.add.existing(textOutline)
 
-        this.title = scene.add.text(500, 135, 'Choose a reward!', {fontSize: '40px', color: '#000', fontFamily: 'Arial', align: 'center'})
+        this.title = scene.add.text(500, 140, 'Choose a reward!', {fontSize: '40px', color: '#000', fontFamily: 'Arial', align: 'center'})
         this.title.setOrigin(0.5)
         scene.add.existing(this.title)
         
         const rewardItem1 = {action: 'Shock', name: 'Shock', value: 1, stamina: 2}
-        this.reward1 = new SkillButton(scene, 500, 245, rewardItem1)
+        this.reward1 = new SkillButton(scene, 510, 245, rewardItem1)
         this.reward1.setDepth(101)
         this.reward1.elementIcon.setDepth(101).setVisible(true)
         this.reward1.staminaIcon.setDepth(101).setVisible(true)
@@ -49,10 +49,10 @@ export default class FirstRewardBox extends Phaser.GameObjects.Container {
 
         console.log(this.depth, this.rewardBox.depth, this.reward1.depth, this.reward1.background.depth, this.reward1.elementIcon.depth)
         
-        this.reward1InteractiveBox = new Button(scene, 500, 245, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem1))
+        this.reward1InteractiveBox = new Button(scene, 500, 255, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem1))
         this.reward1InteractiveBox.setAlpha(0.0001).setDepth(100)
 
-        this.reward2InteractiveBox = new Button(scene, 500, 385, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem2))
+        this.reward2InteractiveBox = new Button(scene, 500, 395, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem2))
         this.reward2InteractiveBox.setAlpha(0.0001).setDepth(100)
 
         this.reward1InteractiveBox.on('pointerover', () => {

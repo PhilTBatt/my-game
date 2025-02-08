@@ -9,6 +9,7 @@ import Button from "./Button";
 
 export default class SkillButton extends Button {
     elementIcon: FireTooltip | FrostTooltip | PoisonTooltip | ShockTooltip
+    
     staminaIcon: StaminaTooltip
 
     constructor(scene: FirstBattle, x: number, y: number, skill: Action) {

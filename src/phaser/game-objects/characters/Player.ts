@@ -4,7 +4,7 @@ import FirstBattle from "../../scenes/FirstBattle"
 import Character from "./DefaultCharacter"
 
 export default class Player extends Character {
-    sprite: Phaser.GameObjects.Graphics
+    sprite: Phaser.GameObjects.Image | undefined
     maxStamina: number
     currentStamina: number
     staminaBar: StaminaBar
@@ -20,11 +20,7 @@ export default class Player extends Character {
         this.currentStamina = maxStamina
         this.currentHealth = currentHealth
 
-        this.sprite = scene.add.graphics()
-        this.sprite.fillStyle(0x6F00FF, 1)
-        this.sprite.fillCircle(266.67, 200, 60)
-        this.sprite.lineStyle(5, 0x000000)
-        this.sprite.strokeCircle(266.67, 200, 60)
+        this.sprite  = scene.add.image(266.67, 200, 'player-icon').setScale(0.6).setOrigin(0.5)
         scene.add.existing(this.sprite)
 
         this.staminaBar = new StaminaBar(scene, maxStamina, this.currentStamina)

@@ -4,21 +4,17 @@ import FirstBattle from "../../scenes/FirstBattle";
 import Character from "./DefaultCharacter";
 
 export default class Enemy extends Character {
-    intent: EnemyIntent = {action: "Attack", value: 5}
-    intents: EnemyIntent[] = [{action: "Attack", value: 5}, {action: "Block", value: 4}]
-    sprite: Phaser.GameObjects.Graphics
+    sprite: Phaser.GameObjects.Image | undefined
     enemyIntentBar: EnemyIntentBar
     scene: FirstBattle
+    intents: EnemyIntent[] = [{action: "Attack", value: 5}, {action: "Block", value: 4}]
+    intent: EnemyIntent = {action: "Attack", value: 5}
 
     constructor(scene: FirstBattle, maxHealth: number) {
         super(scene, maxHealth)
         this.scene =  scene
 
-        this.sprite = scene.add.graphics()
-        this.sprite.fillStyle(0xB30003, 1)
-        this.sprite.fillCircle(733.33, 200, 60)
-        this.sprite.lineStyle(5, 0x000000)
-        this.sprite.strokeCircle(733.33, 200, 60)
+        this.sprite  = scene.add.image(733.33, 200, 'first-enemy-icon').setScale(0.355).setOrigin(0.5)
         scene.add.existing(this.sprite)
 
         this.healthBar.setPosition(466.66, 0)

@@ -39,7 +39,7 @@ export default class FirstRewardBox extends Phaser.GameObjects.Container {
         this.reward1.disableInteractive()
         
         const rewardItem2 = {action: 'Frost', name: 'Frost', value: 3, stamina: 5}
-        this.reward2 = new SkillButton(scene, 300, 245, rewardItem2)
+        this.reward2 = new SkillButton(scene, 300, 345, rewardItem2)
         this.reward2.elementIcon.setDepth(101).setVisible(true)
         this.reward2.staminaIcon.setDepth(101).setVisible(true)
         this.reward2.disableInteractive()
@@ -48,10 +48,10 @@ export default class FirstRewardBox extends Phaser.GameObjects.Container {
         scene.add.existing(this)
         
         this.reward1InteractiveBox = new Button(scene, 500, 255, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem1))
-        this.reward1InteractiveBox.setAlpha(0.0001).setDepth(100)
+        this.reward1InteractiveBox.setAlpha(0.0001).setDepth(102)
         
         this.reward2InteractiveBox = new Button(scene, 500, 395, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem2))
-        this.reward2InteractiveBox.setAlpha(0.0001).setDepth(100)
+        this.reward2InteractiveBox.setAlpha(0.0001).setDepth(102)
         
         console.log(this.depth, this.rewardBox.depth, this.reward1.depth, this.reward1.background.depth, this.reward1.elementIcon.depth, this.reward1InteractiveBox.depth)
 

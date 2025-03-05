@@ -72,7 +72,7 @@ class FirstBattle extends Phaser.Scene {
         this.add.rectangle(500, 375, 1000, 300, 0x40CF55)
         this.add.rectangle(500, 462.5, 1000, 275, 0x929292)
 
-        if (this.key === 'FirstBattle') this.player = new Player(this, 5, 6)
+        if (this.key === 'FirstBattle') this.player = new Player(this, 50, 6)
         
         if (this.key === 'FirstBattle') this.enemy = new Enemy(this, 5)
         

@@ -34,7 +34,7 @@ export default class BlockBar extends Phaser.GameObjects.Container {
         const blockPercentage = this.currentblock / this.battleScene.player!.maxHealth
         this.blockBar.clear()
         this.blockBar.fillStyle(0x008AD5)
-        this.blockBar.fillRoundedRect(141.67, 15, 250 * blockPercentage * 4, 18, 0)
+        this.blockBar.fillRoundedRect(141.67, 15, 250 * blockPercentage * 1.5, 18, 0)
         this.blockBar.lineStyle(4, 0x000000)
         this.blockBar.strokeRoundedRect(141.67, 15, 250, 18, 5)
     }

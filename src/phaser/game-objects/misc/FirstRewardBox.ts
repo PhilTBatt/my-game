@@ -71,19 +71,27 @@ export default class FirstRewardBox extends Phaser.GameObjects.Container {
 
         this.reward1InteractiveBox.on('pointerover', () => {
             this.reward1?.setScale(1.1)
-            this.reward1?.setScale(1.1)
+            this.reward1?.elementIcon.setScale(1.1).setPosition(-600, -175)
+            this.reward1?.staminaIcon.setScale(1.1).setPosition(-600, -175)
         })
             
         this.reward1InteractiveBox.on('pointerout', () => {
             this.reward1?.setScale(1)
+            this.reward1?.elementIcon.setScale(1).setPosition(-500, -136)
+            this.reward1?.staminaIcon.setScale(1).setPosition(-500, -136)
         })
 
         this.reward2InteractiveBox.on('pointerover', () => {
             this.reward2?.setScale(1.1)
+            this.reward2?.elementIcon.setScale(1.1).setPosition(-600, -189)
+            this.reward2?.staminaIcon.setScale(1.1).setPosition(-600, -189)
+            
         })
             
         this.reward2InteractiveBox.on('pointerout', () => {
             this.reward2?.setScale(1)
+            this.reward2?.elementIcon.setScale(1).setPosition(-500, -136)
+            this.reward2?.staminaIcon.setScale(1).setPosition(-500, -136)
         })
     }
 

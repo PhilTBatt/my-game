@@ -35,7 +35,6 @@ export default class FirstRewardBox extends Phaser.GameObjects.Container {
         this.reward1.setDepth(101)
         this.reward1.elementIcon.setDepth(103).setVisible(true).setPosition(-500, -136)
         this.reward1.staminaIcon.setDepth(103).setVisible(true).setPosition(-500, -136)
-        this.reward1.elementIcon.tooltip?.setPosition(-500, -136)
         this.reward1.background.setDepth(101)
         this.reward1.disableInteractive()
         
@@ -47,13 +46,31 @@ export default class FirstRewardBox extends Phaser.GameObjects.Container {
 
         scene.add.existing(this)
         
-        this.reward1InteractiveBox = new Button(scene, 500, 250, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem1))
+        this.reward1InteractiveBox = new Button(scene, 500, 250, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => {
+            this.getReward(scene, rewardItem1)
+            scene.time.delayedCall(750, () => {
+                this.reward1?.elementIcon.setVisible(false)
+                this.reward1?.staminaIcon.setVisible(false)
+                this.reward2?.elementIcon.setVisible(false)
+                this.reward2?.staminaIcon.setVisible(false)
+            })
+        })
         this.reward1InteractiveBox.setAlpha(0.0001).setDepth(102)
         
-        this.reward2InteractiveBox = new Button(scene, 500, 390, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => this.getReward(scene, rewardItem2))
+        this.reward2InteractiveBox = new Button(scene, 500, 390, 440, 103, '', '#000000', 0xE6E6E6, 0xE6E6E6, 10, '50px', () => {
+            this.getReward(scene, rewardItem2)
+            scene.time.delayedCall(750, () => {
+                this.reward1?.elementIcon.setVisible(false)
+                this.reward1?.staminaIcon.setVisible(false)
+                this.reward2?.elementIcon.setVisible(false)
+                this.reward2?.staminaIcon.setVisible(false)
+            })
+            
+        })
         this.reward2InteractiveBox.setAlpha(0.0001).setDepth(102)
 
         this.reward1InteractiveBox.on('pointerover', () => {
+            this.reward1?.setScale(1.1)
             this.reward1?.setScale(1.1)
         })
             

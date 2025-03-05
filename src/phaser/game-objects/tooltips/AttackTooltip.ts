@@ -24,4 +24,4 @@ export default class AttackTooltip extends Phaser.GameObjects.Container {
                 
         this.icon.on('pointerout', () => this.tooltip?.destroy())
     }
-}Tooltip(scene, tooltipX, tooltipY, 95, 70, 'Attack', text, 'damage-icon', 0xFF0000)
+}

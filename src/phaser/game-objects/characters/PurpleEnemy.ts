@@ -1,12 +1,12 @@
 import FirstBattle from "../../scenes/FirstBattle";
 import Enemy from "./DefaultEnemy";
 
-export default class PurpleCircle extends Enemy {
+export default class PurpleEnemy extends Enemy {
     constructor(scene: FirstBattle) {
         super(scene, 50)
 
         this.sprite?.destroy()
-        this.sprite  = scene.add.image(733.33, 200, 'second-enemy-icon').setScale(0.25).setOrigin(0.5)
+        this.sprite  = scene.add.image(733.33, 200, 'second-enemy-icon').setScale(0.32).setOrigin(0.5)
 
         this.intent = {action: "Block", value: 8}
         this.enemyIntentBar.updateIntent(this.intent)

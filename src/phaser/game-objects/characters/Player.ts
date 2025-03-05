@@ -20,7 +20,7 @@ export default class Player extends Character {
         this.currentStamina = maxStamina
         this.currentHealth = currentHealth
 
-        this.sprite  = scene.add.image(266.67, 200, 'player-icon').setScale(0.375).setOrigin(0.5)
+        this.sprite  = scene.add.image(266.67, 200, 'player-icon').setScale(0.45).setOrigin(0.5)
         scene.add.existing(this.sprite)
 
         this.staminaBar = new StaminaBar(scene, maxStamina, this.currentStamina)

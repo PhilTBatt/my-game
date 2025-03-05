@@ -14,7 +14,7 @@ export default class Enemy extends Character {
         super(scene, maxHealth)
         this.scene =  scene
 
-        this.sprite  = scene.add.image(733.33, 200, 'first-enemy-icon').setScale(0.355).setOrigin(0.5)
+        this.sprite  = scene.add.image(733.33, 200, 'first-enemy-icon').setScale(0.45).setOrigin(0.5)
         scene.add.existing(this.sprite)
 
         this.healthBar.setPosition(466.66, 0)

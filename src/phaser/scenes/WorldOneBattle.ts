@@ -1,7 +1,7 @@
 import AttackAnimation from "../game-objects/animations/AttackAnimation"
 import BlockAnimation from "../game-objects/animations/BlockAnimation"
 import SkillAnimation from "../game-objects/animations/SkillAnimation"
-import PurpleCircle from "../game-objects/characters/PurpleCircle"
+import PurpleEnemy from "../game-objects/characters/PurpleEnemy"
 import FirstBattle from "./FirstBattle"
 
 class WorldOneBattle extends FirstBattle {
@@ -18,7 +18,7 @@ class WorldOneBattle extends FirstBattle {
         super.create()
         this.loadGameState()
 
-        this.enemy = new PurpleCircle(this)
+        this.enemy = new PurpleEnemy(this)
 
         if (this.enemy) {
             this.enemyAttackAnimation = new AttackAnimation(this, this.enemy)

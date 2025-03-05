@@ -1,10 +1,11 @@
+import FirstBattle from "../../scenes/FirstBattle";
 import Tooltip from "./BasicTooltip";
 
 export default class StaminaTooltip extends Phaser.GameObjects.Container {
     icon: Phaser.GameObjects.Image | undefined
     tooltip: Tooltip | undefined
 
-    constructor(scene: Phaser.Scene, iconX: number, iconY: number, tooltipX: number, tooltipY: number) {
+    constructor(scene: FirstBattle, iconX: number, iconY: number, tooltipX: number, tooltipY: number) {
         super(scene, 0, 0)
 
         this.icon = scene.add.image(iconX, iconY, 'stamina-icon').setScale(0.22).setOrigin(0.5)
@@ -15,8 +16,14 @@ export default class StaminaTooltip extends Phaser.GameObjects.Container {
 
         this.icon.on('pointerover', () => {
             const text = 'Needed to use moves\nRecharges at the beginning of turn'
-            this.tooltip = new Tooltip(scene, tooltipX - 60, tooltipY- 30, 125, 125, 'Stamina', text, 'stamina-icon', 0xFFD11B)
-            this.tooltip.setDepth(102)
+            
+            if (scene.rewardBox) {
+                if (this === scene.rewardBox.reward1?.staminaIcon) this.tooltip = new Tooltip(scene, 600, 80, 125, 125, 'Stamina', text, 'stamina-icon', 0xFFD11B)
+                else this.tooltip = new Tooltip(scene, 600, 220, 125, 125, 'Stamina', text, 'stamina-icon', 0xFFD11B)
+            }
+            else this.tooltip = new Tooltip(scene, tooltipX - 60, tooltipY - 30, 125, 125, 'Stamina', text, 'stamina-icon', 0xFFD11B)
+                        
+            this.tooltip.setDepth(104)
             this.tooltip.icon?.setScale(0.09)
             scene.add.existing(this)
         })

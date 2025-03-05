@@ -1,10 +1,11 @@
+import FirstBattle from "../../scenes/FirstBattle";
 import Tooltip from "./BasicTooltip";
 
 export default class AttackTooltip extends Phaser.GameObjects.Container {
     icon: Phaser.GameObjects.Image | undefined
     tooltip: Tooltip | undefined
 
-    constructor(scene: Phaser.Scene, iconX: number, iconY: number, tooltipX: number, tooltipY: number) {
+    constructor(scene: FirstBattle, iconX: number, iconY: number, tooltipX: number, tooltipY: number) {
         super(scene, 0, 0)
 
         this.icon = scene.add.image(iconX, iconY, 'damage-icon').setScale(0.27).setOrigin(0.5)
@@ -23,4 +24,4 @@ export default class AttackTooltip extends Phaser.GameObjects.Container {
                 
         this.icon.on('pointerout', () => this.tooltip?.destroy())
     }
-}
+}Tooltip(scene, tooltipX, tooltipY, 95, 70, 'Attack', text, 'damage-icon', 0xFF0000)

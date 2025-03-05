@@ -67,6 +67,7 @@ class FirstBattle extends Phaser.Scene {
     }
 
     create() {
+        this.hasBattleEnded = false
         this.turnCount = 1
         this.add.rectangle(500, 300, 1000, 600, 0x00ffff)
         this.add.rectangle(500, 375, 1000, 300, 0x40CF55)

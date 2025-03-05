@@ -35,7 +35,11 @@ class FirstScreen extends Phaser.Scene {
             wordWrap: {width: 550}
         }).setOrigin(0.5, 0.5)
 
-        this.playButton = new Button(this, 500, 240, 300, 150, "Play!", '#000000', 0xFCA400, 0x000000, 10, '70px', () => this.scene.start('FirstBattle'))
+        this.playButton = new Button(this, 500, 240, 300, 150, "Play!", '#000000', 0xFCA400, 0x000000, 10, '70px', () => {
+            localStorage.removeItem("gameState")
+            this.scene.start('FirstBattle')
+
+        })
         this.add.existing(this.playButton)
 
         this.loadButton = new Button(this, 500, 547, 200, 56, "Load Game", '#FFFFFF', 0x686868, 0x000000, 6, '30px', () => this.loadGameState())
